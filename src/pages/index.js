@@ -1,21 +1,50 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
+import Works from './../components/Works'
+import Certifications from './../components/Certifications'
+import Head from './../components/Head'
+import './../styles/style_desktop.scss'
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
-
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+export default ({
+  data: { allMarkdownRemark: { edges } }
+}) => (
+    <div>
+      <Head />
+      {edges
+        .sort((a, b) =>
+          parseInt(a.node.frontmatter.title) - parseInt(b.node.frontmatter.title)
+        )
+        .map((mod, key) => {
+          const props = { key, content: { __html: mod.node.html, n: mod.node.frontmatter.title } }
+          
+          switch (parseInt(props.content.n)) {
+            case 4:
+              return <Certifications {...props} />
+            case 5:
+              return <Works {...props} />
+            default:
+              return <div key={key} dangerouslySetInnerHTML={props.content} id={'module-' + props.content.n} />
+          }
+        })
+      }
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+  )
 
-export default IndexPage
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          html
+          excerpt(pruneLength: 250)
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            path
+            title
+          }
+        }
+      }
+    }
+  }
+`
