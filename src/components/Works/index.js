@@ -3,7 +3,7 @@ import works from './works'
 
 export default ({ content }) => {
     return (
-        <div id={'module-' + content.n} >
+        <div id={'module-' + content.n}>
             <div id="works-heading" dangerouslySetInnerHTML={content} />
             <div id="works-content">
                 {works.map((work, i) => i < 6 ? (
