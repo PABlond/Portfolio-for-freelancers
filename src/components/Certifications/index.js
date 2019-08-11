@@ -1,27 +1,28 @@
 import React from 'react'
-import certifications from './certifications'
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from 'react-alice-carousel'
-export default ({ content }) => {
+
+
+export default ({certs}) => {
     const handleOnDragStart = e => e.preventDefault()
     return (
-        <div id={'module-' + content.n}>
-            <div id="certifications-heading" dangerouslySetInnerHTML={content} />
-            <div id="certifications-content">
+        <div className="certifications">
+            <div>
                 <AliceCarousel
                     mouseDragEnabled
                     autoPlay
                     autoPlayInterval={4000}
+                    buttonsDisabled={true}
                     disableAutoPlayOnAction
                     responsive={{
                         0: {
                             items: 1
                         },
                         1024: {
-                            items: 3
+                            items: 1
                         }
                     }} >
-                    {certifications.map((cert, i) =>
+                    {certs.map((cert, i) =>
                         <img onDragStart={handleOnDragStart} key={i} src={cert.thumbnail} alt="test" />
                     )}
 

@@ -1,0 +1,26 @@
+export default {
+  nodes: [
+    { id: "Data", group: 7 },
+    // {id: "Data", group: 3},
+    { id: "Visualization", group: 1 },
+    { id: "Matplotlib", group: 1 },
+    { id: "Pandas", group: 1 },
+    { id: "Seaborn", group: 1 },
+    { id: "Analysis", group: 2 },
+    { id: "Keras", group: 2 },
+    { id: "Scikit-learn", group: 2 },
+    { id: "Other", group: 3 },
+    { id: "Tensorflow", group: 3 },
+  ],
+  links: [
+    { source: "Data", target: "Visualization", value: 3 },
+    { source: "Data", target: "Analysis", value: 3 },
+    { source: "Data", target: "Other", value: 3 },
+    { source: "Visualization", target: "Matplotlib", value: 3 },
+    { source: "Visualization", target: "Pandas", value: 3 },
+    { source: "Visualization", target: "Seaborn", value: 3 },
+    { source: "Analysis", target: "Keras", value: 1 },
+    { source: "Analysis", target: "Scikit-learn", value: 1 },
+    { source: "Other", target: "Tensorflow", value: 1 },
+  ],
+}

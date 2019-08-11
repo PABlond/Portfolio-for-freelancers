@@ -1,0 +1,27 @@
+export default {
+  nodes: [
+    { id: "Back end", group: 7 },
+    { id: "Javascript", group: 4 },
+    { id: "Express", group: 4 },
+    { id: "Hapi.Js", group: 4 },
+    { id: "Python", group: 5 },
+    { id: "Django", group: 5 },
+    { id: "Flask", group: 5 },
+    { id: "Databases", group: 2 },
+    { id: "Mysql", group: 2 },
+    { id: "MariaDB", group: 2 },
+    { id: "MongoDB", group: 2 },
+  ],
+  links: [
+    { source: "Back end", target: "Javascript", value: 1 },
+    { source: "Back end", target: "Python", value: 1 },
+    { source: "Back end", target: "Databases", value: 1 },
+    { source: "Javascript", target: "Express", value: 1 },
+    { source: "Javascript", target: "Hapi.Js", value: 1 },
+    { source: "Python", target: "Django", value: 1 },
+    { source: "Python", target: "Flask", value: 1 },
+    { source: "Databases", target: "Mysql", value: 1 },
+    { source: "Databases", target: "MariaDB", value: 1 },
+    { source: "Databases", target: "MongoDB", value: 1 },
+  ],
+}
