@@ -1,6 +1,6 @@
 import React from 'react'
 import works from './works'
-import pageStructure from './../../pageStructure'
+import pageStructure from '../App/pageStructure'
 
 export default ({ content }) => {
     return (

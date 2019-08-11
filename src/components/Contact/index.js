@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
-import pageStructure from './../../pageStructure'
+import pageStructure from '../App/pageStructure'
 
 export default ({ content }) => {
   const [form, setValues] = useState({

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Skills from "./../Skills"
-import pageStructure from "../../pageStructure"
+import pageStructure from "../App/pageStructure"
 
 export default ({ content }) => {
   const [bio, setBio] = useState("")
