@@ -1,44 +1,43 @@
 import React from "react"
 
 export default ({ certs }) => {
-  const handleOnDragStart = e => e.preventDefault()
   return (
     <div className="certifications" className="col-md-6 pl-0 pr-0">
       <div className="h-100 d-flex justify-content-center align-items-center">
         <div
           id="carouselExampleControls"
-          class="carousel slide"
+          className="carousel slide"
           data-ride="carousel"
         >
-          <div class="carousel-inner">
+          <div className="carousel-inner">
             {certs.map((cert, i) => (
-              <div class={`carousel-item ${i == 0 ? "active" : ""}`}>
+              <div key={i} className={`carousel-item ${i === 0 ? "active" : ""}`}>
                 <img
                   key={i}
                   src={cert.thumbnail}
                   alt="test"
-                  class="d-block w-100"
+                  className="d-block w-100"
                 />
               </div>
             ))}
           </div>
           <a
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             href="#carouselExampleControls"
             role="button"
             data-slide="prev"
           >
-            <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span className="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
           </a>
           <a
-            class="carousel-control-next"
+            className="carousel-control-next"
             href="#carouselExampleControls"
             role="button"
             data-slide="next"
           >
-            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span className="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
           </a>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import React from "react"
-import { ForceGraph2D, ForceGraph3D, ForceGraphVR } from "react-force-graph"
+import { ForceGraph2D } from "react-force-graph"
 import data_back from "./skills_back"
-import SpriteText from "three-spritetext"
 import data_front from "./skill_front"
 import data_data from "./skill_data"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
@@ -13,16 +12,14 @@ import certData from "./../Certifications/certifications_data"
 import Certifications from "./../Certifications"
 export default class Skills extends React.Component {
   componentDidMount() {
-    console.log(this.fg)
-    this.fg.zoom(3)
+    this.fg.zoom(2)
   }
 
   componentDidUpdate() {
-    this.fg.zoom(3)
+    this.fg.zoom(2)
   }
 
   render() {
-    // const data = await fetch('../datasets/miserables.json').then(res => res.json())
     const width = document.body.scrollWidth / 2
     const height = window.innerHeight || document.body.clientHeight
     return (
@@ -48,9 +45,9 @@ export default class Skills extends React.Component {
                 data: data_data,
                 certs: certData,
               },
-            ].map(discipline => {
+            ].map((discipline, key) => {
               return (
-                <TabPanel className="tab-panel">
+                <TabPanel className="tab-panel" key={key}>
                   <div className="skills">
                     <ForceGraph2D
                       ref={el => (this.fg = el)}
@@ -63,17 +60,23 @@ export default class Skills extends React.Component {
                       graphData={discipline.data}
                       nodeAutoColorBy="group"
                       nodeCanvasObject={(node, ctx, globalScale) => {
-                        const label = node.id;
-                        const fontSize = 12/globalScale;
-                        ctx.font = `${fontSize}px Sans-Serif`;
-                        const textWidth = ctx.measureText(label).width;
-                        const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
-                        ctx.fillStyle = '#191919';
-                        ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'middle';
-                        ctx.fillStyle = node.color;
-                        ctx.fillText(label, node.x, node.y);
+                        const label = node.id
+                        const fontSize = 12 / globalScale
+                        ctx.font = `${fontSize}px Sans-Serif`
+                        const textWidth = ctx.measureText(label).width
+                        const bckgDimensions = [textWidth, fontSize].map(
+                          n => n + fontSize * 0.2
+                        ) // some padding
+                        ctx.fillStyle = "#191919"
+                        ctx.fillRect(
+                          node.x - bckgDimensions[0] / 2,
+                          node.y - bckgDimensions[1] / 2,
+                          ...bckgDimensions
+                        )
+                        ctx.textAlign = "center"
+                        ctx.textBaseline = "middle"
+                        ctx.fillStyle = node.color
+                        ctx.fillText(label, node.x, node.y)
                       }}
                       zoom={5}
                       enableNodeDrag={true}

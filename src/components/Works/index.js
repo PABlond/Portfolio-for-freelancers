@@ -12,7 +12,7 @@ export default ({ content }) => {
         <div id="main-works-content" className="row">
           {works.map((work, i) =>
             i < 6 ? (
-              <div class="work-element" key={i} className="col-md-4">
+              <div className="work-element" key={i} className="col-md-4">
                 <div className="p-3">
                   <h4>{work.title}</h4>
                   <img

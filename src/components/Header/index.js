@@ -1,5 +1,5 @@
 import React from "react"
-import { Wave, Random } from "react-animated-text"
+import { Random } from "react-animated-text"
 import pageStructure from "../App/pageStructure"
 
 export default ({ content }) => {
