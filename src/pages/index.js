@@ -2,13 +2,19 @@ import React from "react"
 import { graphql } from "gatsby"
 import "./../styles/style_desktop.scss"
 
-import App from './../components/App'
+import App from "./../components/App"
+import AppMobile from "./../components/App/indexMobile"
 
 export default ({
   data: {
     allMarkdownRemark: { edges },
   },
-}) => <App edges={edges} />
+}) =>
+  window.innerWidth > 768 || document.body.clientWidth > 768 ? (
+    <App edges={edges} />
+  ) : (
+    <AppMobile edges={edges} />
+  )
 
 export const pageQuery = graphql`
   query {

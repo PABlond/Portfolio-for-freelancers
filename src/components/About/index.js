@@ -3,10 +3,6 @@ import Skills from "./../Skills"
 import pageStructure from "../App/pageStructure"
 
 export default ({ content }) => {
-  const [bio, setBio] = useState("")
-  const imgHTML = { __html: content.__html.split("<p>")[0] }
-  const fullBio = content.__html.split("<p>")[1].split("</p>")[0]
-  let i = 0
   // setInterval(() => {
   //   if (i < fullBio.length) {
   //     setBio(bio + fullBio[i])
@@ -15,8 +11,8 @@ export default ({ content }) => {
   // }, 100)
   // console.log(bio)
   return (
-    <div id={pageStructure[content.n].id}>
-      <div id="about-top">
+    <div id={pageStructure[content.n].id} className="container-fluid">
+      <div id="about-top" className="w-100 d-flex justify-content-center align-items-center flex-columns">
         <div id="about-content" dangerouslySetInnerHTML={content} />
       </div>
       <Skills />
