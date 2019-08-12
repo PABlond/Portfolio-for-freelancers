@@ -25,7 +25,6 @@ const typeDefs = `
     }
 `;
 
-// Resolver to match the GraphQL query and return data
 const resolvers = {
   Query: {
     async certifications(root, args, context, info) {
@@ -35,12 +34,8 @@ const resolvers = {
     async works(root, args, context, info) {
         const data = await Work.find({});
         return data;
-      },
-    certification(root, { _id }, context, info) {
-      return blogsData.find(b => b._id == _id);
-    }
+      }
   }
 };
 
-// Build the schema with Type Definitions and Resolvers
 export default makeExecutableSchema({ typeDefs, resolvers });

@@ -1,46 +1,30 @@
-import React from "react"
+import React, { useState } from "react"
+import { Carousel, Image, Col } from "react-bootstrap"
 
 export default ({ certs }) => {
+  const [index, setIndex] = useState(0)
+  const [direction, setDirection] = useState(null)
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex)
+    setDirection(e.direction)
+  }
   return (
-    <div className="certifications" className="col-md-6 pl-0 pr-0">
+    <Col md={6} className="pl-0 pr-0">
       <div className="h-100 d-flex justify-content-center align-items-center">
-        <div
-          id="carouselExampleControls"
-          className="carousel slide"
-          data-ride="carousel"
+        <Carousel
+          activeIndex={index}
+          direction={direction}
+          onSelect={handleSelect}
+          interval={3000}
         >
-          <div className="carousel-inner">
-            {certs.map((cert, i) => (
-              <div key={i} className={`carousel-item ${i === 0 ? "active" : ""}`}>
-                <img
-                  key={i}
-                  src={cert.thumbnail}
-                  alt="test"
-                  className="d-block w-100"
-                />
-              </div>
-            ))}
-          </div>
-          <a
-            className="carousel-control-prev"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="prev"
-          >
-            <span className="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a
-            className="carousel-control-next"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="next"
-          >
-            <span className="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-            <span className="sr-only">Next</span>
-          </a>
-        </div>
+          {certs.map((cert, i) => (
+            <Carousel.Item key={i}>
+              <Image fluid src={cert.thumbnail} alt="test" />
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </div>
-    </div>
+    </Col>
   )
 }

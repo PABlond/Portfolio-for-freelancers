@@ -2,12 +2,14 @@ import React, { Component } from "react"
 import ReactPageScroller from "react-page-scroller"
 import pageStructure from "./pageStructure"
 import axios from "axios"
+import { Spinner } from 'react-bootstrap';
 
 import Header from "./../Header"
 import Works from "./../Works"
 import Contact from "./../Contact"
 import Head from "./../Head"
 import About from "./../About"
+import Loading from "./../Loading"
 
 export default class App extends Component {
   constructor(props) {
@@ -40,24 +42,25 @@ export default class App extends Component {
           thumbnail
         }
       }`)
-      const {works, certifications} = response.data.data
+      const { works, certifications } = response.data.data
       this.setState({
-        works, certifications, 
-        isLoading: false
+        works,
+        certifications,
+        isLoading: false,
       })
-      console.log(response)
     }
-    console.log(this.state)
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     await this.getData()
   }
 
   render() {
     const { isLoading, works, certifications } = this.state
     const { edges } = this.props
-    return isLoading ? <h1>Loading</h1> : (
+    return isLoading ? (
+      <Loading />
+    ) : (
       <div>
         <Head />
         <ReactPageScroller
