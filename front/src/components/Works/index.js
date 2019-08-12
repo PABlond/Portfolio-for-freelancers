@@ -1,8 +1,7 @@
 import React from "react"
-import works from "./works"
 import pageStructure from "../App/pageStructure"
 
-export default ({ content }) => {
+export default ({ content, works }) => {
   const height = window.innerHeight || document.body.clientHeight
   const imgStyle = { maxHeight: height / 6 }
   return (

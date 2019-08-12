@@ -5,9 +5,6 @@ import data_front from "./skill_front"
 import data_data from "./skill_data"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import "react-tabs/style/react-tabs.css"
-import certFront from "./../Certifications/certifications_front"
-import certBack from "./../Certifications/certifications_back"
-import certData from "./../Certifications/certifications_data"
 
 import Certifications from "./../Certifications"
 export default class Skills extends React.Component {
@@ -35,15 +32,12 @@ export default class Skills extends React.Component {
             {[
               {
                 data: data_front,
-                certs: certFront,
               },
               {
                 data: data_back,
-                certs: certBack,
               },
               {
                 data: data_data,
-                certs: certData,
               },
             ].map((discipline, key) => {
               return (
@@ -88,7 +82,7 @@ export default class Skills extends React.Component {
             })}
           </Tabs>
 
-          <Certifications certs={certBack} />
+          <Certifications certs={this.props.certifications} />
         </div>
       </div>
     )
