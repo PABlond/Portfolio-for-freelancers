@@ -20,9 +20,8 @@ export default class App extends Component {
   pageOnChange = number => this.setState({ currentPage: number })
 
   getData = async () => {
-    const props = store.getState()
-    const { works, certifications } = props.content
-    if (!works.length > 0 || !certifications.length > 0) {
+    const { works, certifications } = store.getState().content
+    if (this.state.isLoading) {
       const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
         works {
           title
@@ -34,7 +33,6 @@ export default class App extends Component {
           thumbnail
         }
       }`)
-      console.log(response)
       const { works, certifications } = response.data.data
       const { getContent } = constants
       store.dispatch({

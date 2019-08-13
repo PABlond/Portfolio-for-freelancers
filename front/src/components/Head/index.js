@@ -4,7 +4,9 @@ import { Helmet } from "react-helmet"
 export default () => (
   <Helmet>
     <meta charSet="utf-8" />
-    <title>My Title</title>
+    <title>Pierre-Alexis Blond - Portfolio</title>
+    <meta name="description" content="Full Stack developer and data lover available for any purpose. I am currently specialized in Javascript and Python. " />
+    <meta name="keywords" cpntent="developer, full stack, react, redux, nodejs, node" />
     <meta charSet="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta
@@ -16,7 +18,6 @@ export default () => (
       href="/icons/icon-48x48.png?v=008654519ce705ac7bc44303a9014606"
     />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="theme-color" content="#663399" />
     <link
       rel="apple-touch-icon"
       sizes="48x48"

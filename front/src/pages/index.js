@@ -1,12 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import "./../styles/style_desktop.scss"
 import constants from "./../state/constants"
 import store from "./../state/store"
 import App from "./../components/App"
 
-export default class Landing extends React.Component {
-  componentDidMount() {
+export default ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) => {
+  useEffect(() => {
     const { setNav } = constants
     if (document !== "undefined") {
       const { innerHeight, innerWidth } = window
@@ -15,29 +19,11 @@ export default class Landing extends React.Component {
         payload: { innerWidth, innerHeight, isMobile: !!(innerWidth < 768) },
       })
     }
-  }
-
-  render() {
-    console.log()
-    const { edges } = this.props.data.allMarkdownRemark
-    const { isMobile } = store.getState().nav
-
-    console.log(store.getState())
-    const props = { edges, isMobile }
-    return <App {...props} />
-  }
+  })
+  const { isMobile } = store.getState().nav
+  const props = { edges, isMobile }
+  return <App {...props} />
 }
-
-// export default ({
-//   data: {
-//     allMarkdownRemark: { edges },
-//   },
-// }) => {
-//   document.body.clientWidth > 768 ? (
-//     <App edges={edges} />
-//   ) : (
-//     <AppMobile edges={edges} />
-//   )}
 
 export const pageQuery = graphql`
   query {
