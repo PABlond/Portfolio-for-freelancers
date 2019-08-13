@@ -4,7 +4,6 @@ import pageStructure from "../App/pageStructure"
 import { Container } from "react-bootstrap"
 
 export default ({ content, certifications, isMobile }) => {
-  console.log('About', isMobile)
   return (
     <Container fluid={true} id={pageStructure[content.n].id}>
       <div

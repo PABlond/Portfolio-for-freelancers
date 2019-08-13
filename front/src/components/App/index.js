@@ -3,13 +3,16 @@ import ReactPageScroller from "react-page-scroller"
 import pageStructure from "./pageStructure"
 import axios from "axios"
 import { Spinner } from "react-bootstrap"
-
+import store from "./../../state/store"
+import constants from "./../../state/constants"
 import Header from "./../Header"
 import Works from "./../Works"
 import Contact from "./../Contact"
 import Head from "./../Head"
 import About from "./../About"
 import Loading from "./../Loading"
+import AppMobile from './indexMobile'
+import orderApp from "./orderApp"
 
 export default class App extends Component {
   constructor(props) {
@@ -43,6 +46,11 @@ export default class App extends Component {
         }
       }`)
       const { works, certifications } = response.data.data
+      const { getContent } = constants
+      store.dispatch({
+        type: getContent.name,
+        payload: { works, certifications },
+      })
       this.setState({
         works,
         certifications,
@@ -56,11 +64,14 @@ export default class App extends Component {
   }
 
   render() {
-    const { isLoading, works, certifications } = this.state
+    const props = store.getState()
+    const { works, certifications } = props.content
+    const { isMobile } = props.nav
     const { edges } = this.props
-    console.log("desktop", this.props.isMobile)
-    return isLoading ? (
+    return works.length && certifications.length ? (
       <Loading />
+    ) : isMobile ? (
+      <AppMobile props={this.props} />
     ) : (
       <div>
         <Head />
@@ -74,36 +85,7 @@ export default class App extends Component {
               content: { __html: mod.node.html, n: mod.node.frontmatter.title },
             }
 
-            switch (parseInt(props.content.n)) {
-              case 1:
-                return <Header {...props} />
-              case 2:
-                return (
-                  <About
-                    isMobile={this.props.isMobile}
-                    {...props}
-                    certifications={certifications}
-                  />
-                )
-              case 3:
-                return (
-                  <Works
-                    isMobile={this.props.isMobile}
-                    {...props}
-                    works={works}
-                  />
-                )
-              case 4:
-                return <Contact {...props} />
-              default:
-                return (
-                  <div
-                    key={key}
-                    dangerouslySetInnerHTML={props.content}
-                    id={pageStructure[props.content.n].id}
-                  />
-                )
-            }
+            return orderApp(props, key)
           })}
         </ReactPageScroller>
       </div>

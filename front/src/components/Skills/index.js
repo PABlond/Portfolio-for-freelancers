@@ -9,7 +9,6 @@ import { Container, Row, Col, Tabs, Tab } from "react-bootstrap"
 import Certifications from "./../Certifications"
 
 export default ({ certifications, isMobile = { value: false, dimension: { width: 0, height: 0 } } }) => {
-  console.log("SKILLS", certifications, isMobile)
   const width = isMobile.width / 2
   const height = isMobile.height
   const tabs = [

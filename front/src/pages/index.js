@@ -1,43 +1,29 @@
 import React from "react"
 import { graphql } from "gatsby"
 import "./../styles/style_desktop.scss"
+import constants from "./../state/constants"
 import Loading from "./../components/Loading"
-
+import store from "./../state/store"
 import App from "./../components/App"
 import AppMobile from "./../components/App/indexMobile"
 
 export default class Landing extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isMobile: { value: false, dimension: { width: 0, height: 0 } },
-    }
-  }
-
   componentDidMount() {
-    if (document !== "undefined")
-      this.setState({
-        isMobile: {
-          value: !!(document.body.clientWidth > 768),
-          width: document.body.clientWidth,
-          height: document.body.clientHeight,
-        },
+    const { setNav } = constants
+    if (document !== "undefined") {
+      const { innerHeight, innerWidth } = window
+      store.dispatch({
+        type: setNav.name,
+        payload: { innerWidth, innerHeight, isMobile: !!(innerWidth < 768) },
       })
+    }
   }
 
   render() {
     const { edges } = this.props.data.allMarkdownRemark
-    const { isMobile } = this.state
+    const { isMobile } = store.getState().nav
     const props = { edges, isMobile }
-    return isMobile.value && isMobile.width ? (
-      isMobile.value ? (
-        <App {...props} />
-      ) : (
-        <AppMobile {...props} />
-      )
-    ) : (
-      <Loading />
-    )
+    return isMobile ? <App {...props} /> : <AppMobile {...props} />
   }
 }
 
