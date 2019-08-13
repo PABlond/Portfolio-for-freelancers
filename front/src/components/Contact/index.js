@@ -43,7 +43,7 @@ export default ({ content }) => {
     })
 
   return (
-    <div id={pageStructure[content.n].id}  class="bg-contact2">
+    <div id={pageStructure[content.n].id} class="bg-contact2">
       <div class="container-contact2">
         <div class="wrap-contact2">
           <form class="contact2-form validate-form" onSubmit={handleClick}>

@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import ReactPageScroller from "react-page-scroller"
 import pageStructure from "./pageStructure"
 import axios from "axios"
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from "react-bootstrap"
 
 import Header from "./../Header"
 import Works from "./../Works"
@@ -31,7 +31,7 @@ export default class App extends Component {
   getData = async () => {
     const { isLoading } = this.state
     if (isLoading) {
-      const response = await axios.get(`http://localhost:1337/graphql?query={
+      const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
         works {
           title
           image,
@@ -58,6 +58,7 @@ export default class App extends Component {
   render() {
     const { isLoading, works, certifications } = this.state
     const { edges } = this.props
+    console.log("desktop", this.props.isMobile)
     return isLoading ? (
       <Loading />
     ) : (
@@ -77,9 +78,21 @@ export default class App extends Component {
               case 1:
                 return <Header {...props} />
               case 2:
-                return <About {...props} certifications={certifications} />
+                return (
+                  <About
+                    isMobile={this.props.isMobile}
+                    {...props}
+                    certifications={certifications}
+                  />
+                )
               case 3:
-                return <Works {...props} works={works} />
+                return (
+                  <Works
+                    isMobile={this.props.isMobile}
+                    {...props}
+                    works={works}
+                  />
+                )
               case 4:
                 return <Contact {...props} />
               default:

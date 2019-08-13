@@ -10,7 +10,7 @@ export default {
     { id: "React", group: 6 },
     { id: "Redux", group: 4 },
     { id: "Expo", group: 1 },
-    { id: "Framework", group: 6 }
+    { id: "Framework", group: 6 },
   ],
   links: [
     { source: "Front end", target: "HTML5", value: 3 },

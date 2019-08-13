@@ -2,11 +2,15 @@ import React from "react"
 import pageStructure from "../App/pageStructure"
 import { Container, Row, Col, Image } from "react-bootstrap"
 
-export default ({ content, works }) => {
-  const height = window.innerHeight || document.body.clientHeight
+export default ({ content, works, isMobile }) => {
+  const height = isMobile.height
   const imgStyle = { maxHeight: height / 6 }
   return (
-    <Container fluid={true} style={{height: "100vh"}} id={pageStructure[content.n].id}>
+    <Container
+      fluid={true}
+      style={{ height: "100vh" }}
+      id={pageStructure[content.n].id}
+    >
       <div dangerouslySetInnerHTML={content} />
       <Row>
         {works.map((work, i) =>
@@ -14,12 +18,7 @@ export default ({ content, works }) => {
             <Col md={4} key={i}>
               <div className="p-3">
                 <h4>{work.title}</h4>
-                <Image
-                  src={work.image}
-                  alt={work.alt}
-                  fluid
-                  style={imgStyle}
-                />
+                <Image src={work.image} alt={work.alt} fluid style={imgStyle} />
                 <p>{work.content}</p>
                 <p className="technos">{work.technos}</p>
               </div>
