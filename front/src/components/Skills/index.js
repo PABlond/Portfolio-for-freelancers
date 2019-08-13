@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { ForceGraph2D } from "react-force-graph"
 import data_back from "./skills_back"
 import data_front from "./skill_front"
 import data_data from "./skill_data"
 import "react-tabs/style/react-tabs.css"
 import { Container, Row, Col, Tabs, Tab } from "react-bootstrap"
-
+import store from "./../../state/store"
 import Certifications from "./../Certifications"
 
-export default ({ certifications, isMobile = { value: false, dimension: { width: 0, height: 0 } } }) => {
-  const width = isMobile.width / 2
-  const height = isMobile.height
+export default () => {
+  const { width, height } = store.getState().nav
   const tabs = [
     { title: "Front end", data: data_front },
     { title: "Back end", data: data_back },
@@ -23,13 +22,17 @@ export default ({ certifications, isMobile = { value: false, dimension: { width:
           <Tabs defaultActiveKey="Front end" className="pl-0 pr-0 text-light">
             {tabs.map((discipline, key) => {
               return (
-                <Tab eventKey={discipline.title} title={discipline.title}>
+                <Tab
+                  eventKey={discipline.title}
+                  title={discipline.title}
+                  key={key}
+                >
                   <ForceGraph2D
                     linkWidth={5}
                     linkColor="white"
                     linkOpacity={0}
                     showNavInfo={false}
-                    width={width / 1}
+                    width={width / 2}
                     height={height / 2 - 50}
                     graphData={discipline.data}
                     nodeAutoColorBy="group"
@@ -61,7 +64,7 @@ export default ({ certifications, isMobile = { value: false, dimension: { width:
             })}
           </Tabs>
         </Col>
-        <Certifications certs={certifications} />
+        <Certifications />
       </Row>
     </Container>
   )

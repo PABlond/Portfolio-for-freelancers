@@ -2,10 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import "./../styles/style_desktop.scss"
 import constants from "./../state/constants"
-import Loading from "./../components/Loading"
 import store from "./../state/store"
 import App from "./../components/App"
-import AppMobile from "./../components/App/indexMobile"
 
 export default class Landing extends React.Component {
   componentDidMount() {
@@ -20,10 +18,13 @@ export default class Landing extends React.Component {
   }
 
   render() {
+    console.log()
     const { edges } = this.props.data.allMarkdownRemark
     const { isMobile } = store.getState().nav
+
+    console.log(store.getState())
     const props = { edges, isMobile }
-    return isMobile ? <App {...props} /> : <AppMobile {...props} />
+    return <App {...props} />
   }
 }
 

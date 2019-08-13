@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { Carousel, Image, Col } from "react-bootstrap"
+import store from "./../../state/store"
 
-export default ({ certs }) => {
+export default () => {
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(null)
-
+  const { certifications = [] } = store.getState().content
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
     setDirection(e.direction)
@@ -18,7 +19,7 @@ export default ({ certs }) => {
           onSelect={handleSelect}
           interval={3000}
         >
-          {certs.map((cert, i) => (
+          {certifications.map((cert, i) => (
             <Carousel.Item key={i}>
               <Image fluid src={cert.thumbnail} alt="test" />
             </Carousel.Item>

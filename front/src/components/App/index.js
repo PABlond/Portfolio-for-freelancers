@@ -1,29 +1,17 @@
 import React, { Component } from "react"
 import ReactPageScroller from "react-page-scroller"
-import pageStructure from "./pageStructure"
 import axios from "axios"
-import { Spinner } from "react-bootstrap"
 import store from "./../../state/store"
 import constants from "./../../state/constants"
-import Header from "./../Header"
-import Works from "./../Works"
-import Contact from "./../Contact"
 import Head from "./../Head"
-import About from "./../About"
 import Loading from "./../Loading"
-import AppMobile from './indexMobile'
 import orderApp from "./orderApp"
 
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      currentPage: 1,
-      isLoading: true,
-      works: undefined,
-      certifications: undefined,
-    }
     this._pageScroller = null
+    this.state = {isLoading: true}
   }
 
   sortAsc = (a, b) =>
@@ -32,8 +20,9 @@ export default class App extends Component {
   pageOnChange = number => this.setState({ currentPage: number })
 
   getData = async () => {
-    const { isLoading } = this.state
-    if (isLoading) {
+    const props = store.getState()
+    const { works, certifications } = props.content
+    if (!works.length > 0 || !certifications.length > 0) {
       const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
         works {
           title
@@ -45,17 +34,14 @@ export default class App extends Component {
           thumbnail
         }
       }`)
+      console.log(response)
       const { works, certifications } = response.data.data
       const { getContent } = constants
       store.dispatch({
         type: getContent.name,
         payload: { works, certifications },
       })
-      this.setState({
-        works,
-        certifications,
-        isLoading: false,
-      })
+      this.setState({isLoading: false})
     }
   }
 
@@ -65,13 +51,22 @@ export default class App extends Component {
 
   render() {
     const props = store.getState()
-    const { works, certifications } = props.content
     const { isMobile } = props.nav
     const { edges } = this.props
-    return works.length && certifications.length ? (
+    return this.state.isLoading  ? (
       <Loading />
     ) : isMobile ? (
-      <AppMobile props={this.props} />
+      <div>
+        <Head />
+        {edges.sort(this.sortAsc).map((mod, key) => {
+          const props = {
+            key,
+            content: { __html: mod.node.html, n: mod.node.frontmatter.title },
+          }
+
+          return orderApp(props)
+        })}
+      </div>
     ) : (
       <div>
         <Head />
@@ -85,7 +80,7 @@ export default class App extends Component {
               content: { __html: mod.node.html, n: mod.node.frontmatter.title },
             }
 
-            return orderApp(props, key)
+            return orderApp(props)
           })}
         </ReactPageScroller>
       </div>

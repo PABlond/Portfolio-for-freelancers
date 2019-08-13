@@ -4,7 +4,6 @@ import constants from "./../constants"
 export default (state = initialState.nav, action) => {
   const { setNav } = constants
   const { type, payload } = action
-  console.log({ type, payload })
   switch (type) {
     case setNav.name:
       return {

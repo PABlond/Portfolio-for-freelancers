@@ -43,57 +43,57 @@ export default ({ content }) => {
     })
 
   return (
-    <div id={pageStructure[content.n].id} class="bg-contact2">
-      <div class="container-contact2">
-        <div class="wrap-contact2">
-          <form class="contact2-form validate-form" onSubmit={handleClick}>
-            <span class="contact2-form-title">Contact Us</span>
+    <div id={pageStructure[content.n].id} className="bg-contact2">
+      <div className="container-contact2">
+        <div className="wrap-contact2">
+          <form className="contact2-form validate-form" onSubmit={handleClick}>
+            <span className="contact2-form-title">Contact Us</span>
 
             <div
-              class="wrap-input2 validate-input"
+              className="wrap-input2 validate-input"
               data-validate="Name is required"
             >
               <input
-                class="input2"
+                className="input2"
                 type="text"
                 name="name"
                 value={form.name}
                 onChange={updateField}
               />
-              <span class="focus-input2" data-placeholder="NAME"></span>
+              <span className="focus-input2" data-placeholder="NAME"></span>
             </div>
 
             <div
-              class="wrap-input2 validate-input"
+              className="wrap-input2 validate-input"
               data-validate="Valid email is required: ex@abc.xyz"
             >
               <input
-                class="input2"
+                className="input2"
                 type="text"
                 name="email"
                 value={form.email}
                 onChange={updateField}
               />
-              <span class="focus-input2" data-placeholder="EMAIL"></span>
+              <span className="focus-input2" data-placeholder="EMAIL"></span>
             </div>
 
             <div
-              class="wrap-input2 validate-input"
+              className="wrap-input2 validate-input"
               data-validate="Message is required"
             >
               <textarea
-                class="input2"
+                className="input2"
                 value={form.content}
                 onChange={updateField}
                 name="message"
               ></textarea>
-              <span class="focus-input2" data-placeholder="MESSAGE"></span>
+              <span className="focus-input2" data-placeholder="MESSAGE"></span>
             </div>
 
-            <div class="container-contact2-form-btn">
-              <div class="wrap-contact2-form-btn">
-                <div class="contact2-form-bgbtn"></div>
-                <button class="contact2-form-btn">Send Your Message</button>
+            <div className="container-contact2-form-btn">
+              <div className="wrap-contact2-form-btn">
+                <div className="contact2-form-bgbtn"></div>
+                <button className="contact2-form-btn">Send Your Message</button>
               </div>
             </div>
           </form>

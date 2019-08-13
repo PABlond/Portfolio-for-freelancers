@@ -1,9 +1,12 @@
 import React from "react"
 import pageStructure from "../App/pageStructure"
 import { Container, Row, Col, Image } from "react-bootstrap"
+import store from "./../../state/store"
 
-export default ({ content, works, isMobile }) => {
-  const height = isMobile.height
+export default ({ content }) => {
+  const props = store.getState()
+  const { works } = props.content
+  const { height } = props.nav
   const imgStyle = { maxHeight: height / 6 }
   return (
     <Container

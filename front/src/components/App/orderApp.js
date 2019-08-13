@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react"
 import pageStructure from "./pageStructure"
 import Header from "./../Header"
 import Works from "./../Works"
 import Contact from "./../Contact"
-import Head from "./../Head"
 import About from "./../About"
 
 export default (props, key) => {
@@ -19,7 +18,7 @@ export default (props, key) => {
     default:
       return (
         <div
-          key={key}
+          key={props.key}
           dangerouslySetInnerHTML={props.content}
           id={pageStructure[props.content.n].id}
         />
