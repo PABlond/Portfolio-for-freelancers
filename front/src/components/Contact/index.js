@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import axios from "axios"
-import pageStructure from "../App/pageStructure"
-import "./contact.css"
-import "./contact.scss"
+import store from "./../../state/store"
+import { Container, Form, Button, ButtonToolbar } from "react-bootstrap"
+import { contact as contactStyle } from "./../../styles/style"
 
 export default ({ content }) => {
   const [form, setValues] = useState({
@@ -42,63 +42,31 @@ export default ({ content }) => {
       [e.target.name]: e.target.value,
     })
 
+  const { width, height } = store.getState().nav
+  const style = contactStyle({ width, height })
+
   return (
-    <div id={pageStructure[content.n].id} className="bg-contact2">
-      <div className="container-contact2">
-        <div className="wrap-contact2">
-          <form className="contact2-form validate-form" onSubmit={handleClick}>
-            <span className="contact2-form-title">Contact Us</span>
-
-            <div
-              className="wrap-input2 validate-input"
-              data-validate="Name is required"
-            >
-              <input
-                className="input2"
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={updateField}
-              />
-              <span className="focus-input2" data-placeholder="NAME"></span>
-            </div>
-
-            <div
-              className="wrap-input2 validate-input"
-              data-validate="Valid email is required: ex@abc.xyz"
-            >
-              <input
-                className="input2"
-                type="text"
-                name="email"
-                value={form.email}
-                onChange={updateField}
-              />
-              <span className="focus-input2" data-placeholder="EMAIL"></span>
-            </div>
-
-            <div
-              className="wrap-input2 validate-input"
-              data-validate="Message is required"
-            >
-              <textarea
-                className="input2"
-                value={form.content}
-                onChange={updateField}
-                name="message"
-              ></textarea>
-              <span className="focus-input2" data-placeholder="MESSAGE"></span>
-            </div>
-
-            <div className="container-contact2-form-btn">
-              <div className="wrap-contact2-form-btn">
-                <div className="contact2-form-bgbtn"></div>
-                <button className="contact2-form-btn">Send Your Message</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <Container fluid style={style.container}>
+      <h1 style={style.h1}>Want to hire me ?</h1>
+      <Form style={style.form}>
+        <Form.Group style={style.group}>
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email" placeholder="name@example.com" />
+        </Form.Group>
+        <Form.Group style={style.group}>
+          <Form.Label>Name</Form.Label>
+          <Form.Control type="email" placeholder="John Doe" />
+        </Form.Group>
+        <Form.Group style={style.group}>
+          <Form.Label>Message</Form.Label>
+          <Form.Control as="textarea" rows="3" />
+        </Form.Group>
+        <ButtonToolbar>
+          <Button id='contact-button' variant="danger" style={style.submit }>
+            SUBMIT
+          </Button>
+        </ButtonToolbar>
+      </Form>
+    </Container>
   )
 }

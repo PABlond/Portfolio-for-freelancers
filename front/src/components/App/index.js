@@ -5,6 +5,7 @@ import store from "./../../state/store"
 import constants from "./../../state/constants"
 import Head from "./../Head"
 import Loading from "./../Loading"
+import Nav from './../Nav'
 import orderApp from "./orderApp"
 
 export default class App extends Component {
@@ -56,6 +57,7 @@ export default class App extends Component {
     ) : isMobile ? (
       <div>
         <Head />
+        <Nav />
         {edges.sort(this.sortAsc).map((mod, key) => {
           const props = {
             key,
@@ -68,6 +70,7 @@ export default class App extends Component {
     ) : (
       <div>
         <Head />
+        {/* <Nav /> */}
         <ReactPageScroller
           ref={c => (this._pageScroller = c)}
           pageOnChange={this.pageOnChange}

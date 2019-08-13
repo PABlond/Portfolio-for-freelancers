@@ -1,25 +1,24 @@
 import React from "react"
 import pageStructure from "../App/pageStructure"
-import { Container, Row, Col, Image } from "react-bootstrap"
+import { Container, Row, Col, Image, ListGroup } from "react-bootstrap"
 import store from "./../../state/store"
+import { works as worksStyle } from "./../../styles/style"
 
 export default ({ content }) => {
   const props = store.getState()
   const { works } = props.content
-  const { height } = props.nav
-  const imgStyle = { maxHeight: height / 6 }
+  const { height, width } = props.nav
+  const style = worksStyle({ height, width })
+  const imgStyle = { maxHeight: height / 7 }
   return (
-    <Container
-      fluid={true}
-      style={{ height: "100vh" }}
-      id={pageStructure[content.n].id}
-    >
-      <div dangerouslySetInnerHTML={content} />
-      <Row>
+    <Container fluid={true} style={style.container} id={pageStructure[content.n].id}>
+      <h2 style={style.h2}>Previous Work</h2>
+      <Container >
+      <Row style={style.row}>
         {works.map((work, i) =>
-          i < 6 ? (
-            <Col md={4} key={i}>
-              <div className="p-3">
+          i < 8 ? (
+            <Col md={3} key={i}>
+              <div className="m-3" style={style.col}>
                 <h4>{work.title}</h4>
                 <Image src={work.image} alt={work.alt} fluid style={imgStyle} />
                 <p>{work.content}</p>
@@ -29,15 +28,9 @@ export default ({ content }) => {
           ) : null
         )}
       </Row>
+      </Container>
       <div>
-        <h4>More Project</h4>
-        {works.map((work, i) =>
-          i >= 6 ? (
-            <a key={i} href="/#">
-              {work.title}
-            </a>
-          ) : null
-        )}
+        <h4>More Project on Github</h4>
       </div>
     </Container>
   )

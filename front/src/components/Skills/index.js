@@ -6,17 +6,19 @@ import data_data from "./skill_data"
 import { Container, Row, Col, Tabs, Tab } from "react-bootstrap"
 import store from "./../../state/store"
 import Certifications from "./../Certifications"
+import {skills as skillsStyle} from './../../styles/style'
 
 export default () => {
   const { width, height } = store.getState().nav
+  const style = skillsStyle({ width, height })
   const tabs = [
     { title: "Front end", data: data_front },
     { title: "Back end", data: data_back },
     { title: "Data enthusiast", data: data_data },
   ]
   return (
-    <Container fluid={true} style={{ height: "50vh" }} className="pl-0 pr-0">
-      <Row style={{ background: "#191919" }}>
+    <Container fluid={true} style={style.container} className="pl-0 pr-0">
+      <Row style={{ background: width > 768 ? "#191919" : "#ebfffb" }}>
         <Col md={6}>
           <Tabs defaultActiveKey="Front end" className="pl-0 pr-0 text-light">
             {tabs.map((discipline, key) => {
@@ -31,7 +33,7 @@ export default () => {
                     linkColor="white"
                     linkOpacity={0}
                     showNavInfo={false}
-                    width={width / 2}
+                    width={width > 768 ? width/2 : width}
                     height={height / 2 - 50}
                     graphData={discipline.data}
                     nodeAutoColorBy="group"

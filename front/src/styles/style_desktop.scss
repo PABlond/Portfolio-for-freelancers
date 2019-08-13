@@ -1,35 +1,47 @@
-$light: #dbdbdb;
-$dark: #191919;
-$blue: #6868c1;
+$light: #ebfffb;
+$dark: #032535;
+$purple: #61234e;
+$red: #ff5858;
 
 body {
   margin: 0 !important;
 }
 @media (min-width: 768px) {
-  #header {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-contenujt: space-around;
-    text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(27, 26, 26, 0.7)),
-      url("./../images/header.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+}
+#header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  background: linear-gradient(rgba(97, 35, 78, 0.4), rgba(3, 37, 53, 0.8)),
+    url("./../images/header.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: $light;
+
+  h1 {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.5rem;
     color: $light;
-
-    h1 {
-      font-size: 5rem;
-    }
-
-    h2 {
-      font-size: 3rem;
-      transform: rotate(-4deg);
-    }
-
-    p {
-      font-size: 1.5rem;
-    }
   }
 }
+
+#contact-button {
+  background: #61234e!important;
+  border: 1px solid #61234e!important;
+
+  &:hover {
+    background: $light!important;
+    color: #61234e!important
+  }
+}
+

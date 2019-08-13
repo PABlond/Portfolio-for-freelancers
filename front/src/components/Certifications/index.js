@@ -5,13 +5,16 @@ import store from "./../../state/store"
 export default () => {
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(null)
-  const { certifications = [] } = store.getState().content
+  const props =  store.getState()
+  const { certifications = [] } = props.content
+  const {width} = props.nav
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)
     setDirection(e.direction)
   }
+  const style = width > 768 ? {} : {marginTop: "20px"}
   return (
-    <Col md={6} className="pl-0 pr-0">
+    <Col md={6} style={style} className="pl-0 pr-0">
       <div className="h-100 d-flex justify-content-center align-items-center">
         <Carousel
           activeIndex={index}
