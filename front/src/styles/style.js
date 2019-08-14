@@ -1,9 +1,3 @@
-import store from "./../state/store"
-import React from 'react'
-
-const props = store.getState()
-const { height, width } = props.nav
-
 export const about = ({ height, width }) => ({
   container: {
     height: width > 768 && height > 768 ? "50vh" : "inherit",
@@ -47,7 +41,6 @@ export const works = ({ height, width }) => ({
       height: width > 768 && height > 768 ? width / 2 : "inherit",
   },
   col: {
-    height: "100%",
     display: "flex",
     justifyContent: "space-between",
     flexDirection: "column",

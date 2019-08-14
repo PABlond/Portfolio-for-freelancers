@@ -10,14 +10,19 @@ export default ({
     allMarkdownRemark: { edges },
   },
 }) => {
-  useEffect(() => {
+  const updateDimensions = () => {
     const { setNav } = constants
+    const { innerHeight, innerWidth } = window
+    store.dispatch({
+      type: setNav.name,
+      payload: { innerWidth, innerHeight, isMobile: !!(innerWidth < 768) },
+    })
+  }
+
+  useEffect(() => {
     if (document !== "undefined") {
-      const { innerHeight, innerWidth } = window
-      store.dispatch({
-        type: setNav.name,
-        payload: { innerWidth, innerHeight, isMobile: !!(innerWidth < 768) },
-      })
+      updateDimensions()
+      window.addEventListener("resize", updateDimensions)
     }
   })
   const { isMobile } = store.getState().nav
