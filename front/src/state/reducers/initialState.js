@@ -8,4 +8,8 @@ export default {
     works: [],
     certifications: [],
   },
+  user: {
+    token: undefined,
+    isLogged: false,
+  },
 }

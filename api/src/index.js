@@ -7,7 +7,7 @@ import cors from 'cors'
 
 const app = express();
 const { PORT, DB_USER, DB_PASSWORD } = process.env;
-
+console.log({ PORT, DB_USER, DB_PASSWORD })
 app.use(cors())
 
 mongoose.connect(
@@ -20,6 +20,7 @@ app.use(
   "/graphql",
   graphqlHTTP({
     schema,
+    customFormatErrorFn: (err) => ({ message: err.locations, status: parseInt(err.message) }),
     graphiql: true
   })
 );

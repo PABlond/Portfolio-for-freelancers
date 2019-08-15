@@ -1,49 +1,66 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Container, Row, Form, Button } from "react-bootstrap"
 import store from "./../state/store"
 import { login as loginStyle } from "./../styles/login"
 import { navigate } from "gatsby"
-import { handleLogin, isLoggedIn } from "./../services/auth"
-
+import { handleLogin, isLoggedIn, setUser } from "./../services/auth"
+import axios from "axios"
+import constants from "./../state/constants"
 export default () => {
   const [values, setValues] = useState({
-    email: "",
+    username: "",
     password: "",
   })
+  const [isLogged, setIsLogged] = useState(false)
 
   const handleChange = event => {
     event.persist()
-    console.log(values)
     setValues(values => ({
       ...values,
       [event.target.name]: event.target.value,
     }))
   }
 
+  const handleSubmit = async e => {
+    e.preventDefault()
+    const { username, password } = values
+    const response = await axios.get(`http://localhost:1337/graphql?query={
+        login (username: "${username}", password: "${password}")
+      }`)
+    if (response.status == 200) {
+      const { login } = constants
+      setUser({ token: response.data.data.login })
+      store.dispatch({
+        type: login.name,
+        payload: { token: response.data.data.login },
+      })
+      setIsLogged(true)
+    }
+  }
+
   const { width, height } = store.getState().nav
   const style = loginStyle({ width, height })
 
-  if (isLoggedIn()) {
-    navigate(`/dashboard`)
-  }
+  useEffect(() => {
+    if (isLoggedIn()) return navigate(`/dashboard`)
+  })
   return (
     <Container style={style.container}>
       <Row style={style.row}>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h1 style={style.h1}>Login page</h1>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+          <Form.Group controlId="formBasicusername">
+            <Form.Label>username address</Form.Label>
             <Form.Control
-              type="email"
-              name="email"
-              placeholder="Enter email"
+              type="username"
+              name="username"
+              placeholder="Enter username"
               onChange={handleChange}
-              value={values.email}
+              value={values.username}
             />
             <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
+              We'll never share your username with anyone else.
             </Form.Text>
-
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
@@ -55,11 +72,10 @@ export default () => {
               value={values.password}
             />
           </Form.Group>
-          
+
           <Button variant="primary" type="submit">
             Submit
           </Button>
-
         </Form>
       </Row>
     </Container>

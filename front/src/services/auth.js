@@ -5,12 +5,14 @@ export const getUser = () =>
     ? JSON.parse(window.localStorage.getItem("gatsbyUser"))
     : {}
 
-const setUser = user =>
-  window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
-
+export const setUser = user => {
+  console.log(user)
+  return window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
+}
 export const handleLogin = ({ username, password }) => {
   // Request to check user credentials
-  if (username === `john` && password === `pass`) { //TODO: add logic
+  if (username === `john` && password === `pass`) {
+    //TODO: add logic
     return setUser({
       username: `john`,
       name: `Johnny`,
@@ -21,7 +23,7 @@ export const handleLogin = ({ username, password }) => {
   return false
 }
 
-export const isLoggedIn = () => !!getUser().username
+export const isLoggedIn = () => !!getUser().token
 
 export const logout = callback => {
   setUser({})

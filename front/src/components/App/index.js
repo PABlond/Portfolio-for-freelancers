@@ -11,7 +11,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this._pageScroller = null
-    this.state = {isLoading: true}
+    this.state = { isLoading: true }
   }
 
   sortAsc = (a, b) =>
@@ -39,7 +39,7 @@ export default class App extends Component {
         type: getContent.name,
         payload: { works, certifications },
       })
-      this.setState({isLoading: false})
+      this.setState({ isLoading: false })
     }
   }
 
@@ -51,7 +51,7 @@ export default class App extends Component {
     const props = store.getState()
     const { isMobile } = props.nav
     const { edges } = this.props
-    return this.state.isLoading  ? (
+    return this.state.isLoading ? (
       <Loading />
     ) : isMobile ? (
       <div>
