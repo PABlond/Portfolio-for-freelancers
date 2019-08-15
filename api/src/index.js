@@ -4,6 +4,8 @@ import schema from "./schema/graphQLSchema";
 import graphqlHTTP from "express-graphql";
 import mongoose from "mongoose";
 import cors from 'cors'
+require("@babel/polyfill");
+
 
 const app = express();
 const { PORT, DB_USER, DB_PASSWORD } = process.env;

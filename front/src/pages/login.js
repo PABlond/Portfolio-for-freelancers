@@ -24,7 +24,7 @@ export default () => {
   const handleSubmit = async e => {
     e.preventDefault()
     const { username, password } = values
-    const response = await axios.get(`http://localhost:1337/graphql?query={
+    const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
         login (username: "${username}", password: "${password}")
       }`)
     if (response.status == 200) {
