@@ -6,17 +6,18 @@ import data_data from "./skill_data"
 import { Container, Row, Col, Tabs, Tab } from "react-bootstrap"
 import store from "./../../state/store"
 import Certifications from "./../Certifications"
-import {skills as skillsStyle} from './../../styles/style'
+import { skills as skillsStyle } from "./../../styles/style"
 
 export default () => {
   const props = store.getState()
   const { width, height } = props.nav
-  const {skills} = props.content.about
+  const { skills } = props.content.about
   const style = skillsStyle({ width, height })
   const tabs = skills.map(skill => {
-    const {title, nodes, links} = skill
+    const { title, nodes, links } = skill
     return {
-      title, data: {nodes, links}
+      title,
+      data: { nodes, links },
     }
   })
   return (
@@ -36,7 +37,7 @@ export default () => {
                     linkColor="white"
                     linkOpacity={0}
                     showNavInfo={false}
-                    width={width > 768 ? width/2 : width}
+                    width={width > 768 ? width / 2 : width}
                     height={height / 2 - 50}
                     graphData={discipline.data}
                     nodeAutoColorBy="group"
