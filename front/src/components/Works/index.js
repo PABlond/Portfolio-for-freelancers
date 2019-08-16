@@ -7,11 +7,12 @@ import { works as worksStyle } from "./../../styles/style"
 export default ({ content }) => {
   const props = store.getState()
   const { works } = props.content
+  console.log(props.content)
   const { height, width } = props.nav
   const style = worksStyle({ height, width })
   const imgStyle = { maxHeight: height / 7 }
   return (
-    <Container fluid={true} style={style.container} id={pageStructure[content.n].id}>
+    <Container fluid={true} style={style.container} id="works">
       <h2 style={style.h2}>Previous Work</h2>
       <Container >
       <Row style={style.row}>

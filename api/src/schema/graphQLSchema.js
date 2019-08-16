@@ -65,6 +65,8 @@ const typeDefs = `
         works: [Work],
         certification(_id: String): Certification
         login (username: String!, password: String!): String
+        setAboutDesc (about: [String]): String
+        setWorks (works: [String]): String
     }
 `
 
@@ -98,6 +100,21 @@ const resolvers = {
         }
       }
       return new Error(404)
+    },
+    async setAboutDesc(root, args, context, info) {
+      const data = await About.findOne({})
+      data.description = args.about.map(desc => ({ content: desc }))
+      await data.save()
+      return "OK"
+    },
+    async setWorks(root, args, context, info) {
+      const works = args.works.map(work => JSON.parse(work))
+      await Work.remove({})
+      works.forEach(async work => {
+        await new Work(work).save()
+      })
+
+      return "OK"
     }
   }
 }

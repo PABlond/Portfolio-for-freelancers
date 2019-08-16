@@ -22,7 +22,7 @@ export default class App extends Component {
   getData = async () => {
     const { works, certifications } = store.getState().content
     if (this.state.isLoading) {
-      const response = await axios.get(`http://localhost:1337/graphql?query={
+      const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
         works {
           title
           image,

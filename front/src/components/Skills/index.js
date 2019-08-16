@@ -15,7 +15,6 @@ export default () => {
   const style = skillsStyle({ width, height })
   const tabs = skills.map(skill => {
     const {title, nodes, links} = skill
-    console.log({title, nodes, links})
     return {
       title, data: {nodes, links}
     }

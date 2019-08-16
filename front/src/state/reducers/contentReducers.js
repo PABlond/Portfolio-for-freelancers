@@ -2,7 +2,7 @@ import initialState from "./initialState"
 import constants from "./../constants"
 
 export default (state = initialState.content, action) => {
-  const { getContent } = constants
+  const { getContent, setDesc } = constants
   const { type, payload } = action
   switch (type) {
     case getContent.name:
@@ -16,6 +16,12 @@ export default (state = initialState.content, action) => {
         },
         about: payload.about
       }
+    case setDesc.name: 
+      return {...state,
+      about: {
+        ...state.about,
+        description: payload.description
+      }}
     default:
       return state
   }
