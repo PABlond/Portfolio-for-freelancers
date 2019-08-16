@@ -50,39 +50,38 @@ export default ({ content }) => {
   const setDescription = async desc => {
     const query = JSON.stringify(desc.map(desc => desc.content))
     const response = await axios.get(
-      `http://localhost:1337/graphql?query={setAboutDesc(about: ${query})}`
+      `https://fir-fiverr-a2e6b.appspot.com/graphql?query={setAboutDesc(about: ${query})}`
     )
     console.log(response)
   }
 
   const updateField = e => setValues(e.target.value)
   return (
-      <Container>
-        <Row>
-          {aboutState.description.map((desc, i) => (
-            <p key={i} className="text-center">
-              {desc.content}{" "}
-              <span onClick={() => deleteDescSentence(i)}>X</span>
-            </p>
-          ))}
-        </Row>
-        <Form>
-          <Form.Group>
-            <Form.Control
-              as="textarea"
-              rows="3"
-              style={{
-                width: "100%",
-              }}
-              value={description}
-              onChange={updateField}
-            />
-          </Form.Group>
-          <Button onClick={onSubmit} id="contact-button" variant="danger">
-            SUBMIT
-          </Button>
-        </Form>
-        <SetSkills />
-      </Container>
+    <Container>
+      <Row>
+        {aboutState.description.map((desc, i) => (
+          <p key={i} className="text-center">
+            {desc.content} <span onClick={() => deleteDescSentence(i)}>X</span>
+          </p>
+        ))}
+      </Row>
+      <Form>
+        <Form.Group>
+          <Form.Control
+            as="textarea"
+            rows="3"
+            style={{
+              width: "100%",
+            }}
+            value={description}
+            onChange={updateField}
+          />
+        </Form.Group>
+        <Button onClick={onSubmit} id="contact-button" variant="danger">
+          SUBMIT
+        </Button>
+      </Form>
+      <SetSkills />
+    </Container>
   )
 }

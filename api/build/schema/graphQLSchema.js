@@ -27,7 +27,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var typeDefs = "\n    type Header{\n      _id: String,\n      name: String!,\n      title: String!,\n      subtitle: String!\n    }\n    type ImgAbout {\n      href: String,\n      alt: String\n    }\n    type SkillNode {\n      id: String,\n      group: Int\n    }\n    type LinksNode {\n      source: String,\n      target: String,\n      value: Int\n    }\n    type Skills {\n      title: String,\n      nodes: [SkillNode],\n      links: [LinksNode]\n    }\n    type AboutDescription {\n      content: String,\n    }\n    type About {\n      img: ImgAbout,\n      certifications: [Certification],\n      skills: [Skills]\n      description: [AboutDescription]\n    }\n    type Certification{\n        _id: String,\n        original: String,\n        thumbnail: String\n    }\n    type Work{\n        _id: String,\n        title: String!,\n        image: String!,\n        content: String!,\n        technos: String!\n    }\n    type User {\n      id: Int!\n      username: String!\n      email: String!\n    }\n    type Query{\n        about: About,\n        header: Header,\n        certifications: [Certification],\n        works: [Work],\n        certification(_id: String): Certification\n        login (username: String!, password: String!): String\n    }\n";
+var typeDefs = "\n    type Header{\n      _id: String,\n      name: String!,\n      title: String!,\n      subtitle: String!\n    }\n    type ImgAbout {\n      href: String,\n      alt: String\n    }\n    type SkillNode {\n      id: String,\n      group: Int\n    }\n    type LinksNode {\n      source: String,\n      target: String,\n      value: Int\n    }\n    type Skills {\n      title: String,\n      nodes: [SkillNode],\n      links: [LinksNode]\n    }\n    type AboutDescription {\n      content: String,\n    }\n    type About {\n      img: ImgAbout,\n      certifications: [Certification],\n      skills: [Skills]\n      description: [AboutDescription]\n    }\n    type Certification{\n        _id: String,\n        original: String,\n        thumbnail: String\n    }\n    type Work{\n        _id: String,\n        title: String!,\n        image: String!,\n        content: String!,\n        technos: String!\n    }\n    type User {\n      id: Int!\n      username: String!\n      email: String!\n    }\n    type Query{\n        about: About,\n        header: Header,\n        certifications: [Certification],\n        works: [Work],\n        certification(_id: String): Certification\n        login (username: String!, password: String!): String\n        setAboutDesc (about: [String]): String\n        setWorks (works: [String]): String\n    }\n";
 var resolvers = {
   Query: {
     about: function () {
@@ -44,9 +44,10 @@ var resolvers = {
 
               case 2:
                 data = _context.sent;
+                console.log(data[0].skills[0]);
                 return _context.abrupt("return", data[data.length - 1]);
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -200,6 +201,102 @@ var resolvers = {
       }
 
       return login;
+    }(),
+    setAboutDesc: function () {
+      var _setAboutDesc = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee6(root, args, context, info) {
+        var data;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return _about2["default"].findOne({});
+
+              case 2:
+                data = _context6.sent;
+                data.description = args.about.map(function (desc) {
+                  return {
+                    content: desc
+                  };
+                });
+                _context6.next = 6;
+                return data.save();
+
+              case 6:
+                return _context6.abrupt("return", "OK");
+
+              case 7:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      function setAboutDesc(_x21, _x22, _x23, _x24) {
+        return _setAboutDesc.apply(this, arguments);
+      }
+
+      return setAboutDesc;
+    }(),
+    setWorks: function () {
+      var _setWorks = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee8(root, args, context, info) {
+        var works;
+        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                works = args.works.map(function (work) {
+                  return JSON.parse(work);
+                });
+                _context8.next = 3;
+                return _work["default"].remove({});
+
+              case 3:
+                works.forEach(
+                /*#__PURE__*/
+                function () {
+                  var _ref = _asyncToGenerator(
+                  /*#__PURE__*/
+                  regeneratorRuntime.mark(function _callee7(work) {
+                    return regeneratorRuntime.wrap(function _callee7$(_context7) {
+                      while (1) {
+                        switch (_context7.prev = _context7.next) {
+                          case 0:
+                            _context7.next = 2;
+                            return new _work["default"](work).save();
+
+                          case 2:
+                          case "end":
+                            return _context7.stop();
+                        }
+                      }
+                    }, _callee7);
+                  }));
+
+                  return function (_x29) {
+                    return _ref.apply(this, arguments);
+                  };
+                }());
+                return _context8.abrupt("return", "OK");
+
+              case 5:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
+      }));
+
+      function setWorks(_x25, _x26, _x27, _x28) {
+        return _setWorks.apply(this, arguments);
+      }
+
+      return setWorks;
     }()
   }
 };
