@@ -31,7 +31,7 @@ export default () => {
                   eventKey={discipline.title}
                   title={discipline.title}
                   key={key}
-                >
+                > 
                   <ForceGraph2D
                     linkWidth={5}
                     linkColor="white"
