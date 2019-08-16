@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var Schema = _mongoose["default"].Schema,
     model = _mongoose["default"].model;
 var worksSchema = new Schema({
-  _id: String,
+  // _id: String,
   title: String,
   image: String,
   content: String,

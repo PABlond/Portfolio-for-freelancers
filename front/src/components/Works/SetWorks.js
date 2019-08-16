@@ -45,7 +45,7 @@ export default ({ content }) => {
     const query = JSON.stringify(newWorks)
     setShow(false)
     const response = await axios.get(
-      `http://localhost:1337/graphql?query={setWorks(works: ${JSON.stringify(
+      `https://fir-fiverr-a2e6b.appspot.com/graphql?query={setWorks(works: ${JSON.stringify(
         newWorks
       )})}`
     )
