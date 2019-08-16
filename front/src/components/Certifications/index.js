@@ -6,7 +6,7 @@ export default () => {
   const [index, setIndex] = useState(0)
   const [direction, setDirection] = useState(null)
   const props =  store.getState()
-  const { certifications = [] } = props.content
+  const { certifications = [] } = props.content.about
   const {width} = props.nav
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex)

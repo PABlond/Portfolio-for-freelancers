@@ -9,13 +9,17 @@ import Certifications from "./../Certifications"
 import {skills as skillsStyle} from './../../styles/style'
 
 export default () => {
-  const { width, height } = store.getState().nav
+  const props = store.getState()
+  const { width, height } = props.nav
+  const {skills} = props.content.about
   const style = skillsStyle({ width, height })
-  const tabs = [
-    { title: "Front end", data: data_front },
-    { title: "Back end", data: data_back },
-    { title: "Data enthusiast", data: data_data },
-  ]
+  const tabs = skills.map(skill => {
+    const {title, nodes, links} = skill
+    console.log({title, nodes, links})
+    return {
+      title, data: {nodes, links}
+    }
+  })
   return (
     <Container fluid={true} style={style.container} className="pl-0 pr-0">
       <Row style={{ background: width > 768 ? "#191919" : "#ebfffb" }}>

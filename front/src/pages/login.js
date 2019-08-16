@@ -13,6 +13,10 @@ export default () => {
   })
   const [isLogged, setIsLogged] = useState(false)
 
+  useEffect(() => {
+    if (isLoggedIn()) return navigate(`/dashboard`)
+  })
+
   const handleChange = event => {
     event.persist()
     setValues(values => ({
@@ -41,9 +45,6 @@ export default () => {
   const { width, height } = store.getState().nav
   const style = loginStyle({ width, height })
 
-  useEffect(() => {
-    if (isLoggedIn()) return navigate(`/dashboard`)
-  })
   return (
     <Container style={style.container}>
       <Row style={style.row}>

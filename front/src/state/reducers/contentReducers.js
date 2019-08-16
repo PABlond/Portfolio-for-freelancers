@@ -9,7 +9,12 @@ export default (state = initialState.content, action) => {
       return {
         ...state,
         works: payload.works,
-        certifications: payload.certifications,
+        header: {
+          name: payload.header.name,
+          title: payload.header.title,
+          subtitle: payload.header.subtitle,
+        },
+        about: payload.about
       }
     default:
       return state

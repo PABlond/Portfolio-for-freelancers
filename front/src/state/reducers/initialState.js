@@ -5,8 +5,13 @@ export default {
     height: 0,
   },
   content: {
+    about: {},
     works: [],
-    certifications: [],
+    header: {
+      name: "",
+      title: "",
+      subtitle: ""
+    }
   },
   user: {
     token: undefined,

@@ -22,22 +22,50 @@ export default class App extends Component {
   getData = async () => {
     const { works, certifications } = store.getState().content
     if (this.state.isLoading) {
-      const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
+      const response = await axios.get(`http://localhost:1337/graphql?query={
         works {
           title
           image,
           content,
           technos
         }
-        certifications {
-          thumbnail
+        header {
+          name
+          title
+          subtitle
+        }
+        about {
+          img {
+            href
+            alt
+          } 
+          certifications {
+            thumbnail
+          } 
+          skills {
+            title
+            nodes {
+              id
+              group
+            }
+            links {
+              source
+              target
+              value
+            }
+            
+          }
+          description {
+            content
+          }
         }
       }`)
-      const { works, certifications } = response.data.data
+      console.log(response.data)
+      const { works, certifications, header, about } = response.data.data
       const { getContent } = constants
       store.dispatch({
         type: getContent.name,
-        payload: { works, certifications },
+        payload: { works, certifications, header, about },
       })
       this.setState({ isLoading: false })
     }

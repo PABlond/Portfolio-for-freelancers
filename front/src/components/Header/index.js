@@ -1,17 +1,16 @@
 import React from "react"
-import { Random } from "react-animated-text"
+import store from "./../../state/store"
 import pageStructure from "../App/pageStructure"
 
 export default ({ content }) => {
+  const { header } = store.getState().content
   return (
     <div id={pageStructure[content.n].id}>
       <div>
-        <h1>
-        Pierre-Alexis Blond
-        </h1>
-        <h2>Full Stack developer</h2>
+        <h1>{header.name}</h1>
+        <h2>{header.title}</h2>
       </div>
-      <p dangerouslySetInnerHTML={content} />
+      <p>{header.subtitle}</p>
     </div>
   )
 }
