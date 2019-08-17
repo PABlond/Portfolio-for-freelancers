@@ -31,7 +31,7 @@ export default ({ content }) => {
       </Row>
       </Container>
       <div>
-        <h4>More Project on Github</h4>
+        <h4>More Project on <a href="https://github.com/PABlond">Github</a> (18 public repositories)</h4>
       </div>
     </Container>
   )

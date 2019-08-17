@@ -102,6 +102,7 @@ const resolvers = {
       return new Error(404)
     },
     async setAboutDesc(root, args, context, info) {
+      console.log(args)
       const data = await About.findOne({})
       data.description = args.about.map(desc => ({ content: desc }))
       await data.save()

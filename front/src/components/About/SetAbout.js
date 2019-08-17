@@ -50,12 +50,13 @@ export default ({ content }) => {
   const setDescription = async desc => {
     const query = JSON.stringify(desc.map(desc => desc.content))
     const response = await axios.get(
-      `https://fir-fiverr-a2e6b.appspot.com/graphql?query={setAboutDesc(about: ${query})}`
+      `http://localhost:1337/graphql?query={setAboutDesc(about: ${query})}`
     )
     console.log(response)
   }
 
   const updateField = e => setValues(e.target.value)
+  console.log(description)
   return (
     <Container>
       <Row>

@@ -26,9 +26,12 @@ export default ({ content }) => {
           />
         </Col>
         <div>
-          {about.description.map(desc => <p className="text-center">
-             {desc.content}
-          </p>)}
+          {about.description.map(desc => (
+            <p
+              className="text-center"
+              dangerouslySetInnerHTML={{ __html: desc.content }}
+            />
+          ))}
         </div>
       </Container>
       <Skills />

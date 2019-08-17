@@ -38,7 +38,7 @@ export const works = ({ height, width }) => ({
     padding: "10px",
   },
   row: {
-      height: width > 768 && height > 768 ? width / 2 : "inherit",
+      height: width > 768 && height > 768 ? "70vh" : "inherit",
   },
   col: {
     display: "flex",
