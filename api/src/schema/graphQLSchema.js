@@ -74,14 +74,13 @@ const resolvers = {
   Query: {
     async about(root, args, context, info) {
       const data = await About.find({})
-      console.log(data[0].skills[0])
       return data[data.length - 1]
     },
     async setAboutDesc(root, args, context, info) {
-      const {description} = args
+      const { description } = args
       const data = await About.findOne({})
-      data.description = description.map(content => ({content}))
-      await data.save().catch(err => console.log('ERROR ', err))
+      data.description = description.map(content => ({ content }))
+      await data.save().catch(err => console.log("ERROR ", err))
       return data
     },
     async header(root, args, context, info) {

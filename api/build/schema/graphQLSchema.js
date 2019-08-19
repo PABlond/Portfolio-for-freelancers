@@ -27,7 +27,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var typeDefs = "\n    type Header{\n      _id: String,\n      name: String!,\n      title: String!,\n      subtitle: String!\n    }\n    type ImgAbout {\n      href: String,\n      alt: String\n    }\n    type SkillNode {\n      id: String,\n      group: Int\n    }\n    type LinksNode {\n      source: String,\n      target: String,\n      value: Int\n    }\n    type Skills {\n      title: String,\n      nodes: [SkillNode],\n      links: [LinksNode]\n    }\n    type AboutDescription {\n      content: String,\n    }\n    type About {\n      img: ImgAbout,\n      certifications: [Certification],\n      skills: [Skills]\n      description: [AboutDescription]\n    }\n    type Certification{\n        _id: String,\n        original: String,\n        thumbnail: String\n    }\n    type Work{\n        _id: String,\n        title: String!,\n        image: String!,\n        content: String!,\n        technos: String!\n    }\n    type User {\n      id: Int!\n      username: String!\n      email: String!\n    }\n    type Query{\n        about: About,\n        header: Header,\n        certifications: [Certification],\n        works: [Work],\n        certification(_id: String): Certification\n        login (username: String!, password: String!): String\n        setAboutDesc (about: [String]): String\n        setWorks (works: [String]): String\n    }\n";
+var typeDefs = "\n    type Header{\n      _id: String,\n      name: String!,\n      title: String!,\n      subtitle: String!\n    }\n    type ImgAbout {\n      href: String,\n      alt: String\n    }\n    type SkillNode {\n      id: String,\n      group: Int\n    }\n    type LinksNode {\n      source: String,\n      target: String,\n      value: Int\n    }\n    type Skills {\n      title: String,\n      nodes: [SkillNode],\n      links: [LinksNode]\n    }\n    type AboutDescription {\n      content: String,\n    }\n    type About {\n      img: ImgAbout,\n      certifications: [Certification],\n      skills: [Skills]\n      description: [AboutDescription]\n    }\n    type Certification{\n        _id: String,\n        original: String,\n        thumbnail: String\n    }\n    type Work{\n        _id: String,\n        title: String!,\n        image: String!,\n        content: String!,\n        technos: String!\n    }\n    type User {\n      id: Int!\n      username: String!\n      email: String!\n    }\n    type Query{\n        about: About,\n        header: Header,\n        certifications: [Certification],\n        works: [Work],\n        certification(_id: String): Certification\n        login (username: String!, password: String!): String\n        setAboutDesc (description: [String]): About\n        setWorks (works: [String]): [Work]\n    }\n";
 var resolvers = {
   Query: {
     about: function () {
@@ -44,10 +44,9 @@ var resolvers = {
 
               case 2:
                 data = _context.sent;
-                console.log(data[0].skills[0]);
                 return _context.abrupt("return", data[data.length - 1]);
 
-              case 5:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -61,23 +60,35 @@ var resolvers = {
 
       return about;
     }(),
-    header: function () {
-      var _header = _asyncToGenerator(
+    setAboutDesc: function () {
+      var _setAboutDesc = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee2(root, args, context, info) {
-        var data;
+        var description, data;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return _header2["default"].find({});
+                description = args.description;
+                _context2.next = 3;
+                return _about2["default"].findOne({});
 
-              case 2:
+              case 3:
                 data = _context2.sent;
-                return _context2.abrupt("return", data[data.length - 1]);
+                data.description = description.map(function (content) {
+                  return {
+                    content: content
+                  };
+                });
+                _context2.next = 7;
+                return data.save()["catch"](function (err) {
+                  return console.log("ERROR ", err);
+                });
 
-              case 4:
+              case 7:
+                return _context2.abrupt("return", data);
+
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -85,14 +96,14 @@ var resolvers = {
         }, _callee2);
       }));
 
-      function header(_x5, _x6, _x7, _x8) {
-        return _header.apply(this, arguments);
+      function setAboutDesc(_x5, _x6, _x7, _x8) {
+        return _setAboutDesc.apply(this, arguments);
       }
 
-      return header;
+      return setAboutDesc;
     }(),
-    certifications: function () {
-      var _certifications = _asyncToGenerator(
+    header: function () {
+      var _header = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee3(root, args, context, info) {
         var data;
@@ -101,11 +112,11 @@ var resolvers = {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return _certification["default"].find({});
+                return _header2["default"].find({});
 
               case 2:
                 data = _context3.sent;
-                return _context3.abrupt("return", data);
+                return _context3.abrupt("return", data[data.length - 1]);
 
               case 4:
               case "end":
@@ -115,14 +126,14 @@ var resolvers = {
         }, _callee3);
       }));
 
-      function certifications(_x9, _x10, _x11, _x12) {
-        return _certifications.apply(this, arguments);
+      function header(_x9, _x10, _x11, _x12) {
+        return _header.apply(this, arguments);
       }
 
-      return certifications;
+      return header;
     }(),
-    works: function () {
-      var _works = _asyncToGenerator(
+    certifications: function () {
+      var _certifications = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee4(root, args, context, info) {
         var data;
@@ -131,7 +142,7 @@ var resolvers = {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return _work["default"].find({});
+                return _certification["default"].find({});
 
               case 2:
                 data = _context4.sent;
@@ -145,7 +156,37 @@ var resolvers = {
         }, _callee4);
       }));
 
-      function works(_x13, _x14, _x15, _x16) {
+      function certifications(_x13, _x14, _x15, _x16) {
+        return _certifications.apply(this, arguments);
+      }
+
+      return certifications;
+    }(),
+    works: function () {
+      var _works = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee5(root, args, context, info) {
+        var data;
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return _work["default"].find({});
+
+              case 2:
+                data = _context5.sent;
+                return _context5.abrupt("return", data);
+
+              case 4:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }));
+
+      function works(_x17, _x18, _x19, _x20) {
         return _works.apply(this, arguments);
       }
 
@@ -154,28 +195,28 @@ var resolvers = {
     login: function () {
       var _login = _asyncToGenerator(
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee5(root, args, context, info) {
+      regeneratorRuntime.mark(function _callee6(root, args, context, info) {
         var username, user, JWT_SECRET, token;
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
                 username = args.username;
-                _context5.next = 3;
+                _context6.next = 3;
                 return _user["default"].findOne({
                   username: username
                 });
 
               case 3:
-                user = _context5.sent;
+                user = _context6.sent;
 
                 if (!Object.keys(user).length) {
-                  _context5.next = 9;
+                  _context6.next = 9;
                   break;
                 }
 
                 if (!_bcrypt["default"].compareSync(args.password, user.password)) {
-                  _context5.next = 9;
+                  _context6.next = 9;
                   break;
                 }
 
@@ -183,51 +224,12 @@ var resolvers = {
                 token = _jsonwebtoken["default"].sign({
                   username: username
                 }, JWT_SECRET);
-                return _context5.abrupt("return", token);
+                return _context6.abrupt("return", token);
 
               case 9:
-                return _context5.abrupt("return", new Error(404));
+                return _context6.abrupt("return", new Error(404));
 
               case 10:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }));
-
-      function login(_x17, _x18, _x19, _x20) {
-        return _login.apply(this, arguments);
-      }
-
-      return login;
-    }(),
-    setAboutDesc: function () {
-      var _setAboutDesc = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee6(root, args, context, info) {
-        var data;
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                _context6.next = 2;
-                return _about2["default"].findOne({});
-
-              case 2:
-                data = _context6.sent;
-                data.description = args.about.map(function (desc) {
-                  return {
-                    content: desc
-                  };
-                });
-                _context6.next = 6;
-                return data.save();
-
-              case 6:
-                return _context6.abrupt("return", "OK");
-
-              case 7:
               case "end":
                 return _context6.stop();
             }
@@ -235,11 +237,11 @@ var resolvers = {
         }, _callee6);
       }));
 
-      function setAboutDesc(_x21, _x22, _x23, _x24) {
-        return _setAboutDesc.apply(this, arguments);
+      function login(_x21, _x22, _x23, _x24) {
+        return _login.apply(this, arguments);
       }
 
-      return setAboutDesc;
+      return login;
     }(),
     setWorks: function () {
       var _setWorks = _asyncToGenerator(
@@ -282,7 +284,7 @@ var resolvers = {
                     return _ref.apply(this, arguments);
                   };
                 }());
-                return _context8.abrupt("return", "OK");
+                return _context8.abrupt("return", works);
 
               case 5:
               case "end":

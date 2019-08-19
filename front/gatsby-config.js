@@ -7,6 +7,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: "UA-144983095-1",
+        head: false,
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/markdown-pages`,
