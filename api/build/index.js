@@ -302,7 +302,7 @@ var _express = _interopRequireDefault(require("express"));
 
 require("dotenv/config");
 
-var _graphQLSchema = _interopRequireDefault(require("./schema/graphQLSchema"));
+var _graphQLSchema = _interopRequireDefault(require("./graphQLSchema"));
 
 var _expressGraphql = _interopRequireDefault(require("express-graphql"));
 

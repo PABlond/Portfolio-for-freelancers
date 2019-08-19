@@ -1,8 +1,8 @@
 import { contact, isRead, sendMessage } from "./contactResolvers"
 import { about, setAboutDesc, certifications } from "./aboutResolvers"
 import { header, setHeader } from "./headerResolvers"
-import {works, setWorks} from './worksResolvers'
-import {login} from './authResolvers'
+import { works, setWorks } from "./worksResolvers"
+import { login } from "./authResolvers"
 
 export const contactResolvers = {
   contact,
@@ -17,13 +17,15 @@ export const aboutResolvers = {
 }
 
 export const headerResolver = {
-    header, setHeader
+  header,
+  setHeader
 }
 
 export const worksResolvers = {
-    works, setWorks
+  works,
+  setWorks
 }
 
 export const authResolvers = {
-    login
+  login
 }
