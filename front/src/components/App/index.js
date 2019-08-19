@@ -60,7 +60,6 @@ export default class App extends Component {
           }
         }
       }`)
-      console.log(response.data)
       const { works, certifications, header, about } = response.data.data
       const { getContent } = constants
       store.dispatch({

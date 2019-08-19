@@ -11,7 +11,8 @@ export default {
       name: "",
       title: "",
       subtitle: ""
-    }
+    },
+    contacts: []
   },
   user: {
     token: undefined,

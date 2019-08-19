@@ -10,7 +10,6 @@ export default ({ content }) => {
   const { about } = props.content
   const { width, height } = props.nav
   const style = aboutStyle({ width, height })
-  console.log(about)
   return (
     <Container fluid={true} id="about">
       <Container

@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react"
 import queryString from "query-string"
 import SetWorks from "./../../../components/Works/SetWorks"
 import SetAbout from "./../../../components/About/SetAbout"
-import SetHeader from './../../../components/Header/setHeader'
+import SetHeader from "./../../../components/Header/setHeader"
+import GetContacts from "./../../../components/Contact/getContacts"
 import { navigate } from "gatsby"
-import { handleLogin, isLoggedIn, setUser } from "./../../../services/auth"
+import { isLoggedIn } from "./../../../services/auth"
 import Head from "./../../../components/Head"
+import AdminNav from "./../../../components/Nav/AdminNav"
 import getFullContent from "./../../../services/getFullContent"
 import dispatchFullContent from "./../../../state/actions/dispatchFullContent"
+import getContacts from "./../../../services/getContacts"
 
 export default ({ location }) => {
   const requestedModule = queryString.parse(location.search)
@@ -18,7 +21,10 @@ export default ({ location }) => {
     if (!isLoggedIn()) return navigate(`/login`)
     if (Object.keys(requestedModule).length && isLoading) {
       ;(async () => {
-        dispatchFullContent(await getFullContent())
+        dispatchFullContent({
+          ...(await getFullContent()),
+          ...(await getContacts()),
+        })
         setLoading(false)
       })()
     }
@@ -26,11 +32,7 @@ export default ({ location }) => {
   return (
     <div>
       <Head />
-      <h1>Hi from the second page</h1>
-      <a href="/dashboard/modules/?module=header">Header</a>
-      <a href="/dashboard/modules/?module=about">About</a>
-      <a href="/dashboard/modules/?module=works">Works</a>
-
+      <AdminNav />
       <div>
         {Object.values(requestedModule) == "works" && !isLoading ? (
           <SetWorks />
@@ -40,6 +42,9 @@ export default ({ location }) => {
         ) : null}
         {Object.values(requestedModule) == "header" && !isLoading ? (
           <SetHeader />
+        ) : null}
+        {Object.values(requestedModule) == "contacts" && !isLoading ? (
+          <GetContacts />
         ) : null}
       </div>
     </div>

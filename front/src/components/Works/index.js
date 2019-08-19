@@ -7,7 +7,6 @@ import { works as worksStyle } from "./../../styles/style"
 export default ({ content }) => {
   const props = store.getState()
   const { works } = props.content
-  console.log(props.content)
   const { height, width } = props.nav
   const style = worksStyle({ height, width })
   const imgStyle = { maxHeight: height / 7 }

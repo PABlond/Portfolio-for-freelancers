@@ -3,6 +3,7 @@ import axios from "axios"
 import store from "./../../state/store"
 import { Container, Form, Button, ButtonToolbar } from "react-bootstrap"
 import { contact as contactStyle } from "./../../styles/style"
+import sendMessage from './../../services/sendMessage'
 
 export default ({ content }) => {
   const [form, setValues] = useState({
@@ -10,30 +11,12 @@ export default ({ content }) => {
     name: "",
     content: "",
   })
-  const [APIRes, setAPIRes] = useState({
-    isError: false,
-    content: "",
-  })
-
-  const handleClick = async e => {
+  
+  const onSubmit = async e => {
     e.preventDefault()
-    try {
-      const response = await axios.post(
-        "http://localhost:1337/api/contact",
-        form
-      )
-
-      setAPIRes({
-        isError: false,
-        content: "An error occured. Feel free to contact me directly",
-      })
-    } catch (error) {
-      console.error(error)
-      setAPIRes({
-        isError: true,
-        content: "An error occured. Feel free to contact me directly",
-      })
-    }
+    console.log(form)
+    const response = await sendMessage(form)
+    console.log(response)
   }
 
   const updateField = e =>
@@ -48,24 +31,40 @@ export default ({ content }) => {
   return (
     <Container fluid style={style.container}>
       <h1 style={style.h1}>Want to hire me ?</h1>
-      <Form style={style.form}>
+      <Form style={style.form} onSubmit={onSubmit}>
         <Form.Group style={style.group}>
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" />
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="name@example.com"
+            value={form.email}
+            onChange={updateField}
+          />
         </Form.Group>
         <Form.Group style={style.group}>
           <Form.Label>Name</Form.Label>
-          <Form.Control type="email" placeholder="John Doe" />
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="John Doe"
+            value={form.name}
+            onChange={updateField}
+          />
         </Form.Group>
         <Form.Group style={style.group}>
           <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows="3" />
+          <Form.Control
+            as="textarea"
+            name="content"
+            rows="3"
+            value={form.content}
+            onChange={updateField}
+          />
         </Form.Group>
-        <ButtonToolbar>
-          <Button id='contact-button' variant="danger" style={style.submit }>
+         <Button type="submit" id="contact-button" variant="danger" style={style.submit}>
             SUBMIT
           </Button>
-        </ButtonToolbar>
       </Form>
     </Container>
   )

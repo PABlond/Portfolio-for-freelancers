@@ -6,6 +6,8 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import Header from "./../models/header"
 import About from "./../models/about"
+import Contact from "../models/contact"
+import sendMail from "./../utils/sendMail"
 
 const typeDefs = `
     type Header{
@@ -58,7 +60,16 @@ const typeDefs = `
       username: String!
       email: String!
     }
+    type Contact {
+      _id: String,
+      email: String,
+      name: String,
+      content: String,
+      at: String,
+      isRead: Boolean
+    }
     type Query{
+        contact (token: String): [Contact]
         about: About,
         header: Header,
         certifications: [Certification],
@@ -68,11 +79,38 @@ const typeDefs = `
         setAboutDesc (description: [String]): About
         setWorks (works: [String]): [Work]
         setHeader (name: String, title: String, subtitle: String): Header
+        sendMessage (name: String, email: String, content: String): String
+        isRead (_id: String, token: String): [Contact]
     }
 `
 
 const resolvers = {
   Query: {
+    async contact(root, args, context, info) {
+      const { token } = args
+      const { JWT_SECRET } = process.env
+      const isLogged = await jwt.verify(
+        token,
+        JWT_SECRET,
+        async (err, decoded) => !!decoded
+      )
+      return isLogged ? await Contact.find({}) : []
+    },
+    async isRead(root, args, context, info) {
+      const {_id, token} = args
+      const { JWT_SECRET } = process.env
+      const isLogged = await jwt.verify(
+        token,
+        JWT_SECRET,
+        async (err, decoded) => !!decoded
+      )
+      if (isLogged) {
+        const data = await Contact.findOne({_id})
+        data.isRead = true
+        await data.save()
+      }
+      return isLogged ? await Contact.find({}) : []
+    },
     async about(root, args, context, info) {
       const data = await About.find({})
       return data[data.length - 1]
@@ -89,13 +127,13 @@ const resolvers = {
       return data[data.length - 1]
     },
     async setHeader(root, args, context, info) {
-      const {name, title, subtitle} = args
+      const { name, title, subtitle } = args
       const data = await Header.findOne({})
       data.name = name
       data.title = title
       data.subtitle = subtitle
       await data.save().catch(err => console.log("ERROR ", err))
-      return {name, title, subtitle}
+      return { name, title, subtitle }
     },
     async certifications(root, args, context, info) {
       const data = await Certification.find({})
@@ -124,6 +162,12 @@ const resolvers = {
         await new Work(work).save()
       })
       return works
+    },
+    async sendMessage(root, args, context, info) {
+      const { name, email, content } = args
+      await new Contact({ name, email, content }).save()
+      const isSent = await sendMail({ name, email, content })
+      return "args"
     }
   }
 }

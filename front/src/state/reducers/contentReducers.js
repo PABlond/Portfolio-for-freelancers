@@ -14,7 +14,8 @@ export default (state = initialState.content, action) => {
           title: payload.header.title || state.header.title,
           subtitle: payload.header.subtitle || state.header.subtitle,
         },
-        about: payload.about || state.about
+        about: payload.about || state.about,
+        contacts: payload.contact || state.contacts
       }
     case setDesc.name: 
       return {...state,

@@ -19,10 +19,8 @@ export default () => {
       data: { nodes, links },
     }
   })
-  console.log(tabs)
 
   const onChange = e => {
-      console.log(e)
   }
 
   return (

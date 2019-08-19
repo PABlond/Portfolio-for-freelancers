@@ -11,12 +11,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var Schema = _mongoose["default"].Schema,
     model = _mongoose["default"].model;
-var headerSchema = new Schema({
+var contactSchema = new Schema({
   name: String,
-  title: String,
-  subtitle: String
+  email: String,
+  content: String,
+  isRead: {
+    type: Boolean,
+    "default": false
+  },
+  at: {
+    type: Date,
+    "default": Date.now
+  }
 });
 
-var _default = model('header', headerSchema);
+var _default = model('contact', contactSchema);
 
 exports["default"] = _default;
