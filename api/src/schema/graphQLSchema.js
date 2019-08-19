@@ -67,6 +67,7 @@ const typeDefs = `
         login (username: String!, password: String!): String
         setAboutDesc (description: [String]): About
         setWorks (works: [String]): [Work]
+        setHeader (name: String, title: String, subtitle: String): Header
     }
 `
 
@@ -86,6 +87,15 @@ const resolvers = {
     async header(root, args, context, info) {
       const data = await Header.find({})
       return data[data.length - 1]
+    },
+    async setHeader(root, args, context, info) {
+      const {name, title, subtitle} = args
+      const data = await Header.findOne({})
+      data.name = name
+      data.title = title
+      data.subtitle = subtitle
+      await data.save().catch(err => console.log("ERROR ", err))
+      return {name, title, subtitle}
     },
     async certifications(root, args, context, info) {
       const data = await Certification.find({})
