@@ -1,69 +1,80 @@
 import React, { useState, useEffect } from "react"
-import SetSkills from "./../Skills/SetSkills"
-import pageStructure from "../App/pageStructure"
-import { Container, Form, Button, Row } from "react-bootstrap"
+import { Container, Form, Button, Row, Modal } from "react-bootstrap"
 import store from "./../../state/store"
-import { about as aboutStyle } from "./../../styles/style"
-import axios from "axios"
-import constants from "./../../state/constants"
+import setDescription from "./../../services/setDescription"
+import dispatchFullContent from "./../../state/actions/dispatchFullContent"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 
 export default ({ content }) => {
   const props = store.getState()
-  let { works, certifications, header, about } = props.content
-  const { width, height } = props.nav
-  const style = aboutStyle({ width, height })
-  const [description, setValues] = useState("")
+  let { about } = props.content
+  const [descStr, setdescStr] = useState("")
   const [aboutState, setAbout] = useState(about)
+  const [show, setShow] = useState({ value: false, str: "", i: 0 })
 
   useEffect(() => {
-    const { getContent } = constants
-    store.dispatch({
-      type: getContent.name,
-      payload: {
-        works,
-        certifications,
-        header,
-        about: { ...about, description: aboutState.description },
-      },
-    })
-  })
+    const { works, header, certifications } = props.content
+    const about = aboutState
+    dispatchFullContent({ works, certifications, header, about })
+  }, [aboutState])
 
   const deleteDescSentence = async i => {
-    const newDescription = aboutState.description
-      .map((desc, j) => (i !== j ? aboutState.description[j] : null))
-      .filter(Boolean)
-    setAbout({ ...aboutState, description: newDescription })
+    const description = await setDescription(
+      aboutState.description
+        .map((desc, j) => (i !== j ? desc : null))
+        .filter(Boolean)
+    )
 
-    await setDescription(newDescription)
+    setAbout({
+      ...aboutState,
+      description,
+    })
   }
   const onSubmit = async () => {
-    if (description.length)
-      setAbout({
-        ...aboutState,
-        description: [...aboutState.description, { content: description }],
-      })
-    setValues("")
-
-    await setDescription([...aboutState.description, { content: description }])
+    const description = await setDescription([
+      ...aboutState.description,
+      { content: descStr },
+    ])
+    setAbout({
+      ...aboutState,
+      description,
+    })
   }
 
-  const setDescription = async desc => {
-    const query = JSON.stringify(desc.map(desc => desc.content))
-    const response = await axios.get(
-      `http://localhost:1337/graphql?query={setAboutDesc(about: ${query})}`
+  const editDescStr = async (content, i) => {
+    const description = await setDescription(
+      aboutState.description.map((desc, j) => (i !== j ? desc : { content }))
     )
-    console.log(response)
+    setAbout({
+      ...aboutState,
+      description,
+    })
+    handleClose()
   }
 
-  const updateField = e => setValues(e.target.value)
-  console.log(description)
+  const handleClose = () => setShow({ ...show, value: false })
+
+  const updatedescStr = e => setdescStr(e.target.value)
+
   return (
     <Container>
-      <Row>
+      <Row className="d-block">
         {aboutState.description.map((desc, i) => (
-          <p key={i} className="text-center">
-            {desc.content} <span onClick={() => deleteDescSentence(i)}>X</span>
-          </p>
+          <div key={i}>
+            <p className="text-center">
+              {desc.content}
+              <span
+                onClick={() => setShow({ value: true, str: desc.content, i })}
+                className="ml-2"
+              >
+                <FontAwesomeIcon icon={faEdit} />
+              </span>{" "}
+              <span onClick={() => deleteDescSentence(i)} className="ml-2">
+                <FontAwesomeIcon icon={faTrashAlt} />
+              </span>
+            </p>
+          </div>
         ))}
       </Row>
       <Form>
@@ -74,15 +85,47 @@ export default ({ content }) => {
             style={{
               width: "100%",
             }}
-            value={description}
-            onChange={updateField}
+            value={descStr}
+            onChange={updatedescStr}
           />
         </Form.Group>
         <Button onClick={onSubmit} id="contact-button" variant="danger">
           SUBMIT
         </Button>
       </Form>
-      <SetSkills />
+
+      <EditDescStr
+        editDescStr={editDescStr}
+        show={show}
+        handleClose={handleClose}
+      />
     </Container>
+  )
+}
+
+const EditDescStr = ({ show, handleClose, editDescStr }) => {
+  const [str, setStr] = useState("")
+
+  useEffect(() => {
+    setStr(show.str)
+  }, [show.str])
+
+  return (
+    <Modal show={show.value} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modal heading</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <input type="text" value={str} onChange={e => setStr(e.target.value)} />
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={() => editDescStr(str, show.i)}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
+    </Modal>
   )
 }

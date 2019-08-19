@@ -20,7 +20,7 @@ app.use(
   "/graphql",
   graphqlHTTP({
     schema,
-    customFormatErrorFn: (err) => ({ message: err.locations, status: parseInt(err.message) }),
+    customFormatErrorFn: (err) => ({ message: err, status: parseInt(err.message) }),
     graphiql: true
   })
 );

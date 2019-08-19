@@ -8,13 +8,13 @@ export default (state = initialState.content, action) => {
     case getContent.name:
       return {
         ...state,
-        works: payload.works,
+        works: payload.works || state.works ,
         header: {
-          name: payload.header.name,
-          title: payload.header.title,
-          subtitle: payload.header.subtitle,
+          name: payload.header.name || state.header.name,
+          title: payload.header.title || state.header.title,
+          subtitle: payload.header.subtitle || state.header.subtitle,
         },
-        about: payload.about
+        about: payload.about || state.about
       }
     case setDesc.name: 
       return {...state,
