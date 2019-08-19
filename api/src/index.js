@@ -1,6 +1,6 @@
 import express from "express";
 import "dotenv/config";
-import schema from "./schema/graphQLSchema";
+import schema from "./graphQLSchema";
 import graphqlHTTP from "express-graphql";
 import mongoose from "mongoose";
 import cors from 'cors'
