@@ -8,6 +8,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@types/react-helmet": "^5.0.9",
+    "@types/react-redux": "^7.1.2",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "gatsby": "^2.13.55",
@@ -19,6 +21,7 @@
     "gatsby-plugin-react-redux": "^1.0.10",
     "gatsby-plugin-sass": "^2.1.5",
     "gatsby-plugin-sharp": "^2.2.10",
+    "gatsby-plugin-typescript": "^2.1.2",
     "gatsby-source-filesystem": "^2.1.9",
     "gatsby-transformer-remark": "^2.6.12",
     "gatsby-transformer-sharp": "^2.2.6",
@@ -43,6 +46,9 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@types/node": "^12.7.2",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "babel-jest": "^24.9.0",
     "babel-preset-gatsby": "^0.2.8",
     "enzyme": "^3.10.0",
@@ -57,6 +63,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "type-check": "tsc --noEmit -w --noImplicitAny",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",

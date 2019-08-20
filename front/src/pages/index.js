@@ -10,6 +10,8 @@ export default ({
     allMarkdownRemark: { edges },
   },
 }) => {
+  const a = 0
+  console.log(a)
   const updateDimensions = () => {
     const { setNav } = constants
     const { innerHeight, innerWidth } = window

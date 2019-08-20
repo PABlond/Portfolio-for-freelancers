@@ -11,7 +11,7 @@ module.exports = {
       options: {
         trackingId: "UA-144983095-1",
         head: false,
-      }
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -20,6 +20,7 @@ module.exports = {
         name: `markdown-pages`,
       },
     },
+    "gatsby-plugin-typescript",
     `gatsby-plugin-sass`,
     `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
