@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Nav, Navbar } from "react-bootstrap"
 import getUnreadMessage from "./../../services/getUnreadMessage"
 import getContacts from "./../../services/getContacts"
+
 export default () => {
   const [unReadMessage, setUnread] = useState(0)
 

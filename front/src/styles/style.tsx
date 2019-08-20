@@ -5,11 +5,16 @@ export const about = ({
   height: number
   width: number
 }) => ({
+  mainContainer: {
+    background: "linear-gradient(rgba(231, 230, 253, 0.78), rgba(245, 249, 251, 0.49)),url(https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg)",
+    backgroundSize: "cover",
+    backgroundPosition: "top"
+  },
   container: {
     height: width > 768 && height > 768 ? "50vh" : "inherit",
     width: "100%",
     display: width > 768 && height > 768 ? "flex" : "block",
-    marginTop: width > 768 && height > 768 ? "0" : "50px",
+    paddingTop: width > 768 && height > 768 ? "0" : "50px",
   },
   col: {
     display: "flex",

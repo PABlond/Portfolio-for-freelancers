@@ -28,6 +28,11 @@ describe("Shallow rendered Contact", () => {
   it("should render contact as expected", () => {
     const { enzymeWrapper } = constactShallowCfg()
     expect(enzymeWrapper.find("h1").text()).toBe("")
-    expect(enzymeWrapper.find('div').first().prop('id')).toBe('header')
+    expect(
+      enzymeWrapper
+        .find("div")
+        .first()
+        .prop("id")
+    ).toBe("header")
   })
 })

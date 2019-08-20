@@ -13,16 +13,8 @@ module.exports = {
         head: false,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/markdown-pages`,
-        name: `markdown-pages`,
-      },
-    },
     "gatsby-plugin-typescript",
     `gatsby-plugin-sass`,
-    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

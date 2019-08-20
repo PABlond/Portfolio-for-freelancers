@@ -22,7 +22,7 @@ export default () => {
   )
   return (
     <Container fluid={true} style={style.container} className="pl-0 pr-0">
-      <Row style={{ background: width > 768 ? "#191919" : "#ebfffb" }}>
+      <Row style={{ background: "#191919" }}>
         <Col md={6}>
           <Tabs
             defaultActiveKey="Front end"

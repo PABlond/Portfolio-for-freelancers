@@ -9,6 +9,8 @@ describe("actions", () => {
       type: constants.getContent.name,
       payload: { works, header, about, contact },
     }
-    expect(dispatchFullContent({ works, header, about, contact })).toEqual(expectedAction)
+    expect(dispatchFullContent({ works, header, about, contact })).toEqual(
+      expectedAction
+    )
   })
 })

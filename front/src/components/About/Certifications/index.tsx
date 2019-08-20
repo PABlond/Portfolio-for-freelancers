@@ -15,7 +15,7 @@ export default () => {
     setIndex(selectedIndex)
 
   const style = width > 768 ? {} : { marginTop: "20px" }
-  
+
   return (
     <Col md={6} style={style} className="pl-0 pr-0">
       <div className="h-100 d-flex justify-content-center align-items-center">

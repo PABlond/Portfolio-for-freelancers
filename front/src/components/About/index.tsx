@@ -11,7 +11,7 @@ export default () => {
   const { width, height }: { width: number; height: number } = props.nav
   const style = aboutStyle({ width, height })
   return (
-    <Container fluid={true} id="about">
+    <Container fluid={true} id="about" style={style.mainContainer}>
       <Row
         style={style.container}
         className="justify-content-center align-items-center flex-columns"
