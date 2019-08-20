@@ -4,29 +4,33 @@ import store from "./../../state/store"
 import { works as worksStyle } from "./../../styles/style"
 import setWorks from "./../../services/setWorks"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
+import { IWork, IShowEdit } from "./works.interface"
 
 export default () => {
   const props = store.getState()
-  const { works } = props.content
+  const { works }: { works: IWork[] } = props.content
   const { height, width } = props.nav
   const style = worksStyle({ height, width })
   const imgStyle = { maxHeight: height / 7 }
 
-  const [worksState, setWorksState] = useState(works)
-  const [show, setShow] = useState({ value: false, work: works[0], i: 0 })
+  const [worksState, setWorksState] = useState<IWork[]>(works)
+  const [show, setShow] = useState<IShowEdit>({
+    value: false,
+    work: works[0],
+    i: 0,
+  })
 
   useEffect(() => {
     const { about, header } = props.content
-    const works = worksState
-    dispatchFullContent({ works, header, about })
+    dispatchFullContent({ works: worksState, header, about })
   }, [worksState])
 
-  const editWorks = async (content: any, i: number) => {
-    const newWorks = await setWorks(
-      worksState.map((work: any, j: number) => (i !== j ? work : content))
+  const editWorks: (content: IWork, i: number) => any = async (content, i) => {
+    setWorksState(
+      await setWorks(
+        worksState.map((work: any, j: number) => (i !== j ? work : content))
+      )
     )
-
-    setWorksState(newWorks)
     handleClose()
   }
 
@@ -71,17 +75,17 @@ const EditWorks = ({
   handleClose,
   editWorks,
 }: {
-  show: any
+  show: IShowEdit
   handleClose: () => void
-  editWorks: any
+  editWorks: (work: IWork, i: number) => any
 }) => {
-  const [work, setWork] = useState(show.work)
+  const [work, setWork] = useState<IWork>(show.work)
 
   useEffect(() => {
     setWork(show.work)
   }, [show.work])
 
-  const updateWork = (e: any) =>
+  const updateWork: (e: any) => void = e =>
     setWork({
       ...work,
       [e.target.name]: e.target.value,

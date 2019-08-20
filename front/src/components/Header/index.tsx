@@ -1,11 +1,12 @@
 import React from "react"
 import store from "../../state/store"
+import { IHeader } from "./header.interface"
 
 export default () => {
   const {
     header,
   }: {
-    header: { name: string; title: string; subtitle: string }
+    header: IHeader
   } = store.getState().content
   return (
     <div id="header">
