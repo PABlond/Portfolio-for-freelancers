@@ -3,11 +3,12 @@ import Skills from "./Skills"
 import { Container, Col, Row } from "react-bootstrap"
 import store from "./../../state/store"
 import { about as aboutStyle } from "./../../styles/style"
+import { IAbout, IDescription } from "./about.interface"
 
 export default () => {
   const props = store.getState()
-  const { about } = props.content
-  const { width, height } = props.nav
+  const { about }: { about: IAbout } = props.content
+  const { width, height }: { width: number; height: number } = props.nav
   const style = aboutStyle({ width, height })
   return (
     <Container fluid={true} id="about">
@@ -24,7 +25,7 @@ export default () => {
           />
         </Col>
         <div>
-          {about.description.map((desc: {content: string}, i: number) => (
+          {about.description.map((desc: IDescription, i: number) => (
             <p
               key={i}
               className="text-center"

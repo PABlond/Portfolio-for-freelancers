@@ -5,16 +5,21 @@ import setDescription from "./../../services/setDescription"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
+import { IAbout, IDescription, IShowEdit } from "./about.interface"
 
 export default () => {
   const props: any = store.getState()
-  let { about }: {about: any} = props.content
-  const [descStr, setdescStr] = useState("")
+  let { about }: { about: IAbout } = props.content
+  const [descStr, setdescStr] = useState<string | undefined>(undefined)
   const [aboutState, setAbout] = useState(about)
-  const [show, setShow] = useState({ value: false, str: "", i: 0 })
+  const [show, setShow] = useState<IShowEdit>({ value: false, str: "", i: 0 })
 
   useEffect(() => {
-    const { works, header, certifications }: {works: any, header: any, certifications: any} = props.content
+    const {
+      works,
+      header,
+      certifications,
+    }: { works: any; header: any; certifications: any } = props.content
     const about = aboutState
     dispatchFullContent({ works, certifications, header, about })
   }, [aboutState])
@@ -22,7 +27,7 @@ export default () => {
   const deleteDescSentence = async (i: number) => {
     const description = await setDescription(
       aboutState.description
-        .map((desc: any, j: any) => (i !== j ? desc : null))
+        .map((desc: IDescription, j: number) => (i !== j ? desc : null))
         .filter(Boolean)
     )
 
@@ -44,7 +49,7 @@ export default () => {
 
   const editDescStr = async (content: any, i: number) => {
     const description = await setDescription(
-      aboutState.description.map((desc: any, j: any) =>
+      aboutState.description.map((desc: IDescription, j: number) =>
         i !== j ? desc : { content }
       )
     )
@@ -62,7 +67,7 @@ export default () => {
   return (
     <Container className="mt-5 p-5">
       <Row className="d-block">
-        {aboutState.description.map((desc: { content: string }, i: number) => (
+        {aboutState.description.map((desc: IDescription, i: number) => (
           <div key={i}>
             <p className="text-center">
               {desc.content}
@@ -110,11 +115,11 @@ const EditDescStr = ({
   handleClose,
   editDescStr,
 }: {
-  show: any
-  handleClose: any
-  editDescStr: any
+  show: IShowEdit
+  handleClose: () => void
+  editDescStr: (str: string, i: number) => any
 }) => {
-  const [str, setStr] = useState("")
+  const [str, setStr] = useState<string>("")
 
   useEffect(() => {
     setStr(show.str)

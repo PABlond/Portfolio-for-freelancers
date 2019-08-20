@@ -4,14 +4,15 @@ import { Container, Row, Col, Tabs, Tab } from "react-bootstrap"
 import store from "./../../../state/store"
 import Certifications from "./../Certifications"
 import { skills as skillsStyle } from "./../../../styles/style"
+import { ISkill,ISkillTab } from "./../about.interface"
 
 export default () => {
   const props: any = store.getState()
-  const { width, height }: { width: number, height: number } = props.nav
-  const { skills }: {skills: any} = props.content.about
+  const { width, height }: { width: number; height: number } = props.nav
+  const { skills }: { skills: ISkill[] } = props.content.about
   const style: any = skillsStyle({ width, height })
-  const tabs: { title: string; data: { nodes: {}; links: {} } }[] = skills.map(
-    (skill: {title: string, nodes: any, links: any}) => {
+  const tabs: ISkillTab[] = skills.map(
+    (skill: ISkill) => {
       const { title, nodes, links } = skill
       return {
         title,
@@ -23,8 +24,12 @@ export default () => {
     <Container fluid={true} style={style.container} className="pl-0 pr-0">
       <Row style={{ background: width > 768 ? "#191919" : "#ebfffb" }}>
         <Col md={6}>
-          <Tabs defaultActiveKey="Front end" className="pl-0 pr-0 text-light" id="uncontrolled-tab-example">
-            {tabs.map((discipline, key) => {
+          <Tabs
+            defaultActiveKey="Front end"
+            className="pl-0 pr-0 text-light"
+            id="uncontrolled-tab-example"
+          >
+            {tabs.map((discipline: ISkillTab, key: number) => {
               return (
                 <Tab
                   eventKey={discipline.title}
