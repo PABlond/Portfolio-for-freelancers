@@ -1,6 +1,6 @@
 import React from "react"
 import store from "../../state/store"
-import { IHeader } from "./header.interface"
+import { IHeader } from "../../interfaces/header.interface"
 
 export default () => {
   const {

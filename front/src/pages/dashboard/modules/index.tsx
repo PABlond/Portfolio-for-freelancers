@@ -15,7 +15,7 @@ import {Container} from 'react-bootstrap'
 
 export default ({ location }: any) => {
   const requestedModule: string = Object.values(queryString.parse(location.search))[0] as string
-  const [isLoading, setLoading]: [boolean, any] = useState(!!requestedModule.length)
+  const [isLoading, setLoading] = useState<boolean>(!!requestedModule.length)
 
   useEffect(() => {
     if (!isLoggedIn()) return navigate(`/login`)

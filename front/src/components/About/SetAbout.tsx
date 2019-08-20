@@ -5,7 +5,7 @@ import setDescription from "./../../services/setDescription"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
-import { IAbout, IDescription, IShowEdit } from "./about.interface"
+import { IAbout, IDescription, IShowEdit } from "../../interfaces/about.interface"
 
 export default () => {
   const props: any = store.getState()

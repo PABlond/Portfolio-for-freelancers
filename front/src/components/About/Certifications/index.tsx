@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Carousel, Image, Col } from "react-bootstrap"
 import store from "./../../../state/store"
-import { ICertification } from "./../about.interface"
+import { ICertification } from "../../../interfaces/about.interface"
 
 export default () => {
   const [index, setIndex] = useState<number>(0)

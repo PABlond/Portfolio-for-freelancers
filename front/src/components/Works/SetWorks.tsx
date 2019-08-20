@@ -4,7 +4,7 @@ import store from "./../../state/store"
 import { works as worksStyle } from "./../../styles/style"
 import setWorks from "./../../services/setWorks"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
-import { IWork, IShowEdit } from "./works.interface"
+import { IWork, IShowEdit } from "../../interfaces/works.interface"
 
 export default () => {
   const props = store.getState()

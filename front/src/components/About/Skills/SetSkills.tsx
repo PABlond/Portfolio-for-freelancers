@@ -1,7 +1,7 @@
 import React from "react"
 import { Container, Row, Tabs, Tab } from "react-bootstrap"
 import store from "../../../state/store"
-import { ISkill, ISkillTab, ISkillLink, ISkillNode } from "./../about.interface"
+import { ISkill, ISkillTab, ISkillLink, ISkillNode } from "../../../interfaces/about.interface"
 
 export default () => {
   const props: any = store.getState()

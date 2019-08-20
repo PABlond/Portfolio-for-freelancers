@@ -6,10 +6,9 @@ import getFullContent from "./../../services/getFullContent"
 import getContacts from "./../../services/getContacts"
 import { isLoggedIn } from "./../../services/auth"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
-import {Container, Row} from 'react-bootstrap'
+import { Container, Row } from "react-bootstrap"
 
 export default () => {
-
   useEffect(() => {
     if (!isLoggedIn()) return navigate(`/login`)
     ;(async () => {
@@ -24,10 +23,8 @@ export default () => {
       <Head />
       <AdminNav />
       <Container className="mt-5">
-      <h2 className="text-danger text-center mb-4">Dashboard</h2>
-      <Row className="border p-5">
-
-      </Row>
+        <h2 className="text-danger text-center mb-4">Dashboard</h2>
+        <Row className="border p-5"></Row>
       </Container>
     </Container>
   )

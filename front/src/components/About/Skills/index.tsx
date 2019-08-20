@@ -4,7 +4,7 @@ import { Container, Row, Col, Tabs, Tab } from "react-bootstrap"
 import store from "./../../../state/store"
 import Certifications from "./../Certifications"
 import { skills as skillsStyle } from "./../../../styles/style"
-import { ISkill,ISkillTab } from "./../about.interface"
+import { ISkill,ISkillTab } from "../../../interfaces/about.interface"
 
 export default () => {
   const props: any = store.getState()

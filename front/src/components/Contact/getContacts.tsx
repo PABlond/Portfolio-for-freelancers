@@ -4,30 +4,31 @@ import { Container, Row, Accordion, Card, Col, Button } from "react-bootstrap"
 import moment from "moment"
 import readMessage from "./../../services/readMessage"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
+import { IContact } from "../../interfaces/contact.interface"
 
 export default () => {
   const props = store.getState()
   const { works, about, header, contacts } = props.content
-  console.log(contacts)
-  const [contactsState, setContactsState] = useState(contacts)
+  const [contactsState, setContactsState] = useState<IContact[]>(contacts)
 
-  const onClick = async (i: number) => {
+  const onClick: (i: number) => any = async i => {
     if (!contactsState[i].isRead) {
       const { _id } = contactsState[i]
-      const newContacts = await readMessage({ _id })
+      const newContacts: { contact: IContact[] } = await readMessage({ _id })
       dispatchFullContent({ contact: newContacts, works, about, header })
       setContactsState(newContacts.contact)
     }
   }
 
-  console.log('RE?DER')
   return (
     <Container className="mt-3 p-5">
       <h2 className="text-center mb-4 text-danger">Last form submissions</h2>
       <Accordion defaultActiveKey="0">
-        {contactsState.reverse().map((contact: any, i: number) => (
+        {contactsState.reverse().map((contact: IContact, i: number) => (
           <Card key={i} onClick={() => onClick(i)}>
-            <Card.Header className={(!contact.isRead ? "bg-danger" : null) + " p-0"}>
+            <Card.Header
+              className={(!contact.isRead ? "bg-danger" : null) + " p-0"}
+            >
               <Accordion.Toggle
                 className={"w-100"}
                 as={Button}

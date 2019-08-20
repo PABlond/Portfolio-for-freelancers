@@ -3,7 +3,7 @@ import Skills from "./Skills"
 import { Container, Col, Row } from "react-bootstrap"
 import store from "./../../state/store"
 import { about as aboutStyle } from "./../../styles/style"
-import { IAbout, IDescription } from "./about.interface"
+import { IAbout, IDescription } from "../../interfaces/about.interface"
 
 export default () => {
   const props = store.getState()

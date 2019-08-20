@@ -2,7 +2,7 @@ import React from "react"
 import { Container, Row, Col, Image } from "react-bootstrap"
 import store from "./../../state/store"
 import { works as worksStyle } from "./../../styles/style"
-import { IWork } from "./works.interface"
+import { IWork } from "../../interfaces/works.interface"
 
 export default () => {
   const props = store.getState()
