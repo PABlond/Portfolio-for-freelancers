@@ -20,7 +20,6 @@ export default class App extends Component {
   pageOnChange = number => this.setState({ currentPage: number })
 
   getData = async () => {
-    const { works, certifications } = store.getState().content
     if (this.state.isLoading) {
       const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
         works {

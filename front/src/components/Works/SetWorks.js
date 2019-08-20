@@ -38,7 +38,7 @@ export default ({ content }) => {
         <Row style={style.row}>
           {worksState.map((work, i) =>
             i < 8 ? (
-              <Col md={3} key={i}>
+              <Col md={3} key={i} className="border">
                 <div className="m-3" style={style.col}>
                   <h4>{work.title}</h4>
                   <Image
@@ -49,18 +49,18 @@ export default ({ content }) => {
                   />
                   <p>{work.content}</p>
                   <p className="technos">{work.technos}</p>
-                  <button onClick={() => setShow({ value: true, work, i })}>
+                  <Button
+                    block
+                    onClick={() => setShow({ value: true, work, i })}
+                  >
                     Change
-                  </button>
+                  </Button>
                 </div>
               </Col>
             ) : null
           )}
         </Row>
       </Container>
-      <div>
-        <h4>More Project on Github</h4>
-      </div>
       <EditWorks editWorks={editWorks} show={show} handleClose={handleClose} />
     </Container>
   )

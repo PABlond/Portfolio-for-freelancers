@@ -1,6 +1,5 @@
 import React from "react"
-import pageStructure from "../App/pageStructure"
-import { Container, Row, Col, Image, ListGroup } from "react-bootstrap"
+import { Container, Row, Col, Image } from "react-bootstrap"
 import store from "./../../state/store"
 import { works as worksStyle } from "./../../styles/style"
 

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getUser } from "./auth"
 
 export default async description => {
   const query = JSON.stringify(
@@ -10,7 +11,7 @@ export default async description => {
   const response = await axios
     .get(
       `https://fir-fiverr-a2e6b.appspot.com/graphql?query={
-    setAboutDesc(description: ${query}) {      
+    setAboutDesc(description: ${query}, token: ${getUser().token}) {      
       description {
         content
       }

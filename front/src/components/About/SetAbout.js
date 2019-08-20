@@ -58,7 +58,7 @@ export default ({ content }) => {
   const updatedescStr = e => setdescStr(e.target.value)
 
   return (
-    <Container>
+    <Container className="mt-5 p-5">
       <Row className="d-block">
         {aboutState.description.map((desc, i) => (
           <div key={i}>
@@ -89,7 +89,7 @@ export default ({ content }) => {
             onChange={updatedescStr}
           />
         </Form.Group>
-        <Button onClick={onSubmit} id="contact-button" variant="danger">
+        <Button block onClick={onSubmit} id="contact-button" variant="danger">
           SUBMIT
         </Button>
       </Form>

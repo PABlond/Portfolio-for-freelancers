@@ -1,6 +1,5 @@
 import React from "react"
 import Skills from "./../Skills"
-import pageStructure from "../App/pageStructure"
 import { Container, Col } from "react-bootstrap"
 import store from "./../../state/store"
 import { about as aboutStyle } from "./../../styles/style"

@@ -1,8 +1,5 @@
 import React from "react"
 import { ForceGraph2D } from "react-force-graph"
-import data_back from "./skills_back"
-import data_front from "./skill_front"
-import data_data from "./skill_data"
 import { Container, Row, Col, Tabs, Tab } from "react-bootstrap"
 import store from "./../../state/store"
 import Certifications from "./../Certifications"

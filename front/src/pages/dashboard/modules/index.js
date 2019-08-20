@@ -28,22 +28,22 @@ export default ({ location }) => {
         setLoading(false)
       })()
     }
-  })
+  }, [])
   return (
     <div>
       <Head />
       <AdminNav />
       <div>
-        {Object.values(requestedModule) == "works" && !isLoading ? (
+        {Object.values(requestedModule) === "works" && !isLoading ? (
           <SetWorks />
         ) : null}
-        {Object.values(requestedModule) == "about" && !isLoading ? (
+        {Object.values(requestedModule) === "about" && !isLoading ? (
           <SetAbout />
         ) : null}
-        {Object.values(requestedModule) == "header" && !isLoading ? (
+        {Object.values(requestedModule) === "header" && !isLoading ? (
           <SetHeader />
         ) : null}
-        {Object.values(requestedModule) == "contacts" && !isLoading ? (
+        {Object.values(requestedModule) === "contacts" && !isLoading ? (
           <GetContacts />
         ) : null}
       </div>

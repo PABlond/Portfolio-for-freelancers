@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import store from "./../../state/store"
-import { Container, Row, Button, Form } from "react-bootstrap"
+import { Container, Button, Form } from "react-bootstrap"
 import setHeader from "./../../services/setHeader"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
 
@@ -27,7 +27,7 @@ export default () => {
   }
 
   return (
-    <Container>
+    <Container className="mt-5">
       <Form onSubmit={onSubmit}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
@@ -56,7 +56,7 @@ export default () => {
             onChange={updateHeader}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button block variant="primary" type="submit">
           Submit
         </Button>
       </Form>

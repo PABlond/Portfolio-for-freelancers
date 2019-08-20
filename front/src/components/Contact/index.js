@@ -1,7 +1,6 @@
 import React, { useState } from "react"
-import axios from "axios"
 import store from "./../../state/store"
-import { Container, Form, Button, ButtonToolbar } from "react-bootstrap"
+import { Container, Form, Button } from "react-bootstrap"
 import { contact as contactStyle } from "./../../styles/style"
 import sendMessage from './../../services/sendMessage'
 
@@ -14,9 +13,7 @@ export default ({ content }) => {
   
   const onSubmit = async e => {
     e.preventDefault()
-    console.log(form)
     const response = await sendMessage(form)
-    console.log(response)
   }
 
   const updateField = e =>

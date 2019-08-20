@@ -5,10 +5,9 @@ export const getUser = () =>
     ? JSON.parse(window.localStorage.getItem("gatsbyUser"))
     : {}
 
-export const setUser = user => {
-  console.log(user)
-  return window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
-}
+export const setUser = user =>
+  window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
+
 export const handleLogin = ({ username, password }) => {
   // Request to check user credentials
   if (username === `john` && password === `pass`) {

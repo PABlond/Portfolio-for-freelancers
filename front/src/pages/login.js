@@ -3,7 +3,7 @@ import { Container, Row, Form, Button } from "react-bootstrap"
 import store from "./../state/store"
 import { login as loginStyle } from "./../styles/login"
 import { navigate } from "gatsby"
-import { handleLogin, isLoggedIn, setUser } from "./../services/auth"
+import { isLoggedIn, setUser } from "./../services/auth"
 import axios from "axios"
 import constants from "./../state/constants"
 export default () => {
@@ -31,7 +31,7 @@ export default () => {
     const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
         login (username: "${username}", password: "${password}")
       }`)
-    if (response.status == 200) {
+    if (response.status === 200) {
       const { login } = constants
       setUser({ token: response.data.data.login })
       store.dispatch({

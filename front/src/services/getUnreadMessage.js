@@ -1,9 +1,8 @@
-import store from './../state/store'
-
-export default () => {
-    const {contacts} = store.getState().content
+export default ({contact}) => {
+    console.log(contact)
     let i = 0
-    contacts.forEach(contact => {
+    contact.forEach(contact => {
+        console.log(contact.isRead)
         if (!contact.isRead) i+= 1
     })
 
