@@ -23,7 +23,7 @@ export const about = ({
   },
   img: {
     maxWidth: "200px",
-  },
+  }
 })
 
 export const skills = ({

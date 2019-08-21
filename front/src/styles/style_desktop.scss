@@ -45,5 +45,16 @@ body {
   }
 }
 
+i{
+  color:$dark;
+
+  &:hover {
+    color: $light;
+    background: $dark;
+    transition: 1s;
+    border-radius: 5px
+  }
+}
+
 
 @import '~bootstrap/scss/bootstrap.scss';
