@@ -7,17 +7,14 @@ import About from "./../About"
 export default (i: number) => {
   switch (i) {
     case 0:
-      return <Header />
+      return <Header key={i} />
     case 1:
-      return <About />
+      return <About key={i} />
     case 2:
-      return <Works />
+      return <Works key={i} />
     case 3:
-      return <Contact />
+      return <Contact key={i} />
     default:
-      return (
-        <div
-          key={i}/>
-      )
+      return <div key={i} />
   }
 }
