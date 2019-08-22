@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node src",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src",
     "ts": "tsc --noEmit -w",
     "build": "npx babel src --out-dir build",
     "start": "node build/"
@@ -27,6 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.9",
     "nodemailer": "^6.3.0",
+    "ts-node-dev": "^1.0.0-pre.41",
     "typescript": "^3.5.3"
   },
   "devDependencies": {
