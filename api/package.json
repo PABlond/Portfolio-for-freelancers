@@ -3,6 +3,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpileOnly ./src",
     "ts": "tsc --noEmit -w",
+    "deploy": "npm run build && gcloud app deploy",
     "build": "npx babel src --out-dir build",
     "start": "node build/"
   },
