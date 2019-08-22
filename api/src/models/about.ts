@@ -1,8 +1,8 @@
 import mongoose from "mongoose"
+import { Schema, model } from "mongoose"
+import {IAbout} from './../interfaces/about.interface'
 
-const { Schema, model } = mongoose
-
-const aboutSchema = new Schema({
+const aboutSchema: Schema = new Schema({
   //   _id: String,
   img: {
     href: String,
@@ -35,4 +35,4 @@ const aboutSchema = new Schema({
   ]
 })
 
-export default model("about", aboutSchema)
+export default model<IAbout>("about", aboutSchema)
