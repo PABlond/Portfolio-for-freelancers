@@ -14,6 +14,7 @@ export default () => {
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="/dashboard">PABlond</Navbar.Brand>
       <Nav className="mr-auto">
+        <Nav.Link href="/dashboard/resume">Resume</Nav.Link>
         <Nav.Link href="/dashboard/modules/?module=header">Header</Nav.Link>
         <Nav.Link href="/dashboard/modules/?module=about">About</Nav.Link>
         <Nav.Link href="/dashboard/modules/?module=works">Works</Nav.Link>
