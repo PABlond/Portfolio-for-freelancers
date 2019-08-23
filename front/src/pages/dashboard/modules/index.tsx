@@ -15,7 +15,7 @@ import {Container} from 'react-bootstrap'
 import "./../../../styles/style_desktop.scss"
 
 export default ({ location }: any) => {
-  const requestedModule: string = Object.values(queryString.parse(location.search))[0] as string
+  const requestedModule: string = Object.values(queryString.parse(location.search))[0] || "" as string
   const [isLoading, setLoading] = useState<boolean>(!!requestedModule)
 
   useEffect(() => {
