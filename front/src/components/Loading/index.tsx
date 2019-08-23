@@ -1,4 +1,11 @@
 import React from "react"
-import { Spinner } from "react-bootstrap"
+import { Spinner, Container } from "react-bootstrap"
 
-export default () => <Spinner animation="grow" />
+export default () => (
+  <Container
+    className="d-flex justify-content-center align-items-center"
+    style={{ width: "100%", height: "100vh" }}
+  >
+    <Spinner animation="grow" style={{ width: "5rem", height: "5rem", color: "#61234e" }} />
+  </Container>
+)

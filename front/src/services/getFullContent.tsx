@@ -43,5 +43,6 @@ export default async () => {
         }
       }`)
   const { works, certifications, header, about } = response.data.data
+  console.log('works', works)
   return { works, certifications, header, about }
 }

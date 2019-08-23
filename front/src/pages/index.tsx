@@ -21,7 +21,6 @@ export default () => {
     updateDimensions()
     window.addEventListener("resize", updateDimensions)
   })
-  const { isMobile }: { isMobile: boolean } = store.getState().nav
-  const props = { isMobile }
-  return <App {...props} />
+  
+  return <App />
 }
