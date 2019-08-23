@@ -12,6 +12,7 @@ import getFullContent from "./../../../services/getFullContent"
 import dispatchFullContent from "./../../../state/actions/dispatchFullContent"
 import getContacts from "./../../../services/getContacts"
 import {Container} from 'react-bootstrap'
+import "./../../../styles/style_desktop.scss"
 
 export default ({ location }: any) => {
   const requestedModule: string = Object.values(queryString.parse(location.search))[0] as string

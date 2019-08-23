@@ -7,6 +7,7 @@ import getContacts from "./../../services/getContacts"
 import { isLoggedIn } from "./../../services/auth"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
 import { Container, Row } from "react-bootstrap"
+import "./../../styles/style_desktop.scss"
 
 export default () => {
   useEffect(() => {

@@ -1,8 +1,7 @@
-import mongoose from 'mongoose'
+import { Schema, model } from "mongoose"
+import { IWork } from "./../interfaces/work.interface"
 
-const {Schema, model} = mongoose
-
-const worksSchema = new Schema({
+const worksSchema: Schema = new Schema({
     // _id: String,
     title: String,
     image: String,
@@ -11,4 +10,4 @@ const worksSchema = new Schema({
     position: Number
 })
 
-export default model('workss', worksSchema)
+export default model<IWork>('workss', worksSchema)

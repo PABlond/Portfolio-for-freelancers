@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import { Schema, model } from "mongoose"
 import {IUser} from './../interfaces/user.interface'
 

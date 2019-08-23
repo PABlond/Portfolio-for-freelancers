@@ -5,4 +5,5 @@ export interface IWork extends mongoose.Document {
   image: string
   content: string
   technos: string
+  position: number
 }

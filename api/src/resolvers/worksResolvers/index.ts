@@ -2,8 +2,8 @@ import Work from "./../../models/work"
 import { IWork } from "./../../interfaces/work.interface"
 
 export const works = async (root: any, args: any, context: any, info: any) => {
-  const data = await Work.find({})
-  return data.sort((a, b) => a.position - b.position)
+  const data: IWork[] = await Work.find({})
+  return data.sort((a, b) => (a.position - b.position))
 }
 
 export const setWorks = async (
