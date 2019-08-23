@@ -11,52 +11,56 @@ export default () => {
       <View>
         {works.map((work: IWork, i: number) =>
           i > 4 && i < 8 ? (
-            <View key={i} style={styles.experience}>
-              <Text style={styles.experience}>{work.title}</Text>
-              <Text>{work}</Text>
-              <Text style={styles.experience}>{work.technos}</Text>
+            <View style={styles.experienceElement} key={i}>
+              <Text style={styles.experienceTitle}>{work.title}</Text>
+              <Text>{work.content}</Text>
+              <Text style={styles.experienceTechnos}>{work.technos}</Text>
             </View>
           ) : null
         )}
       </View>
 
       <View style={styles.certifications}>
-        <Text style={styles.title}>Certifications:</Text>
-        <View style={styles.certifications}>
+        <View style={styles.titles}>
+          <Text>Certifications:</Text>
+        </View>
+        <View style={styles.certificationContent}>
           <Text>- Data Science Professional Certificate - IBM</Text>
         </View>
-        <View style={styles.certifications}>
+        <View style={styles.certificationContent}>
           <Text>- APIs & Microservices - FreeCodeCamp</Text>
         </View>
-        <View style={styles.certifications}>
+        <View style={styles.certificationContent}>
           <Text>- Front End Libraries (React) - FreeCodeCamp</Text>
         </View>
-        <View style={styles.certifications}>
+        <View style={styles.certificationContent}>
           <Text>
             - JavaScript Algorithms and Data Structures - FreeCodeCamp{" "}
           </Text>
         </View>
-        <View style={styles.certifications}>
+        <View style={styles.certificationContent}>
           <Text>- Responsive Web Design - FreeCodeCamp</Text>
         </View>
       </View>
 
       <View style={styles.skills}>
-        <Text style={styles.title}>Skills:</Text>
-        <View style={styles.skills}>
-          <Text style={styles.skills}> ECMAScript</Text>
+        <View style={styles.titles}>
+          <Text>Skills:</Text>
         </View>
-        <View style={styles.skills}>
-          <Text style={styles.skills}> React.Js / React Native</Text>
+        <View style={styles.barsContent}>
+          <Text style={styles.skill1}> Javascript / ECMAScript</Text>
         </View>
-        <View style={styles.skills}>
-          <Text style={styles.skills}> Express</Text>
+        <View style={styles.barsContent}>
+          <Text style={styles.skill2}> React.Js / React Native</Text>
         </View>
-        <View style={styles.skills}>
-          <Text style={styles.skills}> MongoDB</Text>
+        <View style={styles.barsContent}>
+          <Text style={styles.skill3}> Express</Text>
         </View>
-        <View style={styles.skills}>
-          <Text style={styles.skills}> TypeScript</Text>
+        <View style={styles.barsContent}>
+          <Text style={styles.skill4}> MongoDB</Text>
+        </View>
+        <View style={styles.barsContent}>
+          <Text style={styles.skill5}> TypeScript</Text>
         </View>
       </View>
     </View>

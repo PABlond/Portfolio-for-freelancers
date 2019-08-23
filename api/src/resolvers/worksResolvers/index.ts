@@ -23,6 +23,7 @@ export const setWorks = async (
     works.forEach(async (work: any) => {
       await new Work(work).save()
     })
+    return works
   }
-  return works
+  return []
 }

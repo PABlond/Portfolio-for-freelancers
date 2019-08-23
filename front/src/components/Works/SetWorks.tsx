@@ -45,8 +45,8 @@ export default () => {
                 <Image src={work.image} alt={work.alt} fluid style={imgStyle} />
                 <p>{work.content}</p>
                 <p className="technos">{work.technos}</p>
-                <Button block onClick={() => setShow({ value: true, work, i })}>
-                  Change
+                <Button id="contact-button" onClick={() => setShow({ value: true, work, i })}>
+                  Edit
                 </Button>
               </div>
             ),
@@ -73,6 +73,7 @@ export default () => {
         <Row style={style.row}>
           <DragSortableList
             items={dragableList}
+            dropBackTransitionDuration={0.3}
             onSort={onSort}
             type="vertical"
           />

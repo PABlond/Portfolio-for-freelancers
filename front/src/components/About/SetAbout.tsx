@@ -5,7 +5,11 @@ import setDescription from "./../../services/setDescription"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons"
-import { IAbout, IDescription, IShowEdit } from "../../interfaces/about.interface"
+import {
+  IAbout,
+  IDescription,
+  IShowEdit,
+} from "../../interfaces/about.interface"
 
 export default () => {
   const props: any = store.getState()
@@ -131,7 +135,7 @@ const EditDescStr = ({
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <input type="text" value={str} onChange={e => setStr(e.target.value)} />
+        <input type="text" style={{width: '100%'}} value={str} onChange={e => setStr(e.target.value)} />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>

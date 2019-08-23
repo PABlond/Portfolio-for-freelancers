@@ -21,22 +21,26 @@ export default () => {
   return (
     <View style={styles.section}>
       <View style={styles.profile}>
-        <Text style={styles.title}>Profile:</Text>
+        <View style={styles.titles}>
+          <Text>Profile:</Text>
+        </View>
         {description.map((desc: string, i: number) => (
-          <Text key={i} style={styles.profile}>
+          <Text style={styles.description} key={i}>
             {desc}
           </Text>
         ))}
       </View>
 
       <View>
-        <Text style={styles.title}>Experience:</Text>
+        <View style={styles.titles}>
+          <Text>Experience:</Text>
+        </View>
         {works.map((work: IWork, i: number) =>
           i < 5 ? (
-            <View key={i} style={styles.experience}>
-              <Text style={styles.experience}>{work.title}</Text>
+            <View style={styles.experienceElement} key={i}>
+              <Text style={styles.experienceTitle}>{work.title}</Text>
               <Text>{work.content}</Text>
-              <Text style={styles.experience}>{work.technos}</Text>
+              <Text style={styles.experienceTechnos}>{work.technos}</Text>
             </View>
           ) : null
         )}

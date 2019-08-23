@@ -60,5 +60,13 @@ i{
   width: 100%
 }
 
+.dragged {
+  opacity: 0.7;
+}
+
+.placeholder {
+opacity: 0.5;
+}
+
 
 @import '~bootstrap/scss/bootstrap.scss';

@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "Portfolio-CMS-for-freelancers",
+  "description": "A one page portfolio build with TypeScript, React (Gatsby), Redux, GraphQL, Nodejs, Jest ...",
+  "version": "0.9.0",
+  "author": "Pierre-Alexis Blond <pierre-alexis.blond@live.fr>",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
@@ -39,8 +38,6 @@
     "react-helmet": "^5.2.1",
     "react-page-scroller": "^1.5.1",
     "react-redux": "^7.1.0",
-    "react-responsive-carousel": "^3.1.50",
-    "react-sidebar": "^3.0.2",
     "react-tabs": "^3.0.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
@@ -68,16 +65,16 @@
     "type-check": "tsc --noEmit -w --noImplicitAny",
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "format": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "jest --watch --verbose false"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/PABlond/Portfolio-CMS-for-freelancers.git"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/PABlond/Portfolio-CMS-for-freelancers/issues"
   }
 }
