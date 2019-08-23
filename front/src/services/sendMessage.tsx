@@ -1,9 +1,11 @@
 import axios from "axios"
+import constants from "./../state/constants"
 
 export default async ({email, name, content}: any) => {
+  const {api: {url}} = constants
   const response: any = await axios
     .get(
-      `https://fir-fiverr-a2e6b.appspot.com/graphql?query={
+      `${url}/graphql?query={
             sendMessage(email: "${email}", name: "${name}", content: "${content}")
         }`
     )

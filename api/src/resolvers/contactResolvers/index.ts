@@ -26,5 +26,5 @@ export const sendMessage = async (
   const { name, email, content }: IContact = args
   await new Contact({ name, email, content }).save()
   const isSent:boolean = await sendMail(name, email, content)
-  return "args"
+  return "Thank you! Your message has been sent successfully. I will contact you soon :)"
 }

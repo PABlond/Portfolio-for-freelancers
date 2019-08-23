@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import store from "./../../state/store"
 import { Container, Form, Button } from "react-bootstrap"
 import { contact as contactStyle } from "./../../styles/style"
-import sendMessage from './../../services/sendMessage'
+import sendMessage from "./../../services/sendMessage"
 
 export default () => {
   const [form, setValues] = useState({
@@ -10,10 +10,16 @@ export default () => {
     name: "",
     content: "",
   })
-  
+  const [response, setResponse] = useState("")
+
   const onSubmit = async (e: any) => {
     e.preventDefault()
-    await sendMessage(form)
+    setResponse(await sendMessage(form))
+    setValues({
+      email: "",
+      name: "",
+      content: "",
+    })
   }
 
   const updateField = (e: any) =>
@@ -58,9 +64,15 @@ export default () => {
             onChange={updateField}
           />
         </Form.Group>
-         <Button type="submit" id="contact-button" variant="danger" style={style.submit}>
-            SUBMIT
-          </Button>
+        <Button
+          type="submit"
+          id="contact-button"
+          variant="danger"
+          style={style.submit}
+        >
+          SUBMIT
+        </Button>
+        {response.length ? <p className="text-success">{response}</p> : null}
       </Form>
     </Container>
   )
