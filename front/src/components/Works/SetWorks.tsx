@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Container, Row, Col, Image, Modal, Button } from "react-bootstrap"
+import { Container, Row, Image, Modal, Button } from "react-bootstrap"
 import store from "./../../state/store"
 import { works as worksStyle } from "./../../styles/style"
 import setWorks from "./../../services/setWorks"
@@ -56,9 +56,9 @@ export default () => {
     )
     .filter(Boolean)
 
-  var onSort = async (sortedList, dropEvent) => {
+  var onSort = async (sortedList: {id: string}[]) => {
     await setWorks(
-      sortedList.map((i, position) => ({
+      sortedList.map((i:{id: string}, position: number) => ({
         ...worksState[parseInt(i.id) - 2],
         position,
       }))

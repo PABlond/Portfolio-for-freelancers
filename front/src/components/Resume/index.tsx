@@ -1,5 +1,5 @@
 import React from "react"
-import { Page, Text, View, Document, Image } from "@react-pdf/renderer"
+import { Page, View, Document } from "@react-pdf/renderer"
 import styles from "../../styles/resume"
 import ResumeHeader from "./header"
 import ResumeLeftColumn from "./leftColumn"

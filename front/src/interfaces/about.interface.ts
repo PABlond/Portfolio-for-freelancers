@@ -32,7 +32,7 @@ export interface IAbout {
     href: string
     alt: string
   }
-  description: IDescription[]
+  description: IDescription[],
 }
 
 export interface IShowEdit {
