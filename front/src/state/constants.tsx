@@ -4,4 +4,5 @@ export default {
   login: { name: "LOGIN" },
   setDesc: { name: "SET_DESCRIPTION" },
   api: { url: "https://fir-fiverr-a2e6b.appspot.com" },
+  // api: { url: "http://localhost:1337" },
 }

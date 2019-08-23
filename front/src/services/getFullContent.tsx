@@ -42,7 +42,6 @@ export default async () => {
           }
         }
       }`)
-
   const { works, certifications, header, about } = response.data.data
   return { works, certifications, header, about }
 }

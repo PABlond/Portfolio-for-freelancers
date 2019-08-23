@@ -5,6 +5,7 @@ import { works as worksStyle } from "./../../styles/style"
 import setWorks from "./../../services/setWorks"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
 import { IWork, IShowEdit } from "../../interfaces/works.interface"
+import DragSortableList from "react-drag-sortable"
 
 export default () => {
   const props = store.getState()
@@ -34,35 +35,47 @@ export default () => {
     handleClose()
   }
 
+  const dragableList = worksState
+    .map((work: any, i: number) =>
+      i < 8
+        ? {
+            content: (
+              <div key={i} className="m-3" style={style.col}>
+                <h4>{work.title}</h4>
+                <Image src={work.image} alt={work.alt} fluid style={imgStyle} />
+                <p>{work.content}</p>
+                <p className="technos">{work.technos}</p>
+                <Button block onClick={() => setShow({ value: true, work, i })}>
+                  Change
+                </Button>
+              </div>
+            ),
+            classes: ["border"],
+          }
+        : null
+    )
+    .filter(Boolean)
+
+  var onSort = async (sortedList, dropEvent) => {
+    await setWorks(
+      sortedList.map((i, position) => ({
+        ...worksState[parseInt(i.id) - 2],
+        position,
+      }))
+    )
+  }
+
   const handleClose = () => setShow({ ...show, value: false })
   return (
     <Container fluid={true} style={style.container} id="works">
       <h2 style={style.h2}>Previous Work</h2>
       <Container>
         <Row style={style.row}>
-          {worksState.map((work: any, i: number) =>
-            i < 8 ? (
-              <Col md={3} key={i} className="border">
-                <div className="m-3" style={style.col}>
-                  <h4>{work.title}</h4>
-                  <Image
-                    src={work.image}
-                    alt={work.alt}
-                    fluid
-                    style={imgStyle}
-                  />
-                  <p>{work.content}</p>
-                  <p className="technos">{work.technos}</p>
-                  <Button
-                    block
-                    onClick={() => setShow({ value: true, work, i })}
-                  >
-                    Change
-                  </Button>
-                </div>
-              </Col>
-            ) : null
-          )}
+          <DragSortableList
+            items={dragableList}
+            onSort={onSort}
+            type="vertical"
+          />
         </Row>
       </Container>
       <EditWorks editWorks={editWorks} show={show} handleClose={handleClose} />
