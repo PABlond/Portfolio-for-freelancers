@@ -1,15 +1,18 @@
 import axios from "axios"
 import { getUser } from "./auth"
+import constants from "./../state/constants"
 
 export default async (works: any) => {
+  const {api: {url}} = constants
   const query = JSON.stringify(
     works.map((work: any) => JSON.stringify(work)).filter(Boolean)
   )
+  console.log('works', works)
 
   const response: any = await axios
     .get(
-      `https://fir-fiverr-a2e6b.appspot.com/graphql?query={
-        setWorks(works: ${query}, token: ${getUser().token}) {
+      `${url}/graphql?query={
+        setWorks(works: ${query}, token: "${getUser().token}") {
           title
           image
           content

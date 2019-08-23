@@ -1,12 +1,15 @@
 import axios from "axios"
+import constants from "./../state/constants"
 
 export default async () => {
-  const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
+  const {api: {url}} = constants
+  const response = await axios.get(`${url}/graphql?query={
         works {
           title
           image,
           content,
           technos
+          position
         }
         header {
           name

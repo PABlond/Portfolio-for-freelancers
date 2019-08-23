@@ -5,7 +5,6 @@ import styles from "../../styles/resume"
 
 export default () => {
   const { about, works } = store.getState().content
-  console.log({ about, works })
   const description = about.description
     .map((desc, i) => {
       if (i >= 1) {

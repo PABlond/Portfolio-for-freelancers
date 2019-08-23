@@ -1,7 +1,9 @@
 import axios from "axios"
 import { getUser } from "./auth"
+import constants from "./../state/constants"
 
 export default async (description: any) => {
+  const {api: {url}} = constants
   const query = JSON.stringify(
     description
       .map((desc: any) => encodeURIComponent(desc.content))
@@ -10,8 +12,8 @@ export default async (description: any) => {
 
   const response: any = await axios
     .get(
-      `https://fir-fiverr-a2e6b.appspot.com/graphql?query={
-    setAboutDesc(description: ${query}, token: ${getUser().token}) {      
+      `${url}/graphql?query={
+    setAboutDesc(description: ${query}, token: "${getUser().token}") {      
       description {
         content
       }

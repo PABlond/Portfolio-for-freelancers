@@ -4,5 +4,6 @@ type Work{
     title: String!,
     image: String!,
     content: String!,
-    technos: String!
+    technos: String!,
+    position: Int
 }`

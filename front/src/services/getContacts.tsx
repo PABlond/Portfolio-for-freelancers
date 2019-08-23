@@ -1,9 +1,11 @@
 import axios from "axios"
 import { getUser } from "./auth"
+import constants from "./../state/constants"
 
 export default async () => {
+  const {api: {url}} = constants
   const { token }: { token: string } = getUser()
-  const response = await axios.get(`https://fir-fiverr-a2e6b.appspot.com/graphql?query={
+  const response = await axios.get(`${url}/graphql?query={
     contact (token: "${token}") {
       email
       content

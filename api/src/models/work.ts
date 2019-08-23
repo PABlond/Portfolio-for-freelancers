@@ -7,7 +7,8 @@ const worksSchema = new Schema({
     title: String,
     image: String,
     content: String,
-    technos: String
+    technos: String,
+    position: Number
 })
 
-export default model('works', worksSchema)
+export default model('workss', worksSchema)

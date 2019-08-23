@@ -4,11 +4,14 @@ import { Page, Text, View, Document, Image } from "@react-pdf/renderer"
 import styles from "../../styles/resume"
 
 export default () => {
-  const { about: {certifications}, works } = store.getState().content
+  const {
+    about: { certifications },
+    works,
+  } = store.getState().content
   return (
     <View style={styles.section}>
       <View>
-      {works.map((work, i) =>
+        {works.map((work, i) =>
           i > 4 && i < 8 ? (
             <View key={i} style={styles.experience.element}>
               <Text style={styles.experience.element.title}>{work.title}</Text>
