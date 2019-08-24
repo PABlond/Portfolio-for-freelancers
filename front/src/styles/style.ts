@@ -1,3 +1,23 @@
+export const header = ({
+  height,
+  width,
+}: {
+  height: number
+  width: number
+}) => ({
+  name: {
+    fontSize: width > 768 && height > 768 ? "4rem" : "2.5rem",
+    letterSpacing: 2,
+  },
+  title: {
+    fontSize: width > 768 && height > 768 ? "6rem" : "3.5rem",
+    letterSpacing: 3,
+  },
+  p: {
+    fontSize: width > 768 && height > 768 ? "2rem" : "1.5rem",
+  },
+})
+
 export const about = ({
   height,
   width,
@@ -6,9 +26,10 @@ export const about = ({
   width: number
 }) => ({
   mainContainer: {
-    background: "linear-gradient(rgba(231, 230, 253, 0.78), rgba(245, 249, 251, 0.49)),url(https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg)",
+    background:
+      "linear-gradient(rgba(231, 230, 253, 0.78), rgba(245, 249, 251, 0.49)),url(https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg)",
     backgroundSize: "cover",
-    backgroundPosition: "top"
+    backgroundPosition: "top",
   },
   container: {
     height: width > 768 && height > 768 ? "50vh" : "inherit",
@@ -23,7 +44,7 @@ export const about = ({
   },
   img: {
     maxWidth: "200px",
-  }
+  },
 })
 
 export const skills = ({
@@ -100,7 +121,7 @@ export const contact = ({
     borderRadius: "5px",
   },
   group: {
-    width: "50vw",
+    width: width > 768 && height > 768 ? "50vw" : "75vw",
   },
   submit: {
     width: "50vw",

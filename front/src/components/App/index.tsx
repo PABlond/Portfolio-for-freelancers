@@ -11,7 +11,7 @@ export default () => {
   const [loading, setLoading] = useState(true)
   const [pageScroller, setPageScroller] = useState(null)
   const props = store.getState()
-  const { isMobile } = props.nav
+  const { isMobile }: {isMobile: boolean} = props.nav
 
   useEffect(() => {
     ;(async () => {
