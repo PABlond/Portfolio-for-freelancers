@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Button } from "react-bootstrap"
 // import store from "./../../state/store"
-import getPageViews from "./../../services/getPageViews"
 import { RadialChart, Hint } from "react-vis"
 import {
   IFocus,
   IValue,
   IPageView,
 } from "./../../interfaces/analytics.interface"
+import DatePicker from "./DatePicker"
 
 export default ({
   data,
@@ -18,8 +18,32 @@ export default ({
   value: IValue
   setValue: any
 }) => {
+  const [selectionRange, setSelectionRange] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: "selection",
+  })
+  const [showDateRanges, setShowDateRanges] = useState<boolean>(false)
+
+  const handleSelect = ranges => {
+    console.log(ranges)
+    setSelectionRange(ranges.selection)
+    setShowDateRanges(false)
+  }
+
+  const handleClose = () => setShowDateRanges(false)
+
   return (
     <Col md={6}>
+      {showDateRanges ? (
+        <DatePicker
+          selectionRange={selectionRange}
+          handleSelect={handleSelect}
+          handleClose={handleClose}
+        />
+      ) : (
+        <Button onClick={() => setShowDateRanges(true)}>Change Dates</Button>
+      )}
       <RadialChart
         width={300}
         height={300}
