@@ -1,18 +1,20 @@
 import { makeExecutableSchema } from "graphql-tools"
-import typeDefs from './typeDefs'
+import typeDefs from "./typeDefs"
 import {
   contactResolvers,
   aboutResolvers,
   headerResolver,
   worksResolvers,
-  authResolvers
+  authResolvers,
+  analyticsResolvers
 } from "./resolvers"
 
 const { contact, isRead, sendMessage } = contactResolvers
 const { about, setAboutDesc, certifications } = aboutResolvers
 const { header, setHeader } = headerResolver
 const { works, setWorks } = worksResolvers
-const {login} = authResolvers
+const { login } = authResolvers
+const { getPageViews } = analyticsResolvers
 const resolvers = {
   Query: {
     contact,
@@ -25,7 +27,8 @@ const resolvers = {
     certifications,
     works,
     setWorks,
-    login
+    login,
+    getPageViews
   }
 }
 

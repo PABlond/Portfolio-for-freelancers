@@ -17,7 +17,8 @@ export const setWorks = async (
     .map((work: any, i: number) => {
       return { ...work, position: i }
     })
-
+    console.log('WORKS :')
+    console.log(works)
   if (works.every(work => !!work.title)) {
     await Work.remove({})
     works.forEach(async (work: any) => {

@@ -3,6 +3,7 @@ import { about, setAboutDesc, certifications } from "./aboutResolvers"
 import { header, setHeader } from "./headerResolvers"
 import { works, setWorks } from "./worksResolvers"
 import { login } from "./authResolvers"
+import { getPageViews } from "./analyticsResolvers"
 
 export const contactResolvers = {
   contact,
@@ -28,4 +29,8 @@ export const worksResolvers = {
 
 export const authResolvers = {
   login
+}
+
+export const analyticsResolvers = {
+  getPageViews
 }
