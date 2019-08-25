@@ -1,4 +1,5 @@
 import reqAnalyticsData from "./../../utils/reqAnalyticsData"
+import checkToken from "./../../utils/checkToken"
 
 export const getPageViews = async (
   root: any,
@@ -6,16 +7,25 @@ export const getPageViews = async (
   context: any,
   info: any
 ) => {
-  console.log("getPageViews")
-  const data = await reqAnalyticsData({
-    "start-date": "30daysAgo",
-    "end-date": "today",
-    metrics: "ga:pageviews, ga:sessionDuration",
-    dimensions: "ga:userType"
-  })
-
-  return {
-    new: data.rows[0][1],
-    returning: data.rows[1][1]
+  // console.log("getPageViews", args)
+  const { from, to, token } = args
+  if (await checkToken(token)) {
+    const data = await reqAnalyticsData({
+      "start-date": from,
+      "end-date": to,
+      metrics: "ga:pageviews, ga:sessionDuration",
+      dimensions: "ga:userType"
+    })
+    if (data.rows) {
+    }
+    return data.rows
+      ? {
+          new: data.rows[0][1],
+          returning: data.rows[1][1]
+        }
+      : {
+          new: 0,
+          returning: 0
+        }
   }
 }

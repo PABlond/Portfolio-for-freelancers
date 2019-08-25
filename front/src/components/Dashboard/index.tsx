@@ -25,7 +25,7 @@ export default () => {
 
   useEffect(() => {
     ;(async () => {
-      const response = await getPageViews()
+      const response = await getPageViews("30daysAgo", "today")
       const data = Object.keys(response).map(val => ({ theta: response[val] }))
       setPageViews(data)
       setLoading(false)
@@ -41,7 +41,7 @@ export default () => {
       <Container className="border p-5">
         <Row>
           <Col md={6}>
-            <PageViews data={pageViews} value={value} setValue={setValue} />
+            <PageViews setPageViews={setPageViews} data={pageViews} value={value} setValue={setValue} />
           </Col>
         </Row>
       </Container>
