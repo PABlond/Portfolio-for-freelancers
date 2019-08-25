@@ -3,6 +3,6 @@ export default {
   getContent: { name: "GET_CONTENT_DATA" },
   login: { name: "LOGIN" },
   setDesc: { name: "SET_DESCRIPTION" },
-  api: { url: "https://fir-fiverr-a2e6b.appspot.com" },
-  // api: { url: "http://localhost:1337" },
+  // api: { url: "https://fir-fiverr-a2e6b.appspot.com" },
+  api: { url: "http://localhost:1337" },
 }
