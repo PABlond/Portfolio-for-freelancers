@@ -1,6 +1,6 @@
-import {google} from 'googleapis'
+import { google } from "googleapis"
 
-export default async (options:any) => {
+export default async (options: any) => {
   const keys = require("./../../googleCredentials.json")
   const scopes = "https://www.googleapis.com/auth/analytics.readonly"
 
