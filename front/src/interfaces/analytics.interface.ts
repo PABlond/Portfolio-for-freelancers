@@ -15,5 +15,19 @@ export interface IValue {
 }
 
 export interface IPageView {
-    theta: number
+  pageViews: number
+  timeOnPage: number
+  date: String
+}
+
+export interface ITrafficPerformance {
+  pageViews: { x: number; y: number }[]
+  timeOnPage: { x: number; y: number }[]
+  labels: string[]
+}
+
+export interface ISelectionRange {
+  startDate: Date
+  endDate: Date
+  key: String
 }

@@ -3,35 +3,27 @@ import { Container, Row, Col } from "react-bootstrap"
 import getPageViews from "./../../services/getPageViews"
 import Loading from "./../Loading"
 import PageViews from "./PageViews"
-import { IValue, IPageView } from "./../../interfaces/analytics.interface"
-import DatePicker from './DatePicker'
+import { IPageView, ITrafficPerformance } from "./../../interfaces/analytics.interface"
 
 export default () => {
   const [loading, setLoading] = useState<boolean>(true)
-  const [value, setValue] = useState<IValue>({
-    isOpen: false,
-    focus: {
-      angle: 0,
-      angle0: 0,
-      color: 0,
-      radius: 0,
-      radius0: 0,
-      theta: 0,
-      x: 0,
-      y: 0,
-    },
+  const [data, setData] = useState<ITrafficPerformance>({
+    pageViews: [{ x: 0, y: 0 }],
+    timeOnPage: [{ x: 0, y: 0 }],
+    labels: ["1969-01-01"],
   })
-  const [pageViews, setPageViews] = useState<IPageView[]>([{ theta: 0 }])
 
   useEffect(() => {
     ;(async () => {
       const response = await getPageViews("30daysAgo", "today")
-      const data = Object.keys(response).map(val => ({ theta: response[val] }))
-      setPageViews(data)
+      setData({
+        pageViews: response.map((data: IPageView, x:number) => ({ x, y: data.pageViews })),
+        timeOnPage: response.map((data: IPageView, x:number) => ({ x, y: data.timeOnPage })),
+        labels: response.map((data: IPageView, x:number) => x % 2  ? data.date : ""),
+      })
       setLoading(false)
     })()
   }, [])
-
   return loading ? (
     <Loading />
   ) : (
@@ -40,9 +32,10 @@ export default () => {
       {/* <DatePicker /> */}
       <Container className="border p-5">
         <Row>
-          <Col md={6}>
-            <PageViews setPageViews={setPageViews} data={pageViews} value={value} setValue={setValue} />
-          </Col>
+            <PageViews
+              data={data}
+              setData={setData}
+            />
         </Row>
       </Container>
     </Container>

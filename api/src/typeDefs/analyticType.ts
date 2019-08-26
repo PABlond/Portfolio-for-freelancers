@@ -1,5 +1,6 @@
 export default `
 type PageViews {
-    new: Int,
-    returning: Int
+    date: String,
+    pageViews: Int,
+    timeOnPage: Int
 }`

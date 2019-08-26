@@ -1,84 +1,114 @@
 import React, { useState, useEffect } from "react"
 import { Container, Row, Col, Button } from "react-bootstrap"
 // import store from "./../../state/store"
-import { RadialChart, Hint } from "react-vis"
 import {
-  IFocus,
-  IValue,
+  VerticalBarSeries,
+  XAxis,
+  XYPlot,
+  LineSeries,
+  DiscreteColorLegend,
+  YAxis,
+} from "react-vis"
+import {
   IPageView,
+  ITrafficPerformance,
+  ISelectionRange
 } from "./../../interfaces/analytics.interface"
+import store from "./../../state/store"
 import DatePicker from "./DatePicker"
 import moment from "moment"
 import getPageViews from "./../../services/getPageViews"
+import "react-vis/dist/style.css"
 
 export default ({
-  setPageViews,
   data,
-  value,
-  setValue,
+  setData,
 }: {
-  data: IPageView[]
-  value: IValue
-  setValue: any
+  data: ITrafficPerformance
+  setData: any
 }) => {
-  const [selectionRange, setSelectionRange] = useState({
+  const [selectionRange, setSelectionRange] = useState<ISelectionRange>({
     startDate: new Date(),
     endDate: new Date(),
     key: "selection",
   })
   const [showDateRanges, setShowDateRanges] = useState<boolean>(false)
-
-  const handleSelect = async ranges => {
+  const {
+    nav: { width },
+  } = store.getState()
+  const handleSelect = async (ranges: {
+    selection: { startDate: Date; endDate: Date; key: string }
+  }) => {
     const { startDate, endDate } = ranges.selection
-    console.log(
-      moment(startDate).format("YYYY-MM-DD"),
-      moment(endDate).format("YYYY-MM-DD")
-    )
     const response = await getPageViews(
       moment(startDate).format("YYYY-MM-DD"),
       moment(endDate).format("YYYY-MM-DD")
     )
     if (response) {
-      const data = Object.keys(response).map(val => ({ theta: response[val] }))
-      setPageViews(data)
+      setData({
+        pageViews: response.map((data: IPageView, x: number) => ({
+          x,
+          y: data.pageViews,
+        })),
+        timeOnPage: response.map((data: IPageView, x: number) => ({
+          x,
+          y: data.timeOnPage,
+        })),
+        labels: response.map((data: IPageView, x: number) =>
+          response.length > 10 ? (x % 2 ? data.date : "") : data.date
+        ),
+      })
       setSelectionRange(ranges.selection)
       setShowDateRanges(false)
     }
   }
 
+  const tickFormat = (i: number) => {
+    return (
+      <tspan>
+        <tspan x="0" dy="1em">
+          {data.labels[i].slice(4, 8)}
+        </tspan>
+      </tspan>
+    )
+  }
+
   const handleClose = () => setShowDateRanges(false)
   return (
-    <Col md={6}>
-      {showDateRanges ? (
-        <DatePicker
-          selectionRange={selectionRange}
-          handleSelect={handleSelect}
-          handleClose={handleClose}
+    <Container fluid>
+      <div className=" w-100 d-flex justify-content-center mb-2">
+        <h3 className="mr-2">Traffic performance</h3>
+        {showDateRanges ? (
+          <DatePicker
+            selectionRange={selectionRange}
+            handleSelect={handleSelect}
+            handleClose={handleClose}
+          />
+        ) : (
+          <Button onClick={() => setShowDateRanges(true)}>Change Dates</Button>
+        )}
+      </div>
+      {/* {data[0].theta > 0 ? ( */}
+      <XYPlot height={150} width={width * 0.7} xType="ordinal">
+        <XAxis
+          title="Date"
+          titlePosition="middle-under"
+          tickLabelAngle={-90}
+          tickFormat={tickFormat}
         />
-      ) : (
-        <Button onClick={() => setShowDateRanges(true)}>Change Dates</Button>
-      )}{" "}
-      {data[0].theta > 0 ? (
-        <RadialChart
-          width={300}
-          height={300}
-          innerRadius={100}
-          radius={140}
-          getAngle={(d: { theta: number }) => d.theta}
-          data={data}
-          onValueMouseOver={(v: IFocus) => setValue({ isOpen: true, focus: v })}
-          onSeriesMouseOut={() => setValue({ ...value, isOpen: false })}
-          padAngle={0.04}
-        >
-          {value.isOpen ? (
-            <Hint value={value.focus}>
-              <h3>{value.focus.theta}</h3>
-            </Hint>
-          ) : null}
-        </RadialChart>
-      ) : (
+        <DiscreteColorLegend
+          items={["Time on page", "Page view"]}
+          orientation="horizontal"
+          colors={["blue", "red"]}
+        />
+
+        <YAxis />
+        <VerticalBarSeries data={data.timeOnPage} color="blue" />
+        <LineSeries data={data.pageViews} color="red" />
+      </XYPlot>
+      {/* ) : (
         <p>No views</p>
-      )}
-    </Col>
+      )} */}
+    </Container>
   )
 }

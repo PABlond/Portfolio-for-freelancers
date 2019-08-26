@@ -10,22 +10,17 @@ export const getPageViews = async (
   // console.log("getPageViews", args)
   const { from, to, token } = args
   if (await checkToken(token)) {
-    const data = await reqAnalyticsData({
+    const response = await reqAnalyticsData({
       "start-date": from,
       "end-date": to,
-      metrics: "ga:pageviews, ga:sessionDuration",
-      dimensions: "ga:userType"
+      metrics: "ga:pageviews, ga:avgTimeOnPage",
+      dimensions: "ga:date"
     })
-    if (data.rows) {
-    }
-    return data.rows
-      ? {
-          new: data.rows[0][1],
-          returning: data.rows[1][1]
-        }
-      : {
-          new: 0,
-          returning: 0
-        }
+        
+    return response.rows.map(data => ({
+      date: data[0],
+      pageViews: parseInt(data[1]),
+      timeOnPage: parseInt(data[2])
+    }))
   }
 }
