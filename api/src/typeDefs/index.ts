@@ -25,6 +25,6 @@ type Query{
     setHeader (name: String, title: String, subtitle: String, token: String): Header
     sendMessage (name: String, email: String, content: String): String
     isRead (_id: String, token: String): [Contact]
-    getPageViews (from: String, to: String, token: String): PageViews
+    getPageViews (from: String, to: String, token: String): [PageViews]
 }
 `
