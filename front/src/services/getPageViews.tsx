@@ -18,7 +18,6 @@ export default async (from: string, to: string) => {
         }`
     )
     .catch(err => console.log(err))
-    console.log(response)
   if (Object.keys(response).indexOf("errors") == -1)
     return response.data.data.getPageViews
   return []

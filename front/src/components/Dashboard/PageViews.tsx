@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Container, Row, Col, Button } from "react-bootstrap"
-// import store from "./../../state/store"
+import { Row, Button } from "react-bootstrap"
 import {
   VerticalBarSeries,
   XAxis,
@@ -10,7 +9,6 @@ import {
   YAxis,
 } from "react-vis"
 import {
-  IPageView,
   ITrafficPerformance,
   ISelectionRange
 } from "./../../interfaces/analytics.interface"
@@ -22,10 +20,10 @@ import "react-vis/dist/style.css"
 
 export default ({
   data,
-  setData,
+  dispatchData
 }: {
   data: ITrafficPerformance
-  setData: any
+  dispatchData: any
 }) => {
   const [selectionRange, setSelectionRange] = useState<ISelectionRange>({
     startDate: new Date(),
@@ -45,19 +43,7 @@ export default ({
       moment(endDate).format("YYYY-MM-DD")
     )
     if (response) {
-      setData({
-        pageViews: response.map((data: IPageView, x: number) => ({
-          x,
-          y: data.pageViews,
-        })),
-        timeOnPage: response.map((data: IPageView, x: number) => ({
-          x,
-          y: data.timeOnPage,
-        })),
-        labels: response.map((data: IPageView, x: number) =>
-          response.length > 10 ? (x % 2 ? data.date : "") : data.date
-        ),
-      })
+      dispatchData(response)
       setSelectionRange(ranges.selection)
       setShowDateRanges(false)
     }
@@ -75,7 +61,7 @@ export default ({
 
   const handleClose = () => setShowDateRanges(false)
   return (
-    <Container fluid>
+    <Row>
       <div className=" w-100 d-flex justify-content-center mb-2">
         <h3 className="mr-2">Traffic performance</h3>
         {showDateRanges ? (
@@ -85,7 +71,7 @@ export default ({
             handleClose={handleClose}
           />
         ) : (
-          <Button onClick={() => setShowDateRanges(true)}>Change Dates</Button>
+          <p className="text-danger" onClick={() => setShowDateRanges(true)}>Change Dates</p>
         )}
       </div>
       {/* {data[0].theta > 0 ? ( */}
@@ -109,6 +95,6 @@ export default ({
       {/* ) : (
         <p>No views</p>
       )} */}
-    </Container>
+    </Row>
   )
 }

@@ -17,13 +17,15 @@ export interface IValue {
 export interface IPageView {
   pageViews: number
   timeOnPage: number
-  date: String
+  date: string
 }
 
 export interface ITrafficPerformance {
   pageViews: { x: number; y: number }[]
   timeOnPage: { x: number; y: number }[]
-  labels: string[]
+  labels: string[],
+  avgDuration: number, 
+  totalPageViews: number
 }
 
 export interface ISelectionRange {
