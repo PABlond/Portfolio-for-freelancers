@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react"
-import { Row, Button } from "react-bootstrap"
+import React, { useState } from "react"
+import { Row, Col, Container } from "react-bootstrap"
 import {
   VerticalBarSeries,
   XAxis,
   XYPlot,
   LineSeries,
   DiscreteColorLegend,
+  makeWidthFlexible,
   YAxis,
 } from "react-vis"
 import {
   ITrafficPerformance,
-  ISelectionRange
+  ISelectionRange,
 } from "./../../interfaces/analytics.interface"
-import store from "./../../state/store"
 import DatePicker from "./DatePicker"
 import moment from "moment"
 import getPageViews from "./../../services/getPageViews"
@@ -20,7 +20,7 @@ import "react-vis/dist/style.css"
 
 export default ({
   data,
-  dispatchData
+  dispatchData,
 }: {
   data: ITrafficPerformance
   dispatchData: any
@@ -31,9 +31,6 @@ export default ({
     key: "selection",
   })
   const [showDateRanges, setShowDateRanges] = useState<boolean>(false)
-  const {
-    nav: { width },
-  } = store.getState()
   const handleSelect = async (ranges: {
     selection: { startDate: Date; endDate: Date; key: string }
   }) => {
@@ -58,43 +55,54 @@ export default ({
       </tspan>
     )
   }
+  const FlexibleXYPlot = makeWidthFlexible(XYPlot)
 
   const handleClose = () => setShowDateRanges(false)
   return (
-    <Row>
-      <div className=" w-100 d-flex justify-content-center mb-2">
-        <h3 className="mr-2">Traffic performance</h3>
-        {showDateRanges ? (
-          <DatePicker
-            selectionRange={selectionRange}
-            handleSelect={handleSelect}
-            handleClose={handleClose}
-          />
-        ) : (
-          <p className="text-danger" onClick={() => setShowDateRanges(true)}>Change Dates</p>
-        )}
+    <Container fluid className="border pt-3 bg-light">
+    <div className="d-flex justify-content-center align-items-center mb-4">
+      <h3 className="mr-2 text-danger text-center">Traffic performance</h3>
+      {showDateRanges ? (
+        <DatePicker
+          selectionRange={selectionRange}
+          handleSelect={handleSelect}
+          handleClose={handleClose}
+        />
+      ) : (
+        <p className="text-danger" onClick={() => setShowDateRanges(true)}>
+          Change Dates
+        </p>
+      )}
       </div>
-      {/* {data[0].theta > 0 ? ( */}
-      <XYPlot height={150} width={width * 0.7} xType="ordinal">
-        <XAxis
-          title="Date"
-          titlePosition="middle-under"
-          tickLabelAngle={-90}
-          tickFormat={tickFormat}
-        />
-        <DiscreteColorLegend
-          items={["Time on page", "Page view"]}
-          orientation="horizontal"
-          colors={["blue", "red"]}
-        />
-
-        <YAxis />
-        <VerticalBarSeries data={data.timeOnPage} color="blue" />
-        <LineSeries data={data.pageViews} color="red" />
-      </XYPlot>
-      {/* ) : (
-        <p>No views</p>
-      )} */}
+      <Row className="mb-5">
+      <div className=" w-100 d-flex justify-content-center mb-2"></div>
+      <Col md={6}>
+        <h5 className="text-center">Page views</h5>
+        <FlexibleXYPlot height={150} xType="ordinal">
+          <XAxis
+            title="Date"
+            titlePosition="middle-under"
+            tickLabelAngle={-90}
+            tickFormat={tickFormat}
+          />
+          <YAxis />
+          <LineSeries data={data.pageViews} color="red" />
+        </FlexibleXYPlot>
+      </Col>
+      <Col md={6}>
+        <h5 className="text-center">Time on page</h5>
+        <FlexibleXYPlot height={150} xType="ordinal">
+          <XAxis
+            title="Date"
+            titlePosition="middle-under"
+            tickLabelAngle={-90}
+            tickFormat={tickFormat}
+          />
+          <YAxis />
+          <VerticalBarSeries data={data.timeOnPage} color="blue" />
+        </FlexibleXYPlot>
+      </Col>
     </Row>
+    </Container>
   )
 }

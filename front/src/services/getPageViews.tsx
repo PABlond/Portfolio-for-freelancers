@@ -10,14 +10,21 @@ export default async (from: string, to: string) => {
     .get(
       `${url}/graphql?query={
             getPageViews(from: "${from}", to: "${to}", token: "${getUser().token}") {
-              date
-              pageViews
-              timeOnPage
+              traffic {
+                date
+                pageViews
+                timeOnPage
+              }
+              op {
+                device
+                count
+              }
             }
   
         }`
     )
     .catch(err => console.log(err))
+    console.log(response)
   if (Object.keys(response).indexOf("errors") == -1)
     return response.data.data.getPageViews
   return []

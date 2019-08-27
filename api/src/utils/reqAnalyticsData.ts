@@ -1,6 +1,6 @@
 import { google } from "googleapis"
 
-export default async (options: any) => {
+export default async (optionsViews: any, optionsOp: any) => {
   const keys = require("./../../googleCredentials.json")
   const scopes = "https://www.googleapis.com/auth/analytics.readonly"
 
@@ -17,8 +17,16 @@ export default async (options: any) => {
     ids: "ga:" + view_id,
     "start-date": "30daysAgo",
     "end-date": "today",
-    ...options
+    ...optionsViews
   })
 
-  return result.data
+  const opSystem = await google.analytics("v3").data.ga.get({
+    auth: jwt,
+    ids: "ga:" + view_id,
+    "start-date": "30daysAgo",
+    "end-date": "today",
+    ...optionsOp
+  })
+  console.log(opSystem)
+  return [result.data, opSystem.data]
 }
