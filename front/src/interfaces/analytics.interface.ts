@@ -20,16 +20,27 @@ export interface IPageView {
   date: string
 }
 
+export interface IOp {
+  device: string
+  count: number
+}
+
 export interface ITrafficPerformance {
   pageViews: { x: number; y: number }[]
   timeOnPage: { x: number; y: number }[]
-  labels: string[],
-  avgDuration: number, 
+  labels: string[]
+  avgDuration: number
   totalPageViews: number
+  op: IOp[]
 }
 
 export interface ISelectionRange {
   startDate: Date
   endDate: Date
   key: String
+}
+
+export interface IResponse {
+  traffic: IPageView[]
+  op: IOp[]
 }
