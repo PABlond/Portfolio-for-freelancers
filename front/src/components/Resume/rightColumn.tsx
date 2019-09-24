@@ -51,7 +51,7 @@ export default () => {
           <Text style={styles.skill1}> Javascript / ECMAScript</Text>
         </View>
         <View style={styles.barsContent}>
-          <Text style={styles.skill2}> React.Js / React Native</Text>
+          <Text style={styles.skill2}> React / React Native</Text>
         </View>
         <View style={styles.barsContent}>
           <Text style={styles.skill3}> Express</Text>
@@ -63,6 +63,7 @@ export default () => {
           <Text style={styles.skill5}> TypeScript</Text>
         </View>
       </View>
+      <Text style={styles.generation}>This resume was generated from PABlond.com using react-pdf</Text>
     </View>
   )
 }

@@ -9,7 +9,7 @@ export default () => {
   
   return (
   <Document>
-    <Page size="A4" style={styles.body}>
+    <Page size="A4" style={styles.body}  pageIndex={1}>
         <ResumeHeader />
       <View style={styles.sections}>
         <ResumeLeftColumn />

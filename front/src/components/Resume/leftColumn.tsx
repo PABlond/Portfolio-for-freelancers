@@ -14,10 +14,11 @@ export default () => {
           .split("<strong>")
           .join("")
           .split("</strong>")
-          .join()
+          .join("")
       }
     })
     .filter(Boolean)
+    console.log(description)
   return (
     <View style={styles.section}>
       <View style={styles.profile}>
