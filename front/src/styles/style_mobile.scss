@@ -1,0 +1,61 @@
+@media only screen and (max-width: 768px) {
+  // ***********************************************************
+  // ***********************************************************
+  //                      Header
+  // ***********************************************************
+  // ***********************************************************
+
+  #header {
+    div {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 3.5rem;
+      }
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  // ***********************************************************
+  // ***********************************************************
+  //                       About
+  // ***********************************************************
+  // ***********************************************************
+
+//   #about {
+//     background: linear-gradient(
+//         rgba(231, 230, 253, 0.78),
+//         rgba(245, 249, 251, 0.49)
+//       ),
+//       url("https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg");
+//     background-size: cover;
+//     background-position: top;
+  
+//     #about-top {
+//       height: inherit;
+//       width: 100%;
+//       display: block;
+//       padding-top: 50px;
+  
+//       .col-md-3 {
+//         display: flex;
+//         justify-content: center;
+//         margin-bottom: 20px;
+  
+//         img {
+//           max-width: 200px;
+//         }
+//       }
+//     }
+  
+//     #about-bottom {
+//       height: inherit;
+//       margin-top: 20px;
+//     }
+//   }
+}

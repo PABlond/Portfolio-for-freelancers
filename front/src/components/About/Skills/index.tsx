@@ -3,25 +3,21 @@ import { ForceGraph2D } from "react-force-graph"
 import { Container, Row, Col, Tabs, Tab } from "react-bootstrap"
 import store from "./../../../state/store"
 import Certifications from "./../Certifications"
-import { skills as skillsStyle } from "./../../../styles/style"
-import { ISkill,ISkillTab } from "../../../interfaces/about.interface"
+import { ISkill, ISkillTab } from "../../../interfaces/about.interface"
 
 export default () => {
   const props: any = store.getState()
   const { width, height }: { width: number; height: number } = props.nav
   const { skills }: { skills: ISkill[] } = props.content.about
-  const style: any = skillsStyle({ width, height })
-  const tabs: ISkillTab[] = skills.map(
-    (skill: ISkill) => {
-      const { title, nodes, links } = skill
-      return {
-        title,
-        data: { nodes, links },
-      }
+  const tabs: ISkillTab[] = skills.map((skill: ISkill) => {
+    const { title, nodes, links } = skill
+    return {
+      title,
+      data: { nodes, links },
     }
-  )
+  })
   return (
-    <Container fluid={true} style={style.container} className="pl-0 pr-0">
+    <Container fluid={true} id="about-bottom" className="pl-0 pr-0">
       <Row style={{ background: "#191919" }}>
         <Col md={6}>
           <Tabs

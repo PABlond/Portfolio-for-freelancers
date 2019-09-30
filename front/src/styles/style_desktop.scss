@@ -6,8 +6,46 @@ $red: #ff5858;
 body {
   margin: 0 !important;
 }
-@media (min-width: 768px) {
+
+#contact-button {
+  background: #61234e !important;
+  border: 1px solid #61234e !important;
+
+  &:hover {
+    background: $light !important;
+    color: #61234e !important;
+  }
 }
+
+i {
+  color: $dark;
+
+  &:hover {
+    color: $light;
+    background: $dark;
+    transition: 1s;
+    border-radius: 5px;
+  }
+}
+
+.List {
+  width: 100%;
+}
+
+.dragged {
+  opacity: 0.7;
+}
+
+.placeholder {
+  opacity: 0.5;
+}
+
+// ***********************************************************
+// ***********************************************************
+//                      Header
+// ***********************************************************
+// ***********************************************************
+
 #header {
   height: 100vh;
   display: flex;
@@ -21,44 +59,54 @@ body {
   background-size: cover;
   color: $light;
 
+  div {
+    h1 {
+      font-size: 4rem;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: 6rem;
+      letter-spacing: 3px;
+    }
+  }
   p {
-    font-size: 1.5rem;
-    color: $light;
+    font-size: 2rem;
   }
 }
 
-#contact-button {
-  background: #61234e!important;
-  border: 1px solid #61234e!important;
+// ***********************************************************
+// ***********************************************************
+//                       About
+// ***********************************************************
+// ***********************************************************
 
-  &:hover {
-    background: $light!important;
-    color: #61234e!important
+#about {
+  background: linear-gradient(
+      rgba(231, 230, 253, 0.78),
+      rgba(245, 249, 251, 0.49)
+    ),
+    url("https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg");
+  background-size: cover;
+  background-position: top;
+  padding-top: 3rem;
+
+  #about-top {
+    width: 100%;
+    padding-bottom: 1rem;
+
+    #about-img {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+
+  #about-bottom {
+    margin-top: 0;
   }
 }
-
-i{
-  color:$dark;
-
-  &:hover {
-    color: $light;
-    background: $dark;
-    transition: 1s;
-    border-radius: 5px
-  }
-}
-
-.List {
-  width: 100%
-}
-
-.dragged {
-  opacity: 0.7;
-}
-
-.placeholder {
-opacity: 0.5;
-}
-
-
-@import '~bootstrap/scss/bootstrap.scss';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import "./../styles/style_desktop.scss"
+import "./../styles/style.scss"
 import constants from "../state/constants"
 import store from "../state/store"
 import App from "../components/App"
