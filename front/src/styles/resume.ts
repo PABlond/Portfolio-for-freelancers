@@ -66,9 +66,9 @@ export default StyleSheet.create({
     paddingBottom: 5,
   },
   experienceTechnos: {
-    marginTop: 3,
+    marginTop: 2,
     textAlign: "right",
-    fontStyle: "italic",
+    fontFamily: "Times-Italic",
   },
   certifications: {
     marginTop: 15,
@@ -90,23 +90,29 @@ export default StyleSheet.create({
     color: "#fff",
   },
   skill2: {
-    width: "90%",
+    width: "95%",
     backgroundColor: "#6C459B",
     color: "#fff",
   },
   skill3: {
-    width: "85%",
+    width: "90%",
     backgroundColor: "#20144F",
     color: "#fff",
   },
   skill4: {
-    width: "75%",
+    width: "90%",
     backgroundColor: "#9664AC",
     color: "#fff",
   },
   skill5: {
-    width: "70%",
+    width: "80%",
     backgroundColor: "#BB7EB8",
     color: "#fff",
-  }
+  },
+  generation: {
+    marginTop: 27,
+    fontSize: 11,
+    color: "#20144F",
+    fontFamily: "Times-Italic",
+  },
 })

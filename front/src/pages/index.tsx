@@ -1,10 +1,15 @@
-import React, { useEffect } from "react"
-import "./../styles/style_desktop.scss"
+import React, { useEffect, useState } from "react"
+import "./../styles/style.scss"
 import constants from "../state/constants"
 import store from "../state/store"
 import App from "../components/App"
+import { graphql } from "gatsby"
+import dispatchFullContent from "./../state/actions/dispatchFullContent"
+import Loading from "./../components/Loading"
 
-export default () => {
+export default ({ data }: any) => {
+  const [loading, setLoading] = useState(true)
+  console.log("DATA", data)
   const updateDimensions: () => any = () => {
     const { setNav }: { setNav: { name: string } } = constants
     const {
@@ -21,6 +26,56 @@ export default () => {
     updateDimensions()
     window.addEventListener("resize", updateDimensions)
   })
-  
-  return <App />
+
+  useEffect(() => {
+    if (loading) {
+      dispatchFullContent(data.API)
+      setLoading(false)
+    }
+  }, [])
+
+  return !loading ? <App /> : <Loading />
 }
+
+export const query = graphql`
+  query MyQuery {
+    API {
+      works {
+        content
+        image
+        position
+        technos
+        title
+      }
+      header {
+        name
+        subtitle
+        title
+      }
+      about {
+        img {
+          alt
+          href
+        }
+        certifications {
+          thumbnail
+        }
+        skills {
+          title
+          nodes {
+            group
+            id
+          }
+          links {
+            source
+            target
+            value
+          }
+        }
+        description {
+          content
+        }
+      }
+    }
+  }
+`

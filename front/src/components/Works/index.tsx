@@ -1,24 +1,22 @@
 import React from "react"
 import { Container, Row, Col, Image } from "react-bootstrap"
 import store from "./../../state/store"
-import { works as worksStyle } from "./../../styles/style"
 import { IWork } from "../../interfaces/works.interface"
 
 export default () => {
   const props = store.getState()
   const { works }: { works: IWork[] } = props.content
   const { height, width }: { height: number; width: number } = props.nav
-  const style = worksStyle({ height, width })
   const imgStyle = { maxHeight: height / 7 }
   return (
-    <Container fluid={true} style={style.container} id="works">
-      <h2 style={style.h2}>Previous Work</h2>
+    <Container fluid={true} id="works">
+      <h2>Previous Work</h2>
       <Container>
-        <Row style={style.row}>
+        <Row>
           {works.map((work: IWork, i: number) =>
             i < 8 ? (
               <Col md={3} key={i}>
-                <div className="m-3" style={style.col}>
+                <div className="m-3">
                   <h4>{work.title}</h4>
                   <Image
                     src={work.image}
