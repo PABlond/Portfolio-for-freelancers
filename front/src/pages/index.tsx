@@ -38,7 +38,7 @@ export default ({ data }: any) => {
 }
 
 export const query = graphql`
-  query MyQuery {
+  query HomeData {
     API {
       works {
         content
