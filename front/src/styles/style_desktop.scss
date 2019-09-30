@@ -110,3 +110,76 @@ i {
     margin-top: 0;
   }
 }
+
+// ***********************************************************
+// ***********************************************************
+//                       Works
+// ***********************************************************
+// ***********************************************************
+
+#works {
+  height: inherit;
+  padding-top: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  h2 {
+    text-align: center;
+    color: rgb(235, 255, 251);
+    background: rgb(3, 37, 53);
+    padding: 10px;
+  }
+
+  .container {
+    .row {
+      .col-md-3 {
+        .m-3 {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+// ***********************************************************
+// ***********************************************************
+//                       Contact
+// ***********************************************************
+// ***********************************************************
+
+#contact {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(97, 35, 78);
+
+  h1 {
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    color: rgb(235, 255, 251);
+    font-size: 3rem;
+  }
+  form {
+    margin: inherit;
+    padding: 30px;
+    background: rgb(235, 255, 251);
+    border-radius: 5px;
+
+    .form-group {
+      width: 50vw;
+    }
+
+    .contact-button {
+      background: #61234e !important;
+      border: 1px solid #61234e !important;
+    }
+  }
+}

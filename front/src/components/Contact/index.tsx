@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import store from "./../../state/store"
 import { Container, Form, Button } from "react-bootstrap"
-import { contact as contactStyle } from "./../../styles/style"
 import sendMessage from "./../../services/sendMessage"
 
 export default () => {
@@ -28,13 +27,11 @@ export default () => {
       [e.target.name]: e.target.value,
     })
 
-  const { width, height } = store.getState().nav
-  const style = contactStyle({ width, height })
   return (
-    <Container fluid style={style.container}>
-      <h1 style={style.h1}>Want to hire me ?</h1>
-      <Form style={style.form} onSubmit={onSubmit}>
-        <Form.Group style={style.group}>
+    <Container id="contact" fluid>
+      <h1>Want to hire me ?</h1>
+      <Form onSubmit={onSubmit}>
+        <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
@@ -44,7 +41,7 @@ export default () => {
             onChange={updateField}
           />
         </Form.Group>
-        <Form.Group style={style.group}>
+        <Form.Group>
           <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
@@ -54,7 +51,7 @@ export default () => {
             onChange={updateField}
           />
         </Form.Group>
-        <Form.Group style={style.group}>
+        <Form.Group>
           <Form.Label>Message</Form.Label>
           <Form.Control
             as="textarea"
@@ -65,10 +62,10 @@ export default () => {
           />
         </Form.Group>
         <Button
+        block
           type="submit"
           id="contact-button"
           variant="danger"
-          style={style.submit}
         >
           SUBMIT
         </Button>

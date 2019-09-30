@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Container, Row, Image, Modal, Button } from "react-bootstrap"
 import store from "./../../state/store"
-import { works as worksStyle } from "./../../styles/style"
 import setWorks from "./../../services/setWorks"
 import dispatchFullContent from "./../../state/actions/dispatchFullContent"
 import { IWork, IShowEdit } from "../../interfaces/works.interface"
@@ -11,7 +10,6 @@ export default () => {
   const props = store.getState()
   const { works }: { works: IWork[] } = props.content
   const { height, width } = props.nav
-  const style = worksStyle({ height, width })
   const imgStyle = { maxHeight: height / 7 }
 
   const [worksState, setWorksState] = useState<IWork[]>(works)
@@ -40,9 +38,9 @@ export default () => {
       i < 8
         ? {
             content: (
-              <div key={i} className="m-3" style={style.col}>
+              <div key={i} className="m-3">
                 <h4>{work.title}</h4>
-                <Image src={work.image} alt={work.alt} fluid style={imgStyle} />
+                <Image src={work.image} alt={work.alt} fluid/>
                 <p>{work.content}</p>
                 <p className="technos">{work.technos}</p>
                 <Button id="contact-button" onClick={() => setShow({ value: true, work, i })}>
@@ -67,10 +65,10 @@ export default () => {
 
   const handleClose = () => setShow({ ...show, value: false })
   return (
-    <Container fluid={true} style={style.container} id="works">
-      <h2 style={style.h2}>Previous Work</h2>
+    <Container fluid={true}id="works">
+      <h2>Previous Work</h2>
       <Container>
-        <Row style={style.row}>
+        <Row>
           <DragSortableList
             items={dragableList}
             dropBackTransitionDuration={0.3}
