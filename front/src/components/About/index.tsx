@@ -4,6 +4,8 @@ import { Container, Col, Row } from "react-bootstrap"
 import store from "./../../state/store"
 import { IAbout, IDescription } from "../../interfaces/about.interface"
 import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa"
+import { StaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 export default () => {
   const props = store.getState()
@@ -16,10 +18,21 @@ export default () => {
         className="justify-content-center align-items-center flex-columns"
       >
         <div id="about-img">
-          <img
-            src={about.img.href}
-            alt={about.img.alt}
-            className="img-fluid rounded-circle"
+          <StaticQuery
+            query={graphql`
+              query {
+                file(relativePath: { eq: "images/pablond.jpg" }) {
+                  childImageSharp {
+                    fixed(width: 150) {
+                      ...GatsbyImageSharpFixed
+                    }
+                  }
+                }
+              }
+            `}
+            render={(data: any) => {
+              return <Img {...data.file.childImageSharp} />
+            }}
           />
         </div>
         <div>

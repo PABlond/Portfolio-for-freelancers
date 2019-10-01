@@ -9,7 +9,13 @@ module.exports = {
     author: `Pierre-Alexis Blond`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/`,
+      },
+    },
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
@@ -17,10 +23,6 @@ module.exports = {
         head: false,
       },
     },
-    "gatsby-plugin-typescript",
-    `gatsby-plugin-sass`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-plugin-apollo",
       options: {
@@ -38,5 +40,11 @@ module.exports = {
         url: `${process.env.API_URL}/graphql`,
       },
     },
+    `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-typescript",
+    `gatsby-plugin-sass`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-json`,
   ],
 }
