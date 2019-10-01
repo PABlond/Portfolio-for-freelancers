@@ -4,10 +4,11 @@ import store from "./../../state/store"
 import { IWork } from "../../interfaces/works.interface"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import works from "./../../assets/json/works"
 
 export default () => {
   const props = store.getState()
-  const { works }: { works: IWork[] } = props.content
+
   const { height, width }: { height: number; width: number } = props.nav
   const imgStyle = { height: 200 }
   return (
@@ -32,7 +33,6 @@ export default () => {
               }
             `}
             render={(data: any) => {
-              console.log("works", data.allFile.edges.map(img => img.node.childImageSharp))
               return (
                 <>
                   {works.map((work: IWork, i: number) =>
@@ -45,12 +45,6 @@ export default () => {
                               {...data.allFile.edges[i].node.childImageSharp}
                             />
                           </div>
-                          {/* <Image
-                          src={work.image}
-                          alt={work.alt}
-                          fluid
-                          style={imgStyle}
-                        /> */}
                           <p>{work.content}</p>
                           <p className="technos">{work.technos}</p>
                         </div>
@@ -65,8 +59,8 @@ export default () => {
       </Container>
       <div>
         <h4>
-          More Project on <a href="https://github.com/PABlond">Github</a> (18
-          public repositories)
+          More Project on <a href="https://github.com/PABlond">Github</a> (more
+          than 20 public repositories)
         </h4>
       </div>
     </Container>

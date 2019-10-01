@@ -40,26 +40,12 @@ export default ({ data }: any) => {
 export const query = graphql`
   query HomeData {
     API {
-      works {
-        content
-        image
-        position
-        technos
-        title
-      }
       header {
         name
         subtitle
         title
       }
       about {
-        img {
-          alt
-          href
-        }
-        certifications {
-          thumbnail
-        }
         skills {
           title
           nodes {

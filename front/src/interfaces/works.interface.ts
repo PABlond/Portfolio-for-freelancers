@@ -1,7 +1,5 @@
 export interface IWork {
     title: string
-    image: string
-    alt: string
     content: string
     technos: string
 }
