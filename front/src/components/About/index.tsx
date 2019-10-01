@@ -21,7 +21,7 @@ export default () => {
           <StaticQuery
             query={graphql`
               query {
-                file(relativePath: { eq: "images/pablond.jpg" }) {
+                file(relativePath: { eq: "pablond.jpg" }) {
                   childImageSharp {
                     fixed(width: 150) {
                       ...GatsbyImageSharpFixed

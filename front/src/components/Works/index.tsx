@@ -7,7 +7,7 @@ export default () => {
   const props = store.getState()
   const { works }: { works: IWork[] } = props.content
   const { height, width }: { height: number; width: number } = props.nav
-  const imgStyle = { maxHeight: height / 7 }
+  const imgStyle = { maxHeight: 200 }
   return (
     <Container fluid={true} id="works">
       <h2>Previous Work</h2>
