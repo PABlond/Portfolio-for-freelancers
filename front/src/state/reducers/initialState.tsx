@@ -12,7 +12,9 @@ export default {
       title: "",
       subtitle: ""
     },
-    contacts: []
+    contacts: [],
+    md: [],
+    description: ""
   },
   user: {
     token: undefined,

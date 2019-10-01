@@ -9,7 +9,7 @@ import Img from "gatsby-image"
 
 export default () => {
   const props = store.getState()
-  const { about }: { about: IAbout } = props.content
+  const { description }: { description: string } = props.content
 
   return (
     <Container fluid={true} id="about">
@@ -31,20 +31,20 @@ export default () => {
               }
             `}
             render={(data: any) => {
-              return <Img {...data.file.childImageSharp} 
-              className="rounded-circle"
-             />
+              return (
+                <Img
+                  {...data.file.childImageSharp}
+                  className="rounded-circle"
+                />
+              )
             }}
           />
         </div>
         <div>
-          {about.description.map((desc: IDescription, i: number) => (
-            <p
-              key={i}
-              className="text-center"
-              dangerouslySetInnerHTML={{ __html: desc.content }}
-            />
-          ))}
+          <div
+            dangerouslySetInnerHTML={{ __html: description }}
+            className="text-center"
+          />
           <div className="d-flex align-items-center mt-1 mb-1 justify-content-center">
             <a
               href="https://www.linkedin.com/in/pierre-alexis-blond-00924b158/"
