@@ -9,7 +9,7 @@ import Loading from "./../components/Loading"
 
 export default ({ data }: any) => {
   const [loading, setLoading] = useState(true)
-  console.log("DATA", data)
+
   const updateDimensions: () => any = () => {
     const { setNav }: { setNav: { name: string } } = constants
     const {
