@@ -66,7 +66,7 @@ module.exports = {
       options: {
         plugins: ["gatsby-remark-component"]
       }
-    }
+    },
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-typescript",
     `gatsby-plugin-sass`,

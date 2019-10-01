@@ -23,7 +23,7 @@ export default () => {
                   edges {
                     node {
                       childImageSharp {
-                        fixed(width: 200) {
+                        fixed(width: 195) {
                           ...GatsbyImageSharpFixed
                         }
                       }
