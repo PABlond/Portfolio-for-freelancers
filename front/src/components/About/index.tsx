@@ -3,15 +3,16 @@ import Skills from "./Skills"
 import { Container, Col, Row } from "react-bootstrap"
 import store from "./../../state/store"
 import { IAbout, IDescription } from "../../interfaces/about.interface"
+import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa"
 
 export default () => {
   const props = store.getState()
   const { about }: { about: IAbout } = props.content
-  
+
   return (
     <Container fluid={true} id="about">
       <div
-      id="about-top"
+        id="about-top"
         className="justify-content-center align-items-center flex-columns"
       >
         <div id="about-img">
@@ -34,13 +35,25 @@ export default () => {
               href="https://www.linkedin.com/in/pierre-alexis-blond-00924b158/"
               target="_blank"
             >
-              <i className="fab fa-linkedin-in fa-2x ml-1 p-1 pr-2 pl-2"></i>
+              <FaLinkedinIn
+                size="1.5em"
+                color="#212529"
+                className="fa-2x ml-1 p-1 pr-2 pl-2"
+              />
             </a>
             <a href="https://twitter.com/_pablond" target="_blank">
-              <i className="fab fa-twitter fa-2x ml-1 p-1 pr-2 pl-2"></i>
+              <FaTwitter
+                size="1.5em"
+                color="#212529"
+                className="fa-2x ml-1 p-1 pr-2 pl-2"
+              />
             </a>
             <a href="https://github.com/PABlond" target="_blank">
-              <i className="fab fa-github fa-2x ml-1 mr-1 p-1 pr-2 pl-2"></i>
+              <FaGithub
+                size="1.5em"
+                color="#212529"
+                className="fa-2x ml-1 p-1 pr-2 pl-2"
+              />
             </a>
           </div>
         </div>

@@ -64,6 +64,5 @@ export default () => (
       sizes="512x512"
       href="/icons/icon-512x512.png?v=008654519ce705ac7bc44303a9014606"
     />
-    <script src="https://kit.fontawesome.com/a3e56ad4f9.js"></script>
   </Helmet>
 )
