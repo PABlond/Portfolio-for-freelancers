@@ -36,21 +36,21 @@ export default () => {
               target="_blank"
             >
               <FaLinkedinIn
-                size="1.5em"
+                size="2em"
                 color="#212529"
                 className="fa-2x ml-1 p-1 pr-2 pl-2"
               />
             </a>
             <a href="https://twitter.com/_pablond" target="_blank">
               <FaTwitter
-                size="1.5em"
+                size="2em"
                 color="#212529"
                 className="fa-2x ml-1 p-1 pr-2 pl-2"
               />
             </a>
             <a href="https://github.com/PABlond" target="_blank">
               <FaGithub
-                size="1.5em"
+                size="2em"
                 color="#212529"
                 className="fa-2x ml-1 p-1 pr-2 pl-2"
               />
