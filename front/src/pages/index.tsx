@@ -29,7 +29,7 @@ export default ({ data }: any) => {
 
   useEffect(() => {
     if (loading) {
-      dispatchFullContent(data.API)
+      dispatchFullContent({ api: data.API, md: data.allMarkdownRemark.edges })
       setLoading(false)
     }
   }, [])
@@ -40,26 +40,12 @@ export default ({ data }: any) => {
 export const query = graphql`
   query HomeData {
     API {
-      works {
-        content
-        image
-        position
-        technos
-        title
-      }
       header {
         name
         subtitle
         title
       }
       about {
-        img {
-          alt
-          href
-        }
-        certifications {
-          thumbnail
-        }
         skills {
           title
           nodes {
@@ -72,8 +58,15 @@ export const query = graphql`
             value
           }
         }
-        description {
-          content
+      }
+    }
+    allMarkdownRemark {
+      edges {
+        node {
+          html
+          frontmatter {
+            title
+          }
         }
       }
     }

@@ -40,7 +40,6 @@ export default () => {
             }
           `}
           render={(data: any) => {
-            console.log("certs", data)
             return (
               <Carousel
                 activeIndex={index}
