@@ -31,7 +31,9 @@ export default () => {
               }
             `}
             render={(data: any) => {
-              return <Img {...data.file.childImageSharp} />
+              return <Img {...data.file.childImageSharp} 
+              className="rounded-circle"
+             />
             }}
           />
         </div>
