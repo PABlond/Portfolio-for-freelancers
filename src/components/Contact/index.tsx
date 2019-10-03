@@ -41,7 +41,27 @@ export default ({ hidden }: { hidden: Boolean }) => {
   return (
     <Container fluid hidden={!!hidden}>
       <h1>Want to hire me ?</h1>
-      <Form
+      <form name="contact" method="POST" data-netlify="true">
+        <p>
+          <label>
+            Your Name: <input type="text" name="name" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your Email: <input type="email" name="email" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message: <textarea name="message"></textarea>
+          </label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
+      {/* <Form
         data-netlify="true"
         onSubmit={onSubmit}
         className="offset-md-3 col-md-6"
@@ -88,7 +108,7 @@ export default ({ hidden }: { hidden: Boolean }) => {
         <Button block type="submit" id="contact-button" variant="danger">
           SUBMIT
         </Button>
-      </Form>
+      </Form> */}
     </Container>
   )
 }
