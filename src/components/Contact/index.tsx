@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Container, Form, Button } from "react-bootstrap"
 
-export default () => {
+export default ({ hidden }: { hidden: Boolean }) => {
   const [form, setValues] = useState({
     email: "",
     name: "",
@@ -39,9 +39,13 @@ export default () => {
     })
 
   return (
-    <Container fluid>
+    <Container fluid style={{ display: hidden ? "none" : "inherit" }}>
       <h1>Want to hire me ?</h1>
-      <Form data-netlify="true" onSubmit={onSubmit} className="offset-md-3 col-md-6">
+      <Form
+        data-netlify="true"
+        onSubmit={onSubmit}
+        className="offset-md-3 col-md-6"
+      >
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control
