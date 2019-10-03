@@ -41,20 +41,20 @@ export default () => {
   return (
     <Container fluid>
       <h1>Want to hire me ?</h1>
-      <form name="contact" netlify>
-        <p>
-          <label>
-            Name <input type="text" name="name" />
-          </label>
-        </p>
-        <p>
-          <label>
-            Email <input type="email" name="email" />
-          </label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
+      <form
+        name="JSX Form"
+        method="POST"
+        data-netlify="true"
+        data-netlify-recaptcha="true"
+      >
+        <input type="hidden" name="form-name" value="JSX Form" />
+        <label>Your Email:</label>
+        <input type="email" name="email" />
+        <br />
+        <label>Message:</label>
+        <textarea name="message" />
+        <br />
+        <button type="submit">Send</button>
       </form>
       {/* <Form
         data-netlify="true"
