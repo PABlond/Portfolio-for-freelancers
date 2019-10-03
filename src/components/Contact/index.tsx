@@ -87,6 +87,28 @@ export default () => {
                 >
                   SUBMIT
                 </Button>
+                <form
+                  name="TFT Contact Form"
+                  method="POST"
+                  data-netlify="true"
+                  type="hidden"
+                  class="hidden"
+                  hidden
+                >
+                  <p>
+                    <label>
+                      Your Name: <input type="text" name="name" />
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      Message: <textarea name="message"></textarea>
+                    </label>
+                  </p>
+                  <p>
+                    <button type="submit">Send</button>
+                  </p>
+                </form>
               </>
             )}
           </div>
