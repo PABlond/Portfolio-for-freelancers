@@ -39,7 +39,7 @@ export default ({ hidden }: { hidden: Boolean }) => {
     })
 
   return (
-    <Container fluid style={{ display: hidden ? "none" : "block" }}>
+    <Container fluid hidden={!!hidden}>
       <h1>Want to hire me ?</h1>
       <Form
         data-netlify="true"
@@ -50,7 +50,12 @@ export default ({ hidden }: { hidden: Boolean }) => {
         data-netlify-honeypot="bot-field"
       >
         <input type="hidden" name="bot-field" />
-        <input type="hidden" name="form-name" value="contact" />
+        <div hidden>
+          <label>
+            Don’t fill this out:{" "}
+            <input name="bot-field" onChange={updateField} />
+          </label>
+        </div>
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control
