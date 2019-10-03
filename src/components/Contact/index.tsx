@@ -1,14 +1,17 @@
 import React, { useState } from "react"
 import { Container, Form, Button } from "react-bootstrap"
 
-export default () => {
+export default ({ hidden }: { hidden: Boolean }) => {
   const [form, setValues] = useState({
     email: "",
     name: "",
     content: "",
   })
 
-  const [response, setResponse] = useState<string | undefined>(undefined)
+  const [response, setResponse] = useState<{
+    status: Boolean
+    content: string | undefined
+  }>({ status: false, content: undefined })
 
   const encode = (data: any) => {
     return Object.keys(data)
@@ -16,19 +19,25 @@ export default () => {
       .join("&")
   }
 
-  const onSubmit = (e: any) => {
+  const onSubmit = async (e: any) => {
     e.preventDefault()
     console.log(form)
-    fetch("/", {
+    await fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...form }),
+    }).catch((error: Error) => {
+      console.log(error)
+      setResponse({
+        status: false,
+        content:
+          "An error occured, please send an email to pierre-alexis.blond@live.fr",
+      })
     })
-      .then(() =>
-        setResponse("Your message has been sent. I will answer you soon")
-      )
-      .catch(error => alert(error))
-
+    setResponse({
+      status: true,
+      content: "Your message has been sent. I will contact you soon !",
+    })
     setValues({
       email: "",
       name: "",
@@ -43,7 +52,7 @@ export default () => {
     })
 
   return (
-    <Container fluid>
+    <Container fluid hidden={!!hidden}>
       <h1>Want to hire me ?</h1>
       <Form
         data-netlify="true"
@@ -92,7 +101,15 @@ export default () => {
         <Button block type="submit" id="contact-button" variant="danger">
           SUBMIT
         </Button>
-        {response && <p className="text-center text-info">{response}</p>}
+        {response.content && (
+          <p
+            className={`text-center ${
+              response.status ? "text-info" : "text-danger"
+            }`}
+          >
+            {response.content}
+          </p>
+        )}
       </Form>
     </Container>
   )
