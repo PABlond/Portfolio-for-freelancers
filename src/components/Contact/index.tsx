@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Container, Form, Button } from "react-bootstrap"
 
-export default ({ hidden }: { hidden: Boolean }) => {
+export default () => {
   const [form, setValues] = useState({
     email: "",
     name: "",
@@ -41,20 +41,15 @@ export default ({ hidden }: { hidden: Boolean }) => {
   return (
     <Container fluid>
       <h1>Want to hire me ?</h1>
-      <form name="contact" method="POST" data-netlify="true">
+      <form name="contact" netlify>
         <p>
           <label>
-            Your Name: <input type="text" name="name" />
+            Name <input type="text" name="name" />
           </label>
         </p>
         <p>
           <label>
-            Your Email: <input type="email" name="email" />
-          </label>
-        </p>
-        <p>
-          <label>
-            Message: <textarea name="message"></textarea>
+            Email <input type="email" name="email" />
           </label>
         </p>
         <p>

@@ -65,13 +65,13 @@ const Home = ({ data, dispatchFullContent }: any) => {
         <Works />
       </section>
       <section id="contact">
-        <Contact hidden={false} />
+        <Contact />
       </section>
     </>
   ) : (
     <>
       <Loading />
-      <Contact hidden={true} />
+      <Contact />
     </>
   )
 }
