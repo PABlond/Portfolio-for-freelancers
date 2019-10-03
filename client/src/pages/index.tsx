@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import { connect } from "react-redux"
 import { dispatchContent } from "./../config/constants"
@@ -9,8 +9,11 @@ import Skills from "./../components/Skills"
 import Certifications from "./../components/Certifications"
 import Works from "./../components/Works"
 import Contact from "./../components/Contact"
+import Loading from "./../components/Loading"
 
 const Home = ({ data, dispatchFullContent }: any) => {
+  const [loading, setLoading] = useState<Boolean>(true)
+
   useEffect(() => {
     const header = data.allMarkdownRemark.edges
       .map((mod: any) =>
@@ -34,8 +37,9 @@ const Home = ({ data, dispatchFullContent }: any) => {
       return certification.node.childImageSharp
     })
     dispatchFullContent({ header, about, certifications, works })
+    setLoading(false)
   }, [])
-  return (
+  return !loading ? (
     <>
       <Header />
       <section id="about">
@@ -58,6 +62,8 @@ const Home = ({ data, dispatchFullContent }: any) => {
         <Contact />
       </section>
     </>
+  ) : (
+    <Loading />
   )
 }
 
