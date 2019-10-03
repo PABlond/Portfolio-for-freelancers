@@ -49,6 +49,7 @@ export default ({ hidden }: { hidden: Boolean }) => {
         action="/"
         data-netlify-honeypot="bot-field"
       >
+        <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact" />
         <Form.Group>
           <Form.Label>Email</Form.Label>
