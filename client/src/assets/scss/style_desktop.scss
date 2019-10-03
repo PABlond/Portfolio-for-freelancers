@@ -89,7 +89,7 @@ i {
     url("https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg");
   background-size: cover;
   background-position: top;
-  padding-top: 3rem;
+  padding-top: 5rem;
 
   .row {
     display: flex;
@@ -115,7 +115,42 @@ i {
       }
     }
   }
+  #about-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
 }
+
+#about-bottom {
+  background: #191919;
+  padding-top: 1rem;
+
+  #skills {
+    nav {
+      a {
+        color: $light !important;
+      }
+    }
+  }
+}
+
+// ***********************************************************
+// ***********************************************************
+//                       Certifications
+// ***********************************************************
+// ***********************************************************
+
+// #certifications {
+//   #certifications-content {
+//     height: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+// }
 
 // ***********************************************************
 // ***********************************************************

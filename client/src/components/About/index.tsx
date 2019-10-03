@@ -5,7 +5,7 @@ import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa"
 const About = ({ about }) => {
   return <> 
     <div className="container-fluid" dangerouslySetInnerHTML={{ __html: about }} />
-    <div className="d-flex align-items-center mt-1 mb-1 justify-content-center">
+    <div id="about-social">
             <a
               href="https://www.linkedin.com/in/pierre-alexis-blond-00924b158/"
               target="_blank"

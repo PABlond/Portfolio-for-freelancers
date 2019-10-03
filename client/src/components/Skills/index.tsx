@@ -35,11 +35,10 @@ export default () => {
               linkWidth={5}
               linkColor="white"
               linkOpacity={0}
-              // showNavInfo={false}
               width={
                 dimensions.width > 768 ? dimensions.width / 2 : dimensions.width
               }
-              height={dimensions.height / 2}
+              height={(dimensions.height / 2) - 50}
               graphData={discipline.data}
               nodeAutoColorBy="group"
               nodeCanvasObject={(node: any, ctx: any, globalScale: number) => {
@@ -50,7 +49,6 @@ export default () => {
                 const bckgDimensions = [textWidth, fontSize].map(
                   n => n + fontSize * 0.2
                 )
-                // console.log(node)
                 ctx.fillStyle = "#191919"
                 ctx.fillRect(
                   node.x - bckgDimensions[0] / 2,
@@ -62,9 +60,6 @@ export default () => {
                 ctx.fillStyle = node.color
                 ctx.fillText(label, node.x, node.y)
               }}
-
-              // centerAt={{x: 300, y: 26}}
-              // zoom={2}
               enableNodeDrag={true}
               backgroundColor="#191919"
             />
