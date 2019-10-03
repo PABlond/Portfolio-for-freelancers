@@ -8,6 +8,8 @@ export default () => {
     content: "",
   })
 
+  const [response, setResponse] = useState<string | undefined>(undefined)
+
   const encode = (data: any) => {
     return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -16,13 +18,15 @@ export default () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault()
-
+    console.log(form)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...form }),
     })
-      .then(() => alert("Success!"))
+      .then(() =>
+        setResponse("Your message has been sent. I will answer you soon")
+      )
       .catch(error => alert(error))
 
     setValues({
@@ -88,6 +92,7 @@ export default () => {
         <Button block type="submit" id="contact-button" variant="danger">
           SUBMIT
         </Button>
+        {response && <p className="text-center text-info">{response}</p>}
       </Form>
     </Container>
   )
