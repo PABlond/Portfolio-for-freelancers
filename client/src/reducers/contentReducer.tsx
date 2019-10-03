@@ -1,8 +1,9 @@
 import initialState from "./initialState"
 import { dispatchContent } from "../config/constants"
+import {IState} from './../interfaces/state.interface'
 
 export default (
-  state = initialState,
+  state = (initialState as IState),
   action: { type: string; payload: any }
 ) => {
   const { type, payload } = action

@@ -1,14 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
 import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa"
+import { IAbout } from "./../../interfaces/module.interface"
 
-const About = ({ about }: any) => {
+const About = ({ about }: IAbout) => {
   return (
     <>
-      <div
-        className="container-fluid"
-        dangerouslySetInnerHTML={{ __html: about }}
-      />
+      <div className="container-fluid" dangerouslySetInnerHTML={about} />
       <div id="about-social">
         <a
           href="https://www.linkedin.com/in/pierre-alexis-blond-00924b158/"

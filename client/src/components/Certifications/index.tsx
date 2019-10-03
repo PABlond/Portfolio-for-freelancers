@@ -2,8 +2,11 @@ import React, { useState } from "react"
 import { Carousel } from "react-bootstrap"
 import Img from "gatsby-image"
 import { connect } from "react-redux"
+import { ICertifications } from "./../../interfaces/module.interface"
+import { IImageFluid } from "./../../interfaces/query.interface"
+import { IState } from "./../../interfaces/state.interface"
 
-const Certifications = ({ certifications }: any) => {
+const Certifications = ({ certifications }: ICertifications) => {
   const [index, setIndex] = useState<number>(0)
 
   const handleSelect: (selectedIndex: number) => void = selectedIndex =>
@@ -12,7 +15,7 @@ const Certifications = ({ certifications }: any) => {
   return (
     <div className="certifications-content">
       <Carousel activeIndex={index} onSelect={handleSelect} interval={3000}>
-        {certifications.map((cert: any, i: number) => (
+        {certifications.map((cert: IImageFluid, i: number) => (
           <Carousel.Item key={i}>
             <Img {...cert} />
           </Carousel.Item>
@@ -22,7 +25,7 @@ const Certifications = ({ certifications }: any) => {
   )
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: { content: IState }) => {
   const { certifications } = state.content
   return {
     certifications,

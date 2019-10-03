@@ -1,8 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
+import { IHeader } from "./../../interfaces/module.interface"
 
-const Header = ({ header }: any) => {
-  return <div id="header" dangerouslySetInnerHTML={{__html: header}} />
+const Header = ({ header }: IHeader) => {
+  return <div id="header" dangerouslySetInnerHTML={header} />
 }
 
 const mapStateToProps = (state: any) => {

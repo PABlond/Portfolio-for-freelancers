@@ -1,6 +1,6 @@
 export default {
-  header: {},
-  about: {},
+  header: { __html: "" },
+  about: { __html: "" },
   certifications: [],
-  works: { __html: ""}
+  works: { __html: "" },
 }

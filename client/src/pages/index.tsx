@@ -10,35 +10,41 @@ import Certifications from "./../components/Certifications"
 import Works from "./../components/Works"
 import Contact from "./../components/Contact"
 import Loading from "./../components/Loading"
+import { IMdNode, IImageQuery } from "./../interfaces/query.interface"
+import { IState } from "./../interfaces/state.interface"
 
 const Home = ({ data, dispatchFullContent }: any) => {
   const [loading, setLoading] = useState<Boolean>(true)
 
   useEffect(() => {
-    const header = data.allMarkdownRemark.edges
-      .map((mod: any) =>
-        mod.node.frontmatter.title == "header" ? mod.node.html : null
-      )
-      .filter(Boolean)[0]
-    console.log(data)
-    const about = data.allMarkdownRemark.edges
-      .map((mod: any) => {
-        return mod.node.frontmatter.title == "about" ? mod.node.html : null
-      })
-      .filter(Boolean)[0]
+    const header = {
+      __html: data.allMarkdownRemark.edges
+        .map((mod: IMdNode) =>
+          mod.node.frontmatter.title == "header" ? mod.node.html : null
+        )
+        .filter(Boolean)[0],
+    }
+    const about = {
+      __html: data.allMarkdownRemark.edges
+        .map((mod: IMdNode) =>
+          mod.node.frontmatter.title == "about" ? mod.node.html : null
+        )
+        .filter(Boolean)[0],
+    }
     const works = {
       __html: data.allMarkdownRemark.edges
-        .map((mod: any) => {
+        .map((mod: IMdNode) => {
           return mod.node.frontmatter.title == "works" ? mod.node.html : null
         })
         .filter(Boolean)[0],
     }
-    const certifications = data.allFile.edges.map((certification: any) => {
-      return certification.node.childImageSharp
-    })
+    const certifications = data.allFile.edges.map(
+      (certification: IImageQuery) => certification.node.childImageSharp
+    )
     dispatchFullContent({ header, about, certifications, works })
     setLoading(false)
   }, [])
+
   return !loading ? (
     <>
       <Header />
@@ -83,7 +89,7 @@ export const query = graphql`
       edges {
         node {
           childImageSharp {
-            fluid(maxWidth: 1000) {
+            fluid(maxWidth: 500) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -94,7 +100,7 @@ export const query = graphql`
 `
 
 const mapDispatchToProps = (dispatch: any) => ({
-  dispatchFullContent: (payload: any) =>
+  dispatchFullContent: (payload: IState) =>
     dispatch({ type: dispatchContent, payload }),
 })
 

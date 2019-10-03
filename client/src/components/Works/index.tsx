@@ -1,8 +1,9 @@
 import React from "react"
 import { Container, Row } from "react-bootstrap"
 import { connect } from "react-redux"
+import { IWorks } from "./../../interfaces/module.interface"
 
-const Works = ({ works }: any) => {
+const Works = ({ works }: IWorks) => {
   return (
     <Container fluid={true}>
       <h2>Previous Work</h2>
