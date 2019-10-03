@@ -53,7 +53,7 @@
   // ***********************************************************
 
   #contact {
-    height: inherit;
+    height: 100vh;
 
     h1 {
       margin-top: 20px;
@@ -62,10 +62,6 @@
 
     form {
       margin: 50px;
-
-      .form-group {
-        width: 75vw;
-      }
     }
   }
 }

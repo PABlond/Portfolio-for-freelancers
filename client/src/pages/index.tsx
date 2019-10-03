@@ -13,6 +13,7 @@ import About from "./../components/About"
 import Skills from "./../components/Skills"
 import Certifications from "./../components/Certifications"
 import Works from './../components/Works'
+import Contact from './../components/Contact'
 
 const Home = ({ data, dispatchFullContent }) => {
   useEffect(() => {
@@ -57,6 +58,9 @@ const Home = ({ data, dispatchFullContent }) => {
       </section>
       <section id="works">
         <Works />
+      </section>
+      <section  id="contact">
+        <Contact />
       </section>
     </>
   )

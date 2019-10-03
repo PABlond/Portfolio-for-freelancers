@@ -1,7 +1,5 @@
 import React, { useState } from "react"
-import store from "./../../state/store"
 import { Container, Form, Button } from "react-bootstrap"
-import sendMessage from "./../../services/sendMessage"
 
 export default () => {
   const [form, setValues] = useState({
@@ -11,9 +9,8 @@ export default () => {
   })
   const [response, setResponse] = useState("")
 
-  const onSubmit = async (e: any) => {
+  const onSubmit = (e: any) => {
     e.preventDefault()
-    setResponse(await sendMessage(form))
     setValues({
       email: "",
       name: "",
@@ -28,9 +25,9 @@ export default () => {
     })
 
   return (
-    <Container id="contact" fluid>
+    <Container fluid>
       <h1>Want to hire me ?</h1>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} class="offset-md-3 col-md-6">
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control

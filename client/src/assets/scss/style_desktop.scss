@@ -214,19 +214,19 @@ i {
     font-size: 3rem;
   }
   form {
-    margin: inherit;
+  //   margin: inherit;
     padding: 30px;
     background: rgb(235, 255, 251);
     border-radius: 5px;
 
     .form-group {
-      width: 50vw;
+      width: 100%;
     }
 
-    .contact-button {
-      background: #61234e !important;
-      border: 1px solid #61234e !important;
-    }
+  //   .contact-button {
+  //     background: #61234e !important;
+  //     border: 1px solid #61234e !important;
+  //   }
   }
 }
 
