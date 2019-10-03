@@ -8,23 +8,36 @@ export default ({ hidden }: { hidden: Boolean }) => {
     content: "",
   })
 
+  const [response, setResponse] = useState<{
+    status: Boolean
+    content: string | undefined
+  }>({ status: false, content: undefined })
+
   const encode = (data: any) => {
     return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&")
   }
 
-  const onSubmit = (e: any) => {
+  const onSubmit = async (e: any) => {
     e.preventDefault()
-
-    fetch("/", {
+    console.log(form)
+    await fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...form }),
+    }).catch((error: Error) => {
+      console.log(error)
+      setResponse({
+        status: false,
+        content:
+          "An error occured, please send an email to pierre-alexis.blond@live.fr",
+      })
     })
-      .then(() => alert("Success!"))
-      .catch(error => alert(error))
-
+    setResponse({
+      status: true,
+      content: "Your message has been sent. I will contact you soon !",
+    })
     setValues({
       email: "",
       name: "",
@@ -48,7 +61,7 @@ export default ({ hidden }: { hidden: Boolean }) => {
         method="post"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
         <div hidden>
           <label>
             Don’t fill this out:{" "}
@@ -88,6 +101,15 @@ export default ({ hidden }: { hidden: Boolean }) => {
         <Button block type="submit" id="contact-button" variant="danger">
           SUBMIT
         </Button>
+        {response.content && (
+          <p
+            className={`text-center ${
+              response.status ? "text-info" : "text-danger"
+            }`}
+          >
+            {response.content}
+          </p>
+        )}
       </Form>
     </Container>
   )
