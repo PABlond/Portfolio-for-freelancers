@@ -41,30 +41,14 @@ export default () => {
   return (
     <Container fluid>
       <h1>Want to hire me ?</h1>
-      <form
-        name="contact"
-        method="post"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        {/* You still need to add the hidden input with the form name to your JSX form */}
-        <input type="hidden" name="form-name" value="contact" />
-        <label>Your Email:</label>
-        <input type="email" name="email" />
-        <br />
-        <label>Message:</label>
-        <textarea name="message" />
-        <br />
-        <button type="submit">Send</button>
-      </form>
-      {/* <Form
+      <Form
         data-netlify="true"
         onSubmit={onSubmit}
         className="offset-md-3 col-md-6"
         method="post"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
         <div hidden>
           <label>
             Don’t fill this out:{" "}
@@ -104,7 +88,7 @@ export default () => {
         <Button block type="submit" id="contact-button" variant="danger">
           SUBMIT
         </Button>
-      </Form> */}
+      </Form>
     </Container>
   )
 }
