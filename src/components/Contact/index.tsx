@@ -30,7 +30,7 @@ export default () => {
       <NetlifyForm
         name="Form With Recaptcha"
         recaptcha={{
-          sitekey: "6LfvtLsUAAAAALesUzQBYaDxx06yU8303Y2N-AUa",
+          sitekey: "6Le9tbsUAAAAAB0vewi1XAF9aTG1vd6QYmTO7OxP",
           size: "normal",
         }}
       >
