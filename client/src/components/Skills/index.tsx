@@ -21,7 +21,7 @@ export default () => {
       height: window.innerHeight,
     })
   }, [])
-  console.log(dimensions)
+
   return (
     <Tabs
       defaultActiveKey="Front end"
@@ -35,11 +35,11 @@ export default () => {
               linkWidth={5}
               linkColor="white"
               linkOpacity={0}
-              showNavInfo={false}
+              // showNavInfo={false}
               width={
                 dimensions.width > 768 ? dimensions.width / 2 : dimensions.width
               }
-              height={dimensions.height / 2 - 50}
+              height={dimensions.height / 2}
               graphData={discipline.data}
               nodeAutoColorBy="group"
               nodeCanvasObject={(node: any, ctx: any, globalScale: number) => {
@@ -49,7 +49,8 @@ export default () => {
                 const textWidth = ctx.measureText(label).width
                 const bckgDimensions = [textWidth, fontSize].map(
                   n => n + fontSize * 0.2
-                ) // some padding
+                )
+                // console.log(node)
                 ctx.fillStyle = "#191919"
                 ctx.fillRect(
                   node.x - bckgDimensions[0] / 2,
@@ -62,8 +63,8 @@ export default () => {
                 ctx.fillText(label, node.x, node.y)
               }}
 
-              centerAt={dimensions.width + 1024 , dimensions.height}
-              zoom={2}
+              // centerAt={{x: 300, y: 26}}
+              // zoom={2}
               enableNodeDrag={true}
               backgroundColor="#191919"
             />
