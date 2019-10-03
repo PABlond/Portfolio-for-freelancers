@@ -39,7 +39,7 @@ export default ({ hidden }: { hidden: Boolean }) => {
     })
 
   return (
-    <Container fluid hidden={!!hidden}>
+    <Container fluid>
       <h1>Want to hire me ?</h1>
       <form name="contact" method="POST" data-netlify="true">
         <p>
