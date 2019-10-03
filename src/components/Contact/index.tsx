@@ -41,7 +41,7 @@ export default () => {
   return (
     <Container fluid>
       <h1>Want to hire me ?</h1>
-      <Form onSubmit={onSubmit} className="offset-md-3 col-md-6">
+      <Form data-netlify="true" onSubmit={onSubmit} className="offset-md-3 col-md-6">
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control
