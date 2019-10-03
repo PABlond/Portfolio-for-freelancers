@@ -1,10 +1,8 @@
 import React from "react"
-import { Container, Row, Col, Image } from "react-bootstrap"
-import { IWork } from "../../interfaces/works.interface"
+import { Container, Row } from "react-bootstrap"
 import { connect } from "react-redux"
 
-const Works = ({ works }) => {
-  
+const Works = ({ works }: any) => {
   return (
     <Container fluid={true}>
       <h2>Previous Work</h2>
