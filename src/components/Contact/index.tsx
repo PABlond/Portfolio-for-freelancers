@@ -46,7 +46,6 @@ export default ({ hidden }: { hidden: Boolean }) => {
         onSubmit={onSubmit}
         className="offset-md-3 col-md-6"
         method="post"
-        action="/"
         data-netlify-honeypot="bot-field"
       >
         <input type="hidden" name="bot-field" />
