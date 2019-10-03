@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Carousel } from "react-bootstrap"
+import { Carousel, Col } from "react-bootstrap"
 import Img from "gatsby-image"
 import { connect } from "react-redux"
 import { ICertifications } from "./../../interfaces/module.interface"
@@ -13,15 +13,17 @@ const Certifications = ({ certifications }: ICertifications) => {
     setIndex(selectedIndex)
 
   return (
-    <div className="certifications-content">
-      <Carousel activeIndex={index} onSelect={handleSelect} interval={3000}>
-        {certifications.map((cert: IImageFluid, i: number) => (
-          <Carousel.Item key={i}>
-            <Img {...cert} />
-          </Carousel.Item>
-        ))}
-      </Carousel>
-    </div>
+    <Col md={6} id="certifications">
+      <div className="certifications-content">
+        <Carousel activeIndex={index} onSelect={handleSelect} interval={3000}>
+          {certifications.map((cert: IImageFluid, i: number) => (
+            <Carousel.Item key={i}>
+              <Img {...cert} />
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+    </Col>
   )
 }
 

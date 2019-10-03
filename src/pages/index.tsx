@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import { connect } from "react-redux"
+import { IMdNode, IImageQuery } from "./../interfaces/query.interface"
+import { IState } from "./../interfaces/state.interface"
 import { dispatchContent } from "./../config/constants"
-import { Container, Row, Col } from "react-bootstrap"
+import Col6Layout from "./../components/Layout/Col6Layout"
 import Header from "./../components/Header"
 import About from "./../components/About"
 import Skills from "./../components/Skills"
@@ -10,9 +12,6 @@ import Certifications from "./../components/Certifications"
 import Works from "./../components/Works"
 import Contact from "./../components/Contact"
 import Loading from "./../components/Loading"
-import { IMdNode, IImageQuery } from "./../interfaces/query.interface"
-import { IState } from "./../interfaces/state.interface"
-
 const Home = ({ data, dispatchFullContent }: any) => {
   const [loading, setLoading] = useState<Boolean>(true)
 
@@ -50,16 +49,10 @@ const Home = ({ data, dispatchFullContent }: any) => {
       <Header />
       <section id="about">
         <About />
-        <Container fluid>
-          <Row id="about-bottom">
-            <Col md={6} id="skills">
-              {typeof window !== "undefined" && <Skills />}
-            </Col>
-            <Col md={6} id="certifications">
-              <Certifications />
-            </Col>
-          </Row>
-        </Container>
+        <Col6Layout>
+          {typeof window !== "undefined" && <Skills />}
+          <Certifications />
+        </Col6Layout>
       </section>
       <section id="works">
         <Works />

@@ -21,7 +21,6 @@ export default ({ hidden }: { hidden: Boolean }) => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault()
-    console.log(form)
     await fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
