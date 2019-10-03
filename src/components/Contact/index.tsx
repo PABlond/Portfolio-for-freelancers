@@ -39,13 +39,17 @@ export default ({ hidden }: { hidden: Boolean }) => {
     })
 
   return (
-    <Container fluid style={{ display: hidden ? "none" : "inherit" }}>
+    <Container fluid style={{ display: hidden ? "none" : "block" }}>
       <h1>Want to hire me ?</h1>
       <Form
         data-netlify="true"
         onSubmit={onSubmit}
         className="offset-md-3 col-md-6"
+        method="post"
+        action="/"
+        data-netlify-honeypot="bot-field"
       >
+        <input type="hidden" name="form-name" value="contact" />
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control
