@@ -7,7 +7,6 @@ export default () => {
     name: "",
     content: "",
   })
-  const [response, setResponse] = useState("")
 
   const onSubmit = (e: any) => {
     e.preventDefault()
@@ -27,7 +26,7 @@ export default () => {
   return (
     <Container fluid>
       <h1>Want to hire me ?</h1>
-      <Form onSubmit={onSubmit} class="offset-md-3 col-md-6">
+      <Form onSubmit={onSubmit} className="offset-md-3 col-md-6">
         <Form.Group>
           <Form.Label>Email</Form.Label>
           <Form.Control
@@ -66,7 +65,7 @@ export default () => {
         >
           SUBMIT
         </Button>
-        {response.length ? <p className="text-success">{response}</p> : null}
+
       </Form>
     </Container>
   )

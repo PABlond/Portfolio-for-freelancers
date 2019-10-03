@@ -6,6 +6,8 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.0",
+    "@types/react-helmet": "^5.0.11",
+    "@types/react-redux": "^7.1.4",
     "bootstrap": "^4.3.1",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
@@ -45,7 +47,8 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
+    "type-check": "tsc -w"
   },
   "repository": {
     "type": "git",

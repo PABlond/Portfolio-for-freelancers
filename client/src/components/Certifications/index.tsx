@@ -1,21 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { Carousel, Image, Col } from "react-bootstrap"
+import React, { useState } from "react"
+import { Carousel } from "react-bootstrap"
 import Img from "gatsby-image"
 import { connect } from "react-redux"
 
-const Certifications = ({ certifications }: []) => {
+const Certifications = ({ certifications }: any) => {
   const [index, setIndex] = useState<number>(0)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
   const handleSelect: (selectedIndex: number) => void = selectedIndex =>
     setIndex(selectedIndex)
-
-  useEffect(() => {
-    setDimensions({
-      width: document.getElementById("skills").offsetWidth,
-      height: window.innerHeight,
-    })
-  }, [])
 
   return (
     <div className="certifications-content">
