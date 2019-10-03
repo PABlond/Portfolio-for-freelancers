@@ -160,7 +160,8 @@ i {
 
 #works {
   height: inherit;
-  padding-top: 5px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   text-align: center;
   display: flex;
   justify-content: space-between;
@@ -181,6 +182,10 @@ i {
           justify-content: space-between;
           flex-direction: column;
           align-items: center;
+
+          p {
+            width: 100%;
+          }
         }
       }
     }

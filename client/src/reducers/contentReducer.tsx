@@ -12,7 +12,8 @@ export default (
         ...state,
         header: payload.header,
         about: payload.about,
-        certifications: payload.certifications
+        certifications: payload.certifications,
+        works: payload.works
       }
     default:
       return state

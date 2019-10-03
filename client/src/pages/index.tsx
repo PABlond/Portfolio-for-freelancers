@@ -11,7 +11,8 @@ import { Container, Row, Col } from "react-bootstrap"
 import Header from "./../components/Header"
 import About from "./../components/About"
 import Skills from "./../components/Skills"
-import Certifications from './../components/Certifications'
+import Certifications from "./../components/Certifications"
+import Works from './../components/Works'
 
 const Home = ({ data, dispatchFullContent }) => {
   useEffect(() => {
@@ -26,10 +27,17 @@ const Home = ({ data, dispatchFullContent }) => {
         return mod.node.frontmatter.title == "about" ? mod.node.html : null
       })
       .filter(Boolean)[0]
+    const works = {
+      __html: data.allMarkdownRemark.edges
+        .map(mod => {
+          return mod.node.frontmatter.title == "works" ? mod.node.html : null
+        })
+        .filter(Boolean)[0],
+    }
     const certifications = data.allFile.edges.map(certification => {
       return certification.node.childImageSharp
     })
-    dispatchFullContent({ header, about, certifications })
+    dispatchFullContent({ header, about, certifications, works })
   }, [])
   return (
     <>
@@ -46,6 +54,9 @@ const Home = ({ data, dispatchFullContent }) => {
             </Col>
           </Row>
         </Container>
+      </section>
+      <section id="works">
+        <Works />
       </section>
     </>
   )

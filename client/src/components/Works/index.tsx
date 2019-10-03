@@ -1,61 +1,15 @@
 import React from "react"
 import { Container, Row, Col, Image } from "react-bootstrap"
-import store from "./../../state/store"
 import { IWork } from "../../interfaces/works.interface"
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
-import works from "./../../assets/json/works"
+import { connect } from "react-redux"
 
-export default () => {
-  const props = store.getState()
-
-  const { height, width }: { height: number; width: number } = props.nav
-  const imgStyle = { height: 200 }
+const Works = ({ works }) => {
+  
   return (
-    <Container fluid={true} id="works">
+    <Container fluid={true}>
       <h2>Previous Work</h2>
       <Container>
-        <Row>
-          <StaticQuery
-            query={graphql`
-              query WorksQuery {
-                allFile(filter: { sourceInstanceName: { eq: "works" } }) {
-                  edges {
-                    node {
-                      childImageSharp {
-                        fixed(width: 195) {
-                          ...GatsbyImageSharpFixed
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            `}
-            render={(data: any) => {
-              return (
-                <>
-                  {works.map((work: IWork, i: number) =>
-                    i < 8 ? (
-                      <Col md={3} key={i}>
-                        <div className="m-3">
-                          <h4>{work.title}</h4>
-                          <div style={imgStyle}>
-                            <Img
-                              {...data.allFile.edges[i].node.childImageSharp}
-                            />
-                          </div>
-                          <p>{work.content}</p>
-                          <p className="technos">{work.technos}</p>
-                        </div>
-                      </Col>
-                    ) : null
-                  )}
-                </>
-              )
-            }}
-          />
-        </Row>
+        <Row dangerouslySetInnerHTML={works}></Row>
       </Container>
       <div>
         <h4>
@@ -66,3 +20,12 @@ export default () => {
     </Container>
   )
 }
+
+const mapStateToProps = (state: any) => {
+  const { works } = state.content
+  return {
+    works,
+  }
+}
+
+export default connect(mapStateToProps)(Works)
