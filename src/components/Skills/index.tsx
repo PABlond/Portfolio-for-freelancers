@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { ForceGraph2D } from "react-force-graph"
-import { Tabs, Tab } from "react-bootstrap"
+import { Tabs, Tab, Col } from "react-bootstrap"
 import skills from "./../../assets/json/skills"
 
 export default () => {
@@ -23,6 +23,8 @@ export default () => {
   }, [])
 
   return (
+
+    <Col md={6} id="skills">
     <Tabs
       defaultActiveKey="Front end"
       className="pl-0 pr-0 text-light"
@@ -67,5 +69,6 @@ export default () => {
         )
       })}
     </Tabs>
+    </Col>
   )
 }
