@@ -43,7 +43,7 @@ const Home = ({ data, dispatchFullContent }: any) => {
         <Container fluid>
           <Row id="about-bottom">
             <Col md={6} id="skills">
-              <Skills />
+              {typeof window !== "undefined" && <Skills />}
             </Col>
             <Col md={6} id="certifications">
               <Certifications />
