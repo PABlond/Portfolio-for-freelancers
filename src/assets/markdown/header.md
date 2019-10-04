@@ -2,7 +2,7 @@
 title: "header"
 ---
 
-<div id="header-heading">
+<div id="header-heading" class="animated fadeInDownBig">
 
 # Pierre-Alexis Blond
 
