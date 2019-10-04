@@ -41,13 +41,17 @@ i {
 }
 
 .navbar {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0) 70%, $light 90%);
-  background-color: transparent!important;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) 70%,
+    #fff 90%
+  );
+  background-color: transparent !important;
 
   .navbar-brand {
-    font-size: 2rem
+    font-size: 2rem;
   }
-
 }
 
 // ***********************************************************
@@ -62,31 +66,47 @@ i {
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  background: linear-gradient(rgba(97, 35, 78, 0.4), rgba(3, 37, 53, 0.8)),
-    url("./../imgs/data/header.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  color: $light;
+  border-bottom: 1px solid $purple;
+  // background: url("https://cdn.pixabay.com/photo/2016/11/30/18/14/idea-1873540_960_720.png");
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: contain;
+  // color: $light;
 
-  div {
+  #header-heading {
+    color: $purple;
     h1 {
-      font-size: 4rem;
+      font-size: 3rem;
+      transform: rotate(2deg);
       letter-spacing: 2px;
     }
 
     h2 {
-      font-size: 6rem;
+      font-size: 4rem;
+      transform: rotate(-1deg);
       letter-spacing: 3px;
     }
+  }
 
+  #header-text {
+    color: $purple;
+    background: $purple;
+    color: $light;
+    margin-top: -5rem;
+    // border: 1px solid #006375;
+    border-radius: 10px 10px 0 0;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+    position: absolute;
+    bottom: 0;
     p {
-      font-size: 2rem;
-      margin-bottom: 0!important
+      font-size: 1.5rem;
+      margin-bottom: 0;
     }
 
     a {
-      font-size: 1.5rem
+      font-size: 1rem;
+      color: #48C0D7;
     }
   }
 }
@@ -98,13 +118,13 @@ i {
 // ***********************************************************
 
 #about {
-  background: linear-gradient(
-      rgba(231, 230, 253, 0.78),
-      rgba(245, 249, 251, 0.49)
-    ),
-    url("https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg");
-  background-size: cover;
-  background-position: top;
+  // background: linear-gradient(
+  //     rgba(231, 230, 253, 0.78),
+  //     rgba(245, 249, 251, 0.49)
+  //   ),
+  //   url("https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg");
+  // background-size: cover;
+  // background-position: top;
   padding-top: 5rem;
 
   .row {
@@ -220,20 +240,21 @@ i {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background: rgb(97, 35, 78);
+  background: $dark;
 
   h1 {
     text-align: center;
     margin-top: -20px;
     margin-bottom: 20px;
-    color: rgb(235, 255, 251);
+    color: #fff;
     font-size: 3rem;
   }
   form {
     //   margin: inherit;
     padding: 30px;
-    background: rgb(235, 255, 251);
-    border-radius: 5px;
+    background: #fff;
+    // border: 3px solid $purple;
+    border-radius: 30px 5px 30px 5px;
 
     .form-group {
       width: 100%;
