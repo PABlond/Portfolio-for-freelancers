@@ -12,6 +12,8 @@ import Certifications from "./../components/Certifications"
 import Works from "./../components/Works"
 import Contact from "./../components/Contact"
 import Loading from "./../components/Loading"
+import Nav from "./../components/Nav"
+
 const Home = ({ data, dispatchFullContent }: any) => {
   const [loading, setLoading] = useState<Boolean>(true)
 
@@ -37,6 +39,25 @@ const Home = ({ data, dispatchFullContent }: any) => {
         })
         .filter(Boolean)[0],
     }
+
+    const formatWorks = works =>
+      works.map(work => {
+        const title = work.html.split("<h4>")[1].split("</h4>")[0]
+        const content = work.html.split("<h6>")[1].split("</h6>")[0]
+        const technos = work.html.split("<p>")[2].split("</p>")[0]
+        const __html = work.html
+        const n = parseInt(work.frontmatter.title.split("-")[1])
+        return { title, content, technos, __html, n }
+      })
+
+    const work = data.allMarkdownRemark.edges
+      .map((mod: IMdNode) => {
+        return mod.node.frontmatter.title.indexOf("work-") !== -1
+          ? mod.node
+          : null
+      })
+      .filter(Boolean)
+    console.log("work", formatWorks(work))
     const certifications = data.allFile.edges.map(
       (certification: IImageQuery) => certification.node.childImageSharp
     )
@@ -46,6 +67,7 @@ const Home = ({ data, dispatchFullContent }: any) => {
 
   return !loading ? (
     <>
+      <Nav />
       <Header />
       <section id="about">
         <About />

@@ -1,5 +1,5 @@
 import initialState from "./initialState"
-import { dispatchContent } from "../config/constants"
+import { dispatchContent, dispatchResume } from "../config/constants"
 import {IState} from './../interfaces/state.interface'
 
 export default (
@@ -15,6 +15,15 @@ export default (
         about: payload.about,
         certifications: payload.certifications,
         works: payload.works
+      }
+    case dispatchResume:
+      return {
+        ...state,
+        resume: {
+          header: payload.header,
+          about: payload.about,
+          works: payload.works
+        }
       }
     default:
       return state

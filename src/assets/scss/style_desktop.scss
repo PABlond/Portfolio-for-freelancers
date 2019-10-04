@@ -40,6 +40,16 @@ i {
   opacity: 0.5;
 }
 
+.navbar {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0) 70%, $light 90%);
+  background-color: transparent!important;
+
+  .navbar-brand {
+    font-size: 2rem
+  }
+
+}
+
 // ***********************************************************
 // ***********************************************************
 //                      Header
@@ -69,9 +79,15 @@ i {
       font-size: 6rem;
       letter-spacing: 3px;
     }
-  }
-  p {
-    font-size: 2rem;
+
+    p {
+      font-size: 2rem;
+      margin-bottom: 0!important
+    }
+
+    a {
+      font-size: 1.5rem
+    }
   }
 }
 
@@ -214,7 +230,7 @@ i {
     font-size: 3rem;
   }
   form {
-  //   margin: inherit;
+    //   margin: inherit;
     padding: 30px;
     background: rgb(235, 255, 251);
     border-radius: 5px;
@@ -223,10 +239,10 @@ i {
       width: 100%;
     }
 
-  //   .contact-button {
-  //     background: #61234e !important;
-  //     border: 1px solid #61234e !important;
-  //   }
+    //   .contact-button {
+    //     background: #61234e !important;
+    //     border: 1px solid #61234e !important;
+    //   }
   }
 }
 
