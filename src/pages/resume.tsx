@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import { IMdNode, IImageQuery } from "./../interfaces/query.interface"
 import { IState } from "./../interfaces/state.interface"
 import { dispatchResume } from "./../config/constants"
+import Loading from './../components/Loading'
 
 const ResumePage = ({ data, dispatchFullResume }: any) => {
   const [works, setWorks] = useState([])
@@ -64,7 +65,7 @@ const ResumePage = ({ data, dispatchFullResume }: any) => {
       <Resume />
     </PDFViewer>
   ) : (
-    <p>Loading ...</p>
+    <Loading />
   )
 }
 

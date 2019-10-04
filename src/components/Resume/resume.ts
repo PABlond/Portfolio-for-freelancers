@@ -95,18 +95,23 @@ export default StyleSheet.create({
     color: "#fff",
   },
   skill3: {
-    width: "85%",
+    width: "90%",
     backgroundColor: "#20144F",
     color: "#fff",
   },
   skill4: {
-    width: "75%",
+    width: "85%",
     backgroundColor: "#9664AC",
     color: "#fff",
   },
   skill5: {
-    width: "70%",
+    width: "85%",
     backgroundColor: "#BB7EB8",
     color: "#fff",
+  },
+  generated: {
+    fontSize: 10,
+    marginTop: 10,
+    color: "#20144F",
   }
 })

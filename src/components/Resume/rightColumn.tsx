@@ -63,6 +63,8 @@ export default () => {
           <Text style={styles.skill5}> TypeScript</Text>
         </View>
       </View>
+
+      <Text style={styles.generated}>This resume was generated from PABlond.com using react-pdf</Text>
     </View>
   )
 }
