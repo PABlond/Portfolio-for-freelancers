@@ -61,12 +61,12 @@ i {
 // ***********************************************************
 
 #header {
+  padding-top: 5rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
-  border-bottom: 1px solid $purple;
   // background: url("https://cdn.pixabay.com/photo/2016/11/30/18/14/idea-1873540_960_720.png");
   // background-repeat: no-repeat;
   // background-position: center;
@@ -75,6 +75,7 @@ i {
 
   #header-heading {
     color: $purple;
+    margin-bottom: -5rem;
     h1 {
       font-size: 3rem;
       transform: rotate(2deg);
@@ -88,13 +89,18 @@ i {
     }
   }
 
+  .row {
+    position: relative;
+    border-bottom: 1px solid $purple;
+  }
+
   #header-text {
     color: $purple;
     background: $purple;
     color: $light;
     margin-top: -5rem;
     // border: 1px solid #006375;
-    border-radius: 10px 10px 0 0;
+    border-radius: 30px 30px 0 0;
     padding-top:1rem;
     padding-bottom: 1rem;
     position: absolute;
