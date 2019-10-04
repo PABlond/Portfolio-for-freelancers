@@ -2,7 +2,7 @@
 title: "header"
 ---
 
-<div>
+<div id="header-heading">
 
 # Pierre-Alexis Blond
 
@@ -10,11 +10,17 @@ title: "header"
 
 </div>
 
-<div>
+![header](imgs/data/header.png)
+
+<div class="row">
+
+<div id="header-text" class="offset-md-2 col-md-8">
 
 Full stack web and mobile development for your idea or product.
 
 
-[My Resume](/resume)
+[-> My Resume <-](/resume)
+
+</div>
 
 </div>
