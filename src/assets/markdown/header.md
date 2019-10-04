@@ -10,7 +10,7 @@ title: "header"
 
 </div>
 
-![header](imgs/header.jpeg)
+![header](imgs/data/header.png)
 
 <div class="row">
 
