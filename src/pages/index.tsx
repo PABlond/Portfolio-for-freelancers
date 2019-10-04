@@ -12,6 +12,8 @@ import Certifications from "./../components/Certifications"
 import Works from "./../components/Works"
 import Contact from "./../components/Contact"
 import Loading from "./../components/Loading"
+import Nav from "./../components/Nav"
+
 const Home = ({ data, dispatchFullContent }: any) => {
   const [loading, setLoading] = useState<Boolean>(true)
 
@@ -65,6 +67,7 @@ const Home = ({ data, dispatchFullContent }: any) => {
 
   return !loading ? (
     <>
+      <Nav />
       <Header />
       <section id="about">
         <About />
