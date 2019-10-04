@@ -40,7 +40,15 @@ i {
   opacity: 0.5;
 }
 
+.navbar {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0) 70%, $light 90%);
+  background-color: transparent!important;
 
+  .navbar-brand {
+    font-size: 2rem
+  }
+
+}
 
 // ***********************************************************
 // ***********************************************************
