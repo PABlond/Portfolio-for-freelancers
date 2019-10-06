@@ -6,6 +6,19 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "PABlond portfolio",
+        short_name: "PABlond",
+        start_url: "/",
+        background_color: "#6b37bf",
+        theme_color: "#6b37bf",
+        display: "standalone",
+        icon: "src/assets/imgs/data/gatsby-icon.png",
+        crossOrigin: `use-credentials`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/assets/markdown`,
@@ -32,6 +45,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-netlify`,
     `gatsby-remark-copy-linked-files`,
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-typescript",
