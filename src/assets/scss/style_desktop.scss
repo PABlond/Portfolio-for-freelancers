@@ -175,6 +175,10 @@ i {
       a {
         color: $light !important;
       }
+
+      .active {
+        color: $dark !important;
+      }
     }
   }
 }
