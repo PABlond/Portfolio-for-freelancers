@@ -1,15 +1,17 @@
-const formatHeader = edges => ({
+import { IHomeData } from "./../interfaces/query.interface"
+
+const formatHeader = (edges: IHomeData["allMarkdownRemark"]["edges"]) => ({
   __html: edges
     .map(mod => (mod.node.frontmatter.title == "header" ? mod.node.html : null))
     .filter(Boolean)[0],
 })
-const formatAbout = edges => ({
+const formatAbout = (edges: IHomeData["allMarkdownRemark"]["edges"]) => ({
   __html: edges
     .map(mod => (mod.node.frontmatter.title == "about" ? mod.node.html : null))
     .filter(Boolean)[0],
 })
 
-const formatWorks = edges => ({
+const formatWorks = (edges: IHomeData["allMarkdownRemark"]["edges"]) => ({
   __html: edges
     .map(mod => {
       return mod.node.frontmatter.title == "works" ? mod.node.html : null
@@ -17,10 +19,10 @@ const formatWorks = edges => ({
     .filter(Boolean)[0],
 })
 
-const formatCertifications = edges =>
+const formatCertifications = (edges: IHomeData["allFile"]["edges"]) =>
   edges.map(certification => certification.node.childImageSharp)
 
-export default data => ({
+export default (data: IHomeData) => ({
   header: formatHeader(data.allMarkdownRemark.edges),
   about: formatAbout(data.allMarkdownRemark.edges),
   certifications: formatCertifications(data.allFile.edges),

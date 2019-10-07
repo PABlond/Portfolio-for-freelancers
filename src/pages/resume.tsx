@@ -7,15 +7,23 @@ import formatResumePage from "./../helpers/resumeHelpers"
 import { IState } from "./../interfaces/state.interface"
 import { dispatchResume } from "./../config/constants"
 import Loading from "./../components/Loading"
+import { IResumeData } from "./../interfaces/query.interface"
 
-const ResumePage = ({ data, dispatchFullResume }: any) => {
+const ResumePage = ({
+  data,
+  dispatchFullResume,
+}: {
+  data: IResumeData
+  dispatchFullResume: (payload: IState['resume']) => void
+}) => {
   const [loading, setLoading] = useState<Boolean>(true)
 
   useEffect(() => {
-    dispatchFullResume(formatResumePage(data.allMarkdownRemark.edges))
+    console.log(data)
+    dispatchFullResume((formatResumePage(data.allMarkdownRemark.edges) as IState['resume']))
     setLoading(false)
   }, [])
-  
+
   return !loading ? (
     <PDFViewer style={{ height: "100vh", width: "100%" }}>
       <Resume />
@@ -41,7 +49,7 @@ export const query = graphql`
 `
 
 const mapDispatchToProps = (dispatch: any) => ({
-  dispatchFullResume: (payload: IState) =>
+  dispatchFullResume: (payload: IState['resume']) =>
     dispatch({ type: dispatchResume, payload }),
 })
 

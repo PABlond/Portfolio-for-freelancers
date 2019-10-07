@@ -6,7 +6,7 @@ import { IAbout } from "./../../interfaces/module.interface"
 const About = ({ about }: IAbout) => {
   return (
     <>
-      <div className="container-fluid" dangerouslySetInnerHTML={about} />
+      <div className="container-fluid" dangerouslySetInnerHTML={about as { __html: string }} />
       <div id="about-social">
         <a
           href="https://www.linkedin.com/in/pierre-alexis-blond-00924b158/"

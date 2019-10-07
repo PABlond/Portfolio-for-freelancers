@@ -2,14 +2,16 @@ import React from "react"
 import store from "./../../store"
 import { Text, View } from "@react-pdf/renderer"
 import styles from "./resume"
-// import { any } from "./../../interfaces/works.interface"
+import { IResumeWork } from "./../../interfaces/state.interface"
 
 export default () => {
-  const { works }: { works: any[] } = store.getState().content.resume
+  const {
+    works,
+  }: any = store.getState().content.resume
   return (
     <View style={styles.section}>
       <View>
-        {works.map((work: any, i: number) =>
+        {(works as IResumeWork[]).map((work: IResumeWork, i: number) =>
           i > 4 && i < 8 ? (
             <View style={styles.experienceElement} key={i}>
               <Text style={styles.experienceTitle}>{work.title}</Text>
@@ -64,7 +66,9 @@ export default () => {
         </View>
       </View>
 
-      <Text style={styles.generated}>This resume was generated from PABlond.com using react-pdf</Text>
+      <Text style={styles.generated}>
+        This resume was generated from PABlond.com using react-pdf
+      </Text>
     </View>
   )
 }

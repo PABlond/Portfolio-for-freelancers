@@ -1,20 +1,13 @@
 import React from "react"
 import { Helmet } from "react-helmet"
-
-interface IHeadProps {
-  siteUrl: string
-  defaultTitle: string
-  defaultDescription: string
-  themeColor: string
-  pageName?: string
-}
+import { IHeadProps } from "./../../interfaces/query.interface"
 
 export default ({
   data: { siteUrl, defaultDescription, defaultTitle, themeColor, pageName },
 }: {
   data: IHeadProps
 }) => (
-  <Helmet>
+  <Helmet htmlAttributes={{ lang: "en" }}>
     <meta charSet="utf-8" />
     <title>{pageName || defaultTitle}</title>
     <link rel="canonical" href={siteUrl} />

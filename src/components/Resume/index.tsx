@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Page, Document, View } from "@react-pdf/renderer"
 import Header from "./header"
 import styles from "./resume"

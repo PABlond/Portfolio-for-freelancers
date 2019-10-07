@@ -1,7 +1,7 @@
 import { IImageFluid } from "./query.interface"
 
 export interface IHTMLParsed {
-  __html: string
+  __html: string | null
 }
 
 export interface IHeader {

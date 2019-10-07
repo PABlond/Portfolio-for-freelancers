@@ -2,11 +2,15 @@ import React from "react"
 import store from "../../store"
 import { Text, View } from "@react-pdf/renderer"
 import styles from "./resume"
-// import { IWork } from "./../../interfaces/works.interface"
-// import { IDescription } from "./../../interfaces/about.interface"
+import { IResumeWork } from "./../../interfaces/state.interface"
+
 
 export default () => {
-  const { about, works } = store.getState().content.resume
+  const {
+    content: {
+      resume: { about, works },
+    },
+  } : any = store.getState()
   // const description = about.description
   //   .map((desc: IDescription, i: number) => {
   //     if (i >= 1) {
@@ -35,7 +39,7 @@ export default () => {
         <View style={styles.titles}>
           <Text>Experience:</Text>
         </View>
-        {works.map((work: IWork, i: number) =>
+        {works.map((work: IResumeWork, i: number) =>
           i < 5 ? (
             <View style={styles.experienceElement} key={i}>
               <Text style={styles.experienceTitle}>{work.title}</Text>
