@@ -7,10 +7,12 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.0",
     "@react-pdf/renderer": "^1.6.6",
+    "@types/file-saver": "^2.0.1",
     "@types/react-helmet": "^5.0.11",
     "@types/react-redux": "^7.1.4",
     "animate.css": "^3.7.2",
     "bootstrap": "^4.3.1",
+    "file-saver": "^2.0.2",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-manifest": "^2.2.20",

@@ -79,15 +79,15 @@
   // ***********************************************************
 
   #contact {
-    height: 100vh;
+    height: inherit;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
 
     h1 {
-      margin-top: 20px;
-      margin-bottom: 0px;
-    }
-
-    form {
-      margin: 50px;
+      margin-bottom: 20px;
+      font-size: 2rem
     }
   }
 }
