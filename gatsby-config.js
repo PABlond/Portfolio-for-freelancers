@@ -1,8 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: "Pierre-Alexis Blond",
+    description:
+      "Full stack web and mobile development for your idea or product.",
+    url: "https://www.pablond.com",
+    themeColor: "#61234e",
   },
   plugins: [
     {
@@ -12,7 +14,7 @@ module.exports = {
         short_name: "PABlond",
         start_url: "/",
         background_color: "#fff",
-        theme_color: "##61234e",
+        theme_color: "#61234e",
         display: "standalone",
         icon: "src/assets/imgs/data/gatsby-icon.png",
         crossOrigin: `use-credentials`,
@@ -53,5 +55,6 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
   ],
 }
