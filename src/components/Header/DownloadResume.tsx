@@ -40,7 +40,7 @@ const DownloadResume = ({
                 if (error) console.log(error)
                 if (url) console.log(url)
                 return (
-                  !loading && FileSaver.saveAs(blob as any, "hello world.pdf")
+                  !loading && FileSaver.saveAs(blob as any, "Pierre-Alexis_Blond_Resume.pdf")
                 )
               }}
             </PDFDownloadLink>

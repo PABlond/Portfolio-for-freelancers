@@ -14,7 +14,7 @@ title: "header"
 
 <div class="row">
 
-<div id="header-text" class="offset-md-2 col-md-8">
+<div id="header-text">
 
 Full stack web and mobile development for your idea or product.
 
