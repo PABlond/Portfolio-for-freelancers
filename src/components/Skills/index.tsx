@@ -16,7 +16,7 @@ export default () => {
   useEffect(() => {
     if (typeof window !== `undefined` && document.getElementById("skills")) {
       console.log(
-        document.getElementsByClassName("tab-content")[0].offsetHeight
+        (document.getElementsByClassName("tab-content")[0] as any).offsetHeight
       )
       setDimensions({
         width: (document.getElementById("skills") as any).offsetWidth,
