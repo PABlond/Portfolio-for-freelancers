@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import { connect } from "react-redux"
-import { IMdNode, IImageQuery } from "./../interfaces/query.interface"
 import { IState } from "./../interfaces/state.interface"
 import { dispatchContent } from "./../config/constants"
 import Col6Layout from "./../components/Layout/Col6Layout"
@@ -13,74 +12,55 @@ import Works from "./../components/Works"
 import Contact from "./../components/Contact"
 import Loading from "./../components/Loading"
 import Nav from "./../components/Nav"
-import Head from './../components/Head'
+import Head from "./../components/Head"
+import formatHomePage from "./../helpers/homePageHelpers"
+import { IHomeData } from "./../interfaces/query.interface"
 
-const Home = ({ data, dispatchFullContent }: any) => {
+const Home = ({
+  data,
+  dispatchFullContent,
+}: {
+  data: IHomeData
+  dispatchFullContent: (payload: IState) => void
+}) => {
   const [loading, setLoading] = useState<Boolean>(true)
 
   useEffect(() => {
-    const header = {
-      __html: data.allMarkdownRemark.edges
-        .map((mod: IMdNode) =>
-          mod.node.frontmatter.title == "header" ? mod.node.html : null
-        )
-        .filter(Boolean)[0],
-    }
-    const about = {
-      __html: data.allMarkdownRemark.edges
-        .map((mod: IMdNode) =>
-          mod.node.frontmatter.title == "about" ? mod.node.html : null
-        )
-        .filter(Boolean)[0],
-    }
-    const works = {
-      __html: data.allMarkdownRemark.edges
-        .map((mod: IMdNode) => {
-          return mod.node.frontmatter.title == "works" ? mod.node.html : null
-        })
-        .filter(Boolean)[0],
-    }
-    
-    console.log(data)
-
-    const work = data.allMarkdownRemark.edges
-      .map((mod: IMdNode) => {
-        return mod.node.frontmatter.title.indexOf("work-") !== -1
-          ? mod.node
-          : null
-      })
-      .filter(Boolean)
-      
-    const certifications = data.allFile.edges.map(
-      (certification: IImageQuery) => certification.node.childImageSharp
-    )
-    dispatchFullContent({ header, about, certifications, works })
+    dispatchFullContent(formatHomePage(data))
     setLoading(false)
   }, [])
 
-  return !loading ? (
+  return (
     <>
-      <Head data={{...data.site.siteMetadata, pageName:"Pierre-Alexis Blond - Portfolio"}} />
-      <Nav  />
-      <Header />
-      <section id="about">
-        <About />
-        <Col6Layout>
-          {typeof window !== "undefined" && <Skills />}
-          <Certifications />
-        </Col6Layout>
-      </section>
-      <section id="works">
-        <Works />
-      </section>
+      <Head
+        data={{
+          ...data.site.siteMetadata,
+          pageName: "Pierre-Alexis Blond - Portfolio",
+        }}
+      />
+      <Nav />
+
+      {!loading ? (
+        <>
+          <Header />
+          <section id="about">
+            <About />
+            <Col6Layout>
+              {typeof window !== "undefined" && <Skills />}
+              <Certifications />
+            </Col6Layout>
+          </section>
+          <section id="works">
+            <Works />
+          </section>
+        </>
+      ) : (
+        <Loading />
+      )}
+
       <section id="contact">
-        <Contact hidden={false} />
+        <Contact hidden={!!loading} />
       </section>
-    </>
-  ) : (
-    <>
-      <Loading />
-      <Contact hidden={true} />
     </>
   )
 }
