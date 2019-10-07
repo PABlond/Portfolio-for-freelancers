@@ -14,17 +14,19 @@ import Loading from "./../components/Loading"
 import Nav from "./../components/Nav"
 import Head from "./../components/Head"
 import formatHomePage from "./../helpers/homePageHelpers"
+import { IHomeData } from "./../interfaces/query.interface"
 
-const Home = ({ data, dispatchFullContent }: any) => {
+const Home = ({
+  data,
+  dispatchFullContent,
+}: {
+  data: IHomeData
+  dispatchFullContent: (payload: IState) => void
+}) => {
   const [loading, setLoading] = useState<Boolean>(true)
 
   useEffect(() => {
-    dispatchFullContent({
-      header: formatHomePage.header(data.allMarkdownRemark.edges),
-      about: formatHomePage.about(data.allMarkdownRemark.edges),
-      certifications: formatHomePage.certifications(data.allFile.edges),
-      works: formatHomePage.works(data.allMarkdownRemark.edges),
-    })
+    dispatchFullContent(formatHomePage(data))
     setLoading(false)
   }, [])
 

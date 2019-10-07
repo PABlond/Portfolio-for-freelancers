@@ -1,15 +1,15 @@
-const header = edges => ({
+const formatHeader = edges => ({
   __html: edges
     .map(mod => (mod.node.frontmatter.title == "header" ? mod.node.html : null))
     .filter(Boolean)[0],
 })
-const about = edges => ({
+const formatAbout = edges => ({
   __html: edges
     .map(mod => (mod.node.frontmatter.title == "about" ? mod.node.html : null))
     .filter(Boolean)[0],
 })
 
-const works = edges => ({
+const formatWorks = edges => ({
   __html: edges
     .map(mod => {
       return mod.node.frontmatter.title == "works" ? mod.node.html : null
@@ -17,12 +17,12 @@ const works = edges => ({
     .filter(Boolean)[0],
 })
 
-const certifications = edges =>
-  edges.map((certification) => certification.node.childImageSharp)
+const formatCertifications = edges =>
+  edges.map(certification => certification.node.childImageSharp)
 
-export default {
-  header,
-  about,
-  works,
-  certifications,
-}
+export default data => ({
+  header: formatHeader(data.allMarkdownRemark.edges),
+  about: formatAbout(data.allMarkdownRemark.edges),
+  certifications: formatCertifications(data.allFile.edges),
+  works: formatWorks(data.allMarkdownRemark.edges),
+})
