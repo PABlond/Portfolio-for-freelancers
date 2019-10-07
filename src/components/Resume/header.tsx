@@ -2,11 +2,14 @@ import React from "react"
 import store from "./../../store"
 import { Text, View, Image } from "@react-pdf/renderer"
 import styles from "./resume"
-import { connect } from "react-redux"
 
 export default () => {
-  const { header } = store.getState().content.resume
-  console.log(header)
+  const {
+    content: {
+      resume: { header },
+    },
+  }: any = store.getState()
+  
   return (
     <View style={styles.header}>
       <Image

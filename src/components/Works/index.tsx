@@ -8,7 +8,7 @@ const Works = ({ works }: IWorks) => {
     <Container fluid={true}>
       <h2>Previous Work</h2>
       <Container>
-        <Row dangerouslySetInnerHTML={works}></Row>
+        <Row dangerouslySetInnerHTML={works as { __html: string }}></Row>
       </Container>
       <div>
         <h4>

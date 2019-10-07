@@ -8,7 +8,15 @@ export default {
       name: "",
       title: "",
     },
-    works: [],
+    works: [
+      {
+        title: "",
+        content: "",
+        technos: "",
+        __html: "",
+        n: 0,
+      },
+    ],
     about: [],
   },
 }

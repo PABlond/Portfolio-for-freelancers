@@ -26,6 +26,7 @@ const Home = ({
   const [loading, setLoading] = useState<Boolean>(true)
 
   useEffect(() => {
+    console.log(data)
     dispatchFullContent(formatHomePage(data))
     setLoading(false)
   }, [])
