@@ -1,11 +1,22 @@
 $light: #ebfffb;
 $dark: #032535;
-$purple: #61234e;
+$purple: #35142b;
 $red: #ff5858;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+
+}
 
 body {
   margin: 0 !important;
+  font-family: 'Prata', serif;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
 }
+
+
 
 #contact-button {
   background: #61234e !important;
@@ -44,8 +55,8 @@ i {
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0) 70%,
-    #fff 90%
+    rgba(0, 0, 0, 0) 75%,
+    #fff 80%
   );
   background-color: transparent !important;
 
@@ -61,6 +72,7 @@ i {
 // ***********************************************************
 
 #header {
+  overflow-x: hidden;
   padding-top: 5rem;
   height: 100vh;
   display: flex;
@@ -86,12 +98,13 @@ i {
       font-size: 4rem;
       transform: rotate(-1deg);
       letter-spacing: 3px;
+      font-weight: 600
     }
   }
 
   p {
     .gatsby-resp-image-wrapper {
-      z-index: -1
+      z-index: -1;
     }
   }
 
@@ -107,7 +120,7 @@ i {
     margin-top: -5rem;
     // border: 1px solid #006375;
     border-radius: 30px 30px 0 0;
-    padding-top:1rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
     position: absolute;
     bottom: 0;
@@ -119,7 +132,8 @@ i {
     a {
       cursor: pointer;
       font-size: 1rem;
-      color: #48C0D7;
+      color: #48c0d7;
+      font-weight: 600
     }
   }
 }
@@ -174,10 +188,11 @@ i {
 }
 
 #about-bottom {
-  background: #191919;
+  background: $dark;
   padding-top: 1rem;
 
   #skills {
+    overflow-x: hidden;
     nav {
       a {
         color: $light !important;
@@ -189,21 +204,6 @@ i {
     }
   }
 }
-
-// ***********************************************************
-// ***********************************************************
-//                       Certifications
-// ***********************************************************
-// ***********************************************************
-
-// #certifications {
-//   #certifications-content {
-//     height: 100%;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
-// }
 
 // ***********************************************************
 // ***********************************************************
@@ -222,9 +222,11 @@ i {
 
   h2 {
     text-align: center;
-    color: rgb(235, 255, 251);
-    background: rgb(3, 37, 53);
+    color: #fff;
+    background: $purple;
     padding: 10px;
+    font-weight: 500;
+    letter-spacing: 5px;
   }
 
   .container {
@@ -236,8 +238,23 @@ i {
           flex-direction: column;
           align-items: center;
 
+          h4 {
+            font-weight: 500;
+            color: $purple;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+          }
+
+          h6 {
+            font-family: 'Prata', serif;
+            font-size: 1rem;
+          }
+
           p {
             width: 100%;
+            font-size: 0.9rem;
+            font-style: italic;
           }
         }
       }
@@ -265,6 +282,7 @@ i {
     margin-bottom: 20px;
     color: #fff;
     font-size: 3rem;
+    font-weight: 500;
   }
   form {
     //   margin: inherit;

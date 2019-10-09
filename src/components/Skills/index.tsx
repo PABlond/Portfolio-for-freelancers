@@ -37,7 +37,7 @@ export default () => {
                 linkColor="white"
                 linkOpacity={0}
                 width={dimensions.width}
-                height={500}
+                height={dimensions.width > 768 ? 500 : 300}
                 graphData={discipline.data}
                 nodeAutoColorBy="group"
                 nodeCanvasObject={(
@@ -52,7 +52,7 @@ export default () => {
                   const bckgDimensions = [textWidth, fontSize].map(
                     n => n + fontSize * 0.2
                   )
-                  ctx.fillStyle = "#191919"
+                  ctx.fillStyle = "#032535"
                   ctx.fillRect(
                     node.x - bckgDimensions[0] / 2,
                     node.y - bckgDimensions[1] / 2,
@@ -64,7 +64,7 @@ export default () => {
                   ctx.fillText(label, node.x, node.y)
                 }}
                 // enableNodeDrag={true}
-                backgroundColor="#191919"
+                backgroundColor="#032535"
               />
             </Tab>
           )

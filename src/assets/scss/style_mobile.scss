@@ -1,7 +1,21 @@
 @media only screen and (max-width: 768px) {
   .navbar {
-    background: #fff;
-    background-color: transparent !important;
+    background: transparent !important;
+
+    button {
+      background: white;
+    }
+
+    .collapsed {
+      background: $purple;
+      transition: 1s;
+    }
+
+    .show {
+      background: #fff;
+      padding: 10px;
+      transition: 1s;
+    }
 
     .navbar-brand {
       font-size: 2rem;
@@ -28,7 +42,6 @@
     }
 
     .row {
-
       margin-top: 6rem;
     }
     #header-text {
@@ -84,10 +97,9 @@
     padding-top: 3rem;
     padding-bottom: 3rem;
 
-
     h1 {
       margin-bottom: 20px;
-      font-size: 2rem
+      font-size: 2rem;
     }
   }
 }
