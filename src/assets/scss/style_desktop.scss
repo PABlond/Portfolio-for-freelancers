@@ -9,12 +9,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Prata", sans-serif;
 }
 
 body {
   margin: 0 !important;
-  font-family: "Prata", serif;
+  font-family:'Roboto Mono', monospace;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -146,13 +146,6 @@ i {
 // ***********************************************************
 
 #about {
-  // background: linear-gradient(
-  //     rgba(231, 230, 253, 0.78),
-  //     rgba(245, 249, 251, 0.49)
-  //   ),
-  //   url("https://res.cloudinary.com/pablond/image/upload/e_auto_color,q_auto:eco/a_0/v1566343415/abstract-2055567_960_720.jpg");
-  // background-size: cover;
-  // background-position: top;
   padding-top: 5rem;
 
   .row {
@@ -246,7 +239,7 @@ i {
           }
 
           h6 {
-            font-family: "Prata", serif;
+            font-family: 'Roboto Mono', monospace;
             font-size: 1rem;
           }
 

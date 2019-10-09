@@ -21,6 +21,14 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        google: {
+          families: ["Roboto Mono", "Prata"],
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/assets/markdown`,
@@ -42,7 +50,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 620,
-              linkImagesToOriginal: false
+              linkImagesToOriginal: false,
             },
           },
         ],
