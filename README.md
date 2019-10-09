@@ -1,6 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bfd3cbfa-5471-4593-841b-fd3674546cc7/deploy-status)](https://app.netlify.com/sites/pedantic-hoover-d62fa7/deploys)
 
 This repository is a complete one page portfolio with a feature which generates a beautiful (pdf) resume.
+Notice that this project was developed to be deployed on Netlify and thus, you will find every form submission (contact section) in the dashboard of you Netlify project (form tab)
 
 ## Installation
 
@@ -77,7 +78,6 @@ gatsby serve
 
 > Gatsby starts a local HTML server for testing your built site. Remember to build your site using gatsby build before using this command.
 
-```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
