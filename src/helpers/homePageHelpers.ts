@@ -13,10 +13,13 @@ const formatAbout = (edges: IHomeData["allMarkdownRemark"]["edges"]) => ({
 
 const formatWorks = (edges: IHomeData["allMarkdownRemark"]["edges"]) => ({
   __html: edges
-    .map(mod => {
-      return mod.node.frontmatter.title == "works" ? mod.node.html : null
+    .map((mod, i) => {
+      return mod.node.frontmatter.title.indexOf("work-") !== -1
+        ? mod.node.html
+        : null
     })
-    .filter(Boolean)[0],
+    .filter(Boolean)
+    .join(""),
 })
 
 const formatCertifications = (edges: IHomeData["allFile"]["edges"]) =>
