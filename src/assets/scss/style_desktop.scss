@@ -89,6 +89,12 @@ i {
     }
   }
 
+  p {
+    .gatsby-resp-image-wrapper {
+      z-index: -1
+    }
+  }
+
   .row {
     position: relative;
     border-bottom: 1px solid $purple;
