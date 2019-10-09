@@ -1,6 +1,6 @@
-import { IAllMarkdownRemark,IMdNode } from "./../interfaces/query.interface"
+import { IAllMarkdownRemark, IMdNode } from "./../interfaces/query.interface"
 
-const formatWorks = (works: IMdNode['node'][]) =>
+const formatWorks = (works: IMdNode["node"][]) =>
   works.map(work => {
     const title = work.html.split("<h4>")[1].split("</h4>")[0]
     const content = work.html.split("<h6>")[1].split("</h6>")[0]
@@ -17,18 +17,16 @@ const formatHeader = (str: string) => {
 }
 
 const formatWorksData = (edges: IAllMarkdownRemark["edges"]) =>
-  formatWorks(
-    (edges
-      .map((mod: IMdNode) => {
-        return mod.node.frontmatter.title.indexOf("work-") !== -1
-          ? mod.node
-          : null
-      })
-      .filter(Boolean) as IMdNode['node'][])
-  )
+  formatWorks(edges
+    .map((mod: IMdNode) => {
+      return mod.node.frontmatter.title.indexOf("work-") !== -1
+        ? mod.node
+        : null
+    })
+    .filter(Boolean) as IMdNode["node"][])
 
-const formatAboutData = (edges: IAllMarkdownRemark["edges"]) =>
-  (edges
+const formatAboutData = (edges: IAllMarkdownRemark["edges"]) => {
+  return (edges
     .map((mod: IMdNode) =>
       mod.node.frontmatter.title == "about" ? mod.node.html : null
     )
@@ -37,17 +35,22 @@ const formatAboutData = (edges: IAllMarkdownRemark["edges"]) =>
     .map((str: string) => {
       return str.split("<p>")[1]
     })
-    .slice(1)
+    .slice(2)
     .filter(Boolean)
-
+    .map((str: string) =>
+      str
+        .split("<strong>")
+        .join("")
+        .split("</strong>")
+        .join("")
+    )
+}
 const formatHeaderData = (edges: IAllMarkdownRemark["edges"]) =>
-  formatHeader(
-    (edges
-      .map((mod: IMdNode) =>
-        mod.node.frontmatter.title == "header" ? mod.node.html : null
-      )
-      .filter(Boolean)[0] as string)
-  )
+  formatHeader(edges
+    .map((mod: IMdNode) =>
+      mod.node.frontmatter.title == "header" ? mod.node.html : null
+    )
+    .filter(Boolean)[0] as string)
 
 export default (edges: IAllMarkdownRemark["edges"]) => ({
   header: formatHeaderData(edges),

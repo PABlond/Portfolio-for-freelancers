@@ -7,7 +7,9 @@ const formatHeader = (edges: IHomeData["allMarkdownRemark"]["edges"]) => ({
 })
 const formatAbout = (edges: IHomeData["allMarkdownRemark"]["edges"]) => ({
   __html: edges
-    .map(mod => (mod.node.frontmatter.title == "about" ? mod.node.html : null))
+    .map(mod => {
+      console.log(mod.node.frontmatter.title == "about" ? mod.node.html : null)
+      return (mod.node.frontmatter.title == "about" ? mod.node.html : null)})
     .filter(Boolean)[0],
 })
 
