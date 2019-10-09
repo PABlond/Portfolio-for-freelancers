@@ -7,7 +7,6 @@ export default (
   action: { type: string; payload: any }
 ) => {
   const { type, payload } = action
-  console.log(type)
   switch (type) {
     case dispatchContent:
       return {

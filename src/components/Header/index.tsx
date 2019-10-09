@@ -11,7 +11,6 @@ const Header = ({ header }: IHeader) => {
       if (!attribs) return
 
       if (attribs.id === "header-text") {
-        console.log(attribs, children)
         return (
           <div id="header-text" className="offset-md-2 col-md-8">
             {domToReact(children)}
