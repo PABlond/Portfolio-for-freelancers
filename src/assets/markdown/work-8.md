@@ -5,13 +5,13 @@ title: "work-7"
 
 <div class="m-3">
 
-#### Personal vocal assistant
+#### Git GUI
 
 ![vocal-assistant-img](imgs/works/7.jpg)
 
-###### Vocal assistant platform to open, search and play medias in the browser
+###### Client Git GUi to automate tasks such as auto-commit, auto-pull ...
 
-Node, React, Redux
+Electron, Flask, Docker, Git
 
 </div>
 

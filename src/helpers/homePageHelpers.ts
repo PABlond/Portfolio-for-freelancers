@@ -20,7 +20,7 @@ const formatWorks = (edges: IHomeData["allMarkdownRemark"]["edges"]) => ({
         ? mod.node.html
         : null
     })
-    .filter(Boolean)
+    .filter(Boolean).reverse()
     .join(""),
 })
 

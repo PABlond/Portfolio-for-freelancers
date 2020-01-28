@@ -6,7 +6,7 @@ title: "header"
 
 # Pierre-Alexis Blond
 
-## Fullstack Developer
+## Software Developer
 
 </div>
 

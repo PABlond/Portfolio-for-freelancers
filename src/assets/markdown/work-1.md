@@ -7,7 +7,7 @@ title: "work-0"
 
 #### Python Scripting
 
-![kboard-img](imgs/works/1.jpg)
+![kboard-img](imgs/works/8.png)
 
 ###### Develop (bot) scrapping tools to get sensitive and strategic data
 
