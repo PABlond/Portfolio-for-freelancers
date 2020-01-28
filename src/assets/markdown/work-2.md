@@ -1,18 +1,17 @@
 ---
-title: "work-2"
+title: "work-1"
 ---
-
 <div class="col-md-3">
 
 <div class="m-3">
 
-#### CMS for freelancers
+#### Kboard
 
-![CMS-freelancers-img](imgs/works/2.jpg)
+![kboard-img](imgs/works/1.jpg)
 
-###### A complete CMS for freelancers to manage portfolio, resume, invoices, analytics
+###### Collaboration tool that organizes your projects into boards
 
-TypeScript, React (Gatsby), Redux, GraphQL, Nodejs and MongoDB
+React, Redux, GraphQL, Node.Js, Socket.io
 
 </div>
 

@@ -1,17 +1,17 @@
 ---
-title: "work-6"
+title: "work-5"
 ---
 <div class="col-md-3">
 
 <div class="m-3">
 
-#### URL Shortener Microservice
+#### Object detection
 
-![url-shortener-img](imgs/works/6.jpg)
+![kboard-img](imgs/works/5.jpeg)
 
-###### API Project: URL Shortener Microservice
+###### Object detection project for real-time (webcam) and offline (video processing) application.
 
-Node, MongoDB, Express
+Python, OpenCV, Darkflow
 
 </div>
 

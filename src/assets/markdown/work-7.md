@@ -1,17 +1,17 @@
 ---
-title: "work-7"
+title: "work-6"
 ---
 <div class="col-md-3">
 
 <div class="m-3">
 
-#### Personal vocal assistant
+#### URL Shortener Microservice
 
-![vocal-assistant-img](imgs/works/7.jpg)
+![url-shortener-img](imgs/works/6.jpg)
 
-###### Vocal assistant platform to open, search and play medias in the browser
+###### API Project: URL Shortener Microservice
 
-Node, React, Redux
+Node, MongoDB, Express
 
 </div>
 

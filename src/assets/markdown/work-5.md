@@ -1,17 +1,17 @@
 ---
-title: "work-5"
+title: "work-4"
 ---
 <div class="col-md-3">
 
 <div class="m-3">
 
-#### Object detection
+#### RNN - Trading bot
 
-![kboard-img](imgs/works/5.jpeg)
+![RNN-Trading-bot-img](imgs/works/4.jpg)
 
-###### Object detection project for real-time (webcam) and offline (video processing) application.
+###### Stock Price Prediction with Recurrent Neural Networks (RNN)
 
-Python, OpenCV, Darkflow
+Python, Keras, Scikit-learn
 
 </div>
 

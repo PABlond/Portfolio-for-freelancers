@@ -1,5 +1,10 @@
 export default [
   {
+    title: "Python Scripting",
+    content: "Develop (bot) scrapping tools to get sensitive and strategic data",
+    technos: "Python, Selenium, MongoDB",
+  },
+  {
     title: "KBoard",
     content: "Collaboration tool that organizes your projects into boards",
     technos: "React, Redux, GraphQL, Node.Js, Socket.io",
@@ -36,10 +41,5 @@ export default [
     content:
       "Vocal assistant platform to open, search and play medias in the browser",
     technos: "Node, React, Redux",
-  },
-  {
-    title: "Webcam based game",
-    content: "Game to play with a webcam using video processing",
-    technos: "React, Redux, Tracking.js",
-  },
+  }
 ]

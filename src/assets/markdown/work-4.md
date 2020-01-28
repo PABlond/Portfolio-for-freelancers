@@ -1,17 +1,17 @@
 ---
-title: "work-4"
+title: "work-3"
 ---
 <div class="col-md-3">
 
 <div class="m-3">
 
-#### RNN - Trading bot
+#### CCTV plateform
 
-![RNN-Trading-bot-img](imgs/works/4.jpg)
+![CCTV-plateform-img](imgs/works/3.png)
 
-###### Stock Price Prediction with Recurrent Neural Networks (RNN)
+###### A complete platform to stream and track (remotely) webcams
 
-Python, Keras, Scikit-learn
+Gatsby, GraphQL, TypeScript, Node, Mysql
 
 </div>
 

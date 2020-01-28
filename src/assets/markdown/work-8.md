@@ -1,17 +1,17 @@
 ---
-title: "work-8"
+title: "work-7"
 ---
 <div class="col-md-3">
 
 <div class="m-3">
 
-#### Webcam based game
+#### Personal vocal assistant
 
-![vocal-assistant-img](imgs/works/8.png)
+![vocal-assistant-img](imgs/works/7.jpg)
 
-###### Game to play with a webcam using video processing
+###### Vocal assistant platform to open, search and play medias in the browser
 
-React, Redux, Tracking.js
+Node, React, Redux
 
 </div>
 

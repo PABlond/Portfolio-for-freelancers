@@ -30,18 +30,18 @@ export default () => {
           <Text>- Data Science Professional Certificate - IBM</Text>
         </View>
         <View style={styles.certificationContent}>
-          <Text>- APIs & Microservices - FreeCodeCamp</Text>
+          <Text>- Full Stack Developer - FreeCodeCamp</Text>
         </View>
         <View style={styles.certificationContent}>
-          <Text>- Front End Libraries (React) - FreeCodeCamp</Text>
+          <Text>- Information Security and Quality Assurance - FreeCodeCamp</Text>
         </View>
         <View style={styles.certificationContent}>
           <Text>
-            - JavaScript Algorithms and Data Structures - FreeCodeCamp{" "}
+            - Legacy Front End (React) - FreeCodeCamp{" "}
           </Text>
         </View>
         <View style={styles.certificationContent}>
-          <Text>- Responsive Web Design - FreeCodeCamp</Text>
+          <Text>- Data Visualization - FreeCodeCamp</Text>
         </View>
       </View>
 
@@ -53,13 +53,13 @@ export default () => {
           <Text style={styles.skill1}> Javascript / ECMAScript</Text>
         </View>
         <View style={styles.barsContent}>
-          <Text style={styles.skill2}> React.Js / React Native</Text>
+          <Text style={styles.skill2}> Python </Text>
         </View>
         <View style={styles.barsContent}>
-          <Text style={styles.skill3}> Express</Text>
+          <Text style={styles.skill3}> React.Js / React Native</Text>
         </View>
         <View style={styles.barsContent}>
-          <Text style={styles.skill4}> MongoDB</Text>
+          <Text style={styles.skill4}> Django / Flask</Text>
         </View>
         <View style={styles.barsContent}>
           <Text style={styles.skill5}> TypeScript</Text>
