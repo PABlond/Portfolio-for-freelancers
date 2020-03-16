@@ -1,0 +1,70 @@
+export const header: {
+  name: string
+  role: string
+  description: string
+  resume: string
+} = {
+  name: "<AUTHOR>",
+  role: "<ROLE>",
+  description:
+    "<DESCRIPTION>",
+  resume: "<RESUME>",
+}
+
+export const bio = {
+  content: <BIOGRAPHY>
+}
+
+export const social: {
+  linkedin: string
+  twitter: string
+  github: string
+} = {
+  linkedin: "<LINKEDIN_URL>",
+  twitter: "<TWITTER_URL>",
+  github: "<GITHUB_URL>",
+}
+
+export const hire: {
+  form: {
+    mail: {
+      type: string
+      label: string
+      placeholder: string
+      name: string
+    }
+    name: {
+      type: string
+      label: string
+      placeholder: string
+      name: string
+    }
+    message: {
+      type: string
+      label: string
+      placeholder: string
+      name: string
+    }
+  }
+} = {
+  form: {
+    mail: {
+      type: "text",
+      label: "Email",
+      placeholder: "name@example.com",
+      name: "email",
+    },
+    name: {
+      type: "text",
+      label: "Name",
+      placeholder: "John Doe",
+      name: "name",
+    },
+    message: {
+      type: "textarea",
+      label: "Message",
+      placeholder: "",
+      name: "message",
+    },
+  },
+}
