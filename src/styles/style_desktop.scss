@@ -14,7 +14,7 @@ h6 {
 
 body {
   margin: 0 !important;
-  font-family:'Roboto Mono', monospace;
+  // font-family: "Roboto Mono", monospace;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -80,22 +80,18 @@ i {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  // background: url("https://cdn.pixabay.com/photo/2016/11/30/18/14/idea-1873540_960_720.png");
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: contain;
-  // color: $light;
 
   #header-heading {
-    color: $purple;
     margin-bottom: -5rem;
     h1 {
+      color: $purple;
       font-size: 3rem;
       transform: rotate(2deg);
       letter-spacing: 2px;
     }
 
     h2 {
+      color: $purple;
       font-size: 4rem;
       transform: rotate(-1deg);
       letter-spacing: 3px;
@@ -103,21 +99,28 @@ i {
     }
   }
 
-  p {
-    .gatsby-resp-image-wrapper {
+  #header-img {
+    .gatsby-image-wrapper {
       z-index: -1;
+      max-width: 620px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
   .row {
     position: relative;
-    border-bottom: 1px solid $purple;
+    // border-bottom: 1px solid $purple;
   }
 
   #header-text {
     color: $purple;
-    background: $purple;
-    color: $light;
+    // background: $dark;
+    // border-top: 4px double $purple;
+    // border-right: 3px double $purple;
+    // border-left: 3px double $purple;
+    color: $dark;
     margin-top: -5rem;
     // border: 1px solid #006375;
     border-radius: 30px 30px 0 0;
@@ -128,12 +131,13 @@ i {
     p {
       font-size: 1.5rem;
       margin-bottom: 0;
+      font-weight: 600;
     }
 
     a {
       cursor: pointer;
       font-size: 1rem;
-      color: #48c0d7;
+      color: $purple;
       font-weight: 600;
     }
   }
@@ -153,6 +157,7 @@ i {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    font-family: "Roboto Mono", monospace;
 
     .col-md-4 {
       p {
@@ -179,21 +184,87 @@ i {
   }
 }
 
-#about-bottom {
-  background: $dark;
-  padding-top: 1rem;
+#skills {
+  h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 5px;
+  }
 
-  #skills {
-    overflow-x: hidden;
-    nav {
-      a {
-        color: $light !important;
-      }
-
-      .active {
-        color: $dark !important;
-      }
+  div {
+    justify-content: start;
+    margin-bottom: 1rem;
+    .badge {
+      background-color: #e4e4ea;
+      color: #343a40;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      padding: 0.7rem;
+      margin-right: 1rem;
     }
+  }
+}
+
+// ***********************************************************
+// ***********************************************************
+//                       Certifications
+// ***********************************************************
+// ***********************************************************
+
+
+#certifications {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: #f8f9fa;
+  background-color: $dark;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 5px;
+  }
+  p {
+    font-family: "Roboto Mono", monospace;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+}
+
+// ***********************************************************
+// ***********************************************************
+//                       Experience
+// ***********************************************************
+// ***********************************************************
+
+
+#experience {
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+  h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 5px;
+  }
+  .vertical-timeline {
+    &:before {
+      background: $purple;
+    }
+  }
+
+  .technos {
+    text-align: right;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-family: "Roboto Mono", monospace;
+  }
+
+  h4 {
+    font-weight: 500;
+    letter-spacing: 2px;
   }
 }
 
@@ -203,7 +274,7 @@ i {
 // ***********************************************************
 // ***********************************************************
 
-#works {
+#open-source {
   height: inherit;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -212,43 +283,47 @@ i {
   justify-content: space-between;
   flex-direction: column;
 
-  h2 {
+  h3 {
     text-align: center;
-    color: #fff;
-    background: $purple;
     padding: 10px;
     font-weight: 500;
     letter-spacing: 5px;
+    margin-bottom: 2rem;
   }
 
   .container {
     .row {
       .col-md-3 {
-        .m-3 {
-          display: flex;
-          justify-content: space-between;
-          flex-direction: column;
-          align-items: center;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
 
-          h4 {
-            font-weight: 500;
-            color: $purple;
-            font-weight: 500;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-          }
-
-          h6 {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 1rem;
-          }
-
-          p {
-            width: 100%;
-            font-size: 0.9rem;
-            font-style: italic;
-          }
+        h4 {
+          font-weight: 500;
+          color: $purple;
+          font-weight: 500;
+          letter-spacing: 1px;
+          margin-bottom: 1rem;
         }
+
+        h6 {
+          font-family: "Roboto Mono", monospace;
+          font-size: 1rem;
+        }
+
+        p {
+          width: 100%;
+          font-size: 0.9rem;
+          font-style: italic;
+        }
+      }
+
+
+      #more {
+        margin-top: 2rem;
+        text-align: center;
+        width: 100%;
       }
     }
   }
@@ -277,20 +352,13 @@ i {
     font-weight: 500;
   }
   form {
-    //   margin: inherit;
     padding: 30px;
     background: #fff;
-    // border: 3px solid $purple;
     border-radius: 30px 5px 30px 5px;
 
     .form-group {
       width: 100%;
     }
-
-    //   .contact-button {
-    //     background: #61234e !important;
-    //     border: 1px solid #61234e !important;
-    //   }
   }
 }
 
