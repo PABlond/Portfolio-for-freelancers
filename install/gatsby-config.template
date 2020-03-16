@@ -1,0 +1,36 @@
+module.exports = {
+  siteMetadata: {
+    title: "<AUTHOR>",
+    description:
+      "<DESCRIPTION>",
+    url: "<URL_PROD>",
+    themeColor: "#61234e",
+  },
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/images`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "<AUTHOR> portfolio",
+        short_name: "<SHORTNAME>",
+        start_url: "/",
+        background_color: "#fff",
+        theme_color: "#61234e",
+        display: "standalone",
+        icon: "images/gatsby-icon.png",
+        crossOrigin: `use-credentials`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-typescript",
+    `gatsby-plugin-sass`,
+  ],
+}
