@@ -1,7 +1,10 @@
 import React from "react"
 
-const NotFoundPage = () => (
-  <h1>404 not found</h1>
-)
-
-export default NotFoundPage
+const IndexPage = () => {
+  return (
+    <>
+    <p>404 - Not Found</p>
+    </>
+  )
+}
+export default IndexPage
