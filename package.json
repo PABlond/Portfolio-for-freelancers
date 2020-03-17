@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "freelancer-portfolio",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "An app for freelancers to manage a portfolio.",
+  "version": "2.0.1",
+  "author": "Pierre-Alexis Blond <pierre-alexis.blond@live.fr>",
   "dependencies": {
     "@types/react-vertical-timeline-component": "^2.5.0",
     "bootstrap": "^4.4.1",
@@ -33,24 +33,25 @@
     "prettier": "^1.19.1"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "portfolio",
+    "freelancer"
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
     "clean": "gatsby clean",
     "type-check": "tsc",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "build": "gatsby build",
+    "build:prod": "python install/build.py"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/PABlond/Portfolio-for-freelancers.git"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/PABlond/Portfolio-for-freelancers/issues"
   }
 }
