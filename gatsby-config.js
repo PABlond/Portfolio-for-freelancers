@@ -3,7 +3,7 @@ module.exports = {
     title: "Pierre-Alexis Blond",
     description:
       "Full stack web and mobile development for your idea or product.",
-    url: "https://www.pablond.com",
+    url: "www.pablond.com",
     themeColor: "#61234e",
   },
   plugins: [
@@ -17,7 +17,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "PABlond portfolio",
+        name: "Pierre-Alexis Blond portfolio",
         short_name: "PABlond",
         start_url: "/",
         background_color: "#fff",
@@ -30,8 +30,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-typescript-checker`,
+    "gatsby-plugin-typescript",
     `gatsby-plugin-sass`,
   ],
 }
