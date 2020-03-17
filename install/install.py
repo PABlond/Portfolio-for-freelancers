@@ -1,13 +1,12 @@
 import pandas
 import utils
-import pathlib
 import config
 
 var = config.Variable()
 
 
 df = pandas.read_excel(var.config)
-pwd = pathlib.Path(__file__).resolve().parents[1]
+pwd = var.pwd
 
 # Get data for gatsby-config.js
 with open(var.gatsby_config_template, "r") as f:

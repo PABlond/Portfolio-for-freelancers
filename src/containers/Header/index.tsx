@@ -34,7 +34,7 @@ export default () => {
       <div className="row">
         <div id="header-text" className="offset-md-2 col-md-8">
           <p>{description}</p>
-          <a>{resume}</a>
+          <a href="/resume_Pierre-Alexis_Blond.pdf" download>{resume}</a>
         </div>
       </div>
     </section>
