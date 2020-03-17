@@ -8,6 +8,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/images`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "PABlond portfolio",
@@ -16,55 +23,14 @@ module.exports = {
         background_color: "#fff",
         theme_color: "#61234e",
         display: "standalone",
-        icon: "src/assets/imgs/data/gatsby-icon.png",
+        icon: "images/gatsby-icon.png",
         crossOrigin: `use-credentials`,
       },
     },
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        google: {
-          families: ["Roboto Mono", "Prata"],
-        },
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/assets/markdown`,
-        name: `markdown-pages`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `certifications`,
-        path: `${__dirname}/src/assets/imgs/certifications/`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 620,
-              linkImagesToOriginal: false,
-            },
-          },
-        ],
-      },
-    },
-    `gatsby-plugin-netlify`,
-    `gatsby-remark-copy-linked-files`,
-    `gatsby-plugin-react-helmet`,
-    "gatsby-plugin-typescript",
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-netlify`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-offline`,
+    "gatsby-plugin-typescript",
+    `gatsby-plugin-sass`,
   ],
 }
