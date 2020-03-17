@@ -30,7 +30,8 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
-    "gatsby-plugin-typescript",
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-typescript-checker`,
     `gatsby-plugin-sass`,
   ],
 }
