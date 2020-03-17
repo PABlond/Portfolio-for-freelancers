@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import skills from "../../data/skills"
 import { Container, Badge } from "react-bootstrap"
 

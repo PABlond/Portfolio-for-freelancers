@@ -1,5 +1,5 @@
 import React from "react"
-import Bio from "./bio"
+import Bio from "./Bio"
 import Skills from "../Skills"
 import { Container, Row, Col } from "react-bootstrap"
 
@@ -9,11 +9,10 @@ export default () => {
       <Container>
         <Bio />
 
-        <Row className="mt-5">
+        <Row>
           <Col md={10}>
             <Skills />
           </Col>
-          {/* <Col md={4}></Col> */}
         </Row>
       </Container>
     </section>
