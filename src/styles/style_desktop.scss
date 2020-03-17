@@ -158,6 +158,7 @@ i {
     align-items: center;
     flex-direction: row;
     font-family: "Roboto Mono", monospace;
+    margin-top: 2rem;
 
     .col-md-4 {
       p {
@@ -173,6 +174,10 @@ i {
           }
         }
       }
+    }
+
+    .col-md-8 {
+      text-align: center;
     }
   }
   #about-social {
@@ -211,7 +216,6 @@ i {
 // ***********************************************************
 // ***********************************************************
 
-
 #certifications {
   margin-top: 3rem;
   padding-top: 2rem;
@@ -236,7 +240,6 @@ i {
 //                       Experience
 // ***********************************************************
 // ***********************************************************
-
 
 #experience {
   margin-top: 3rem;
@@ -318,7 +321,6 @@ i {
           font-style: italic;
         }
       }
-
 
       #more {
         margin-top: 2rem;
