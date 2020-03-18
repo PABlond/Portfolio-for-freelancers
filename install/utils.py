@@ -1,6 +1,7 @@
 import pandas
 import json
 import requests
+import pathlib
 from skimage import io, transform
 
 def handle_url(url, title, img_folder):
