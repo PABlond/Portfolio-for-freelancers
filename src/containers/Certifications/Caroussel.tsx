@@ -28,8 +28,12 @@ export default ({
           }}
           {...node.childImageSharp}
         />
-        {certifications.map(({ filename, name }) =>
-          filename == node.name ? <p className="text-center">{name}</p> : null
+        {certifications.map(({ organization, title }) =>
+          title == node.name ? (
+            <p className="text-center">
+              {title} - {organization}
+            </p>
+          ) : null
         )}
       </Carousel.Item>
     ))}
