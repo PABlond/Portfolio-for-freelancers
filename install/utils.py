@@ -28,6 +28,7 @@ def handle_tasks(values):
 def export_xls_as_list(img_folder: str, filename: str, filename_output: str):
     df = pandas.read_excel(filename)
     results = []
+    pathlib.Path(img_folder).mkdir(parents=True, exist_ok=True)
     for index, row in df.iloc[::-1].iterrows():
         obj = {}
         for key in list(df.columns):
