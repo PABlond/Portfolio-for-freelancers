@@ -3,7 +3,6 @@ import json
 import requests
 from skimage import io, transform
 
-
 def handle_url(url, title, img_folder):
     r = requests.get(url, stream=True)
     if r.status_code == 200:
@@ -15,7 +14,7 @@ def handle_url(url, title, img_folder):
         img = io.imread(img_filepath)
         height = round(225 * img.shape[1] / img.shape[0])
         img_resized = transform.resize(img, (225, height))
-        io.imsave(img_filepath, img_resized, img.astype(np.uint8))
+        io.imsave(img_filepath, img_resized)
         return img_filepath
 
 

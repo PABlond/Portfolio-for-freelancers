@@ -2,7 +2,9 @@ import pathlib
 import shutil
 import config
 import subprocess
+import install
 
+install.run()
 subprocess.call('npm run build', shell=True)
 
 vars = config.Variable()
