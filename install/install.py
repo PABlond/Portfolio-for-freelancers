@@ -29,11 +29,11 @@ def run():
         content = content.replace(row['Key'], str(value))
 
 
-    # Write gatsby-config.js file
+    # Write gatsby-config.js 
     with open(var.gatsby_config, "w+") as f:
         f.write(gatsby_config)
 
-    # Write content.ts file
+    # Write content.ts 
     with open(var.content, "w+") as f:
         f.write(content)
 
@@ -44,8 +44,14 @@ def run():
                             filename_output="{}/src/data/{}.json".format(
                                 pwd, var.open_source_xls.split('.xls')[0].split('/')[-1]))
 
-    # Geneate Experience data
+    # Generate Experience data
     utils.export_xls_as_list(img_folder="{}/images/experiences/".format(pwd),
                             filename=var.experiences_xls,
                             filename_output="{}/src/data/{}.json".format(
                                 pwd, var.experiences_xls.split('.xls')[0].split('/')[-1]))
+
+    # Generate Certifications data
+    utils.export_xls_as_list(img_folder="{}/images/certifications/".format(pwd),
+                            filename=var.certifications_xls,
+                            filename_output="{}/src/data/{}.json".format(
+                                pwd, var.certifications_xls.split('.xls')[0].split('/')[-1]))

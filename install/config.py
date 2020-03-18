@@ -11,3 +11,4 @@ class Variable:
 
     open_source_xls = 'install/open-source.xls'
     experiences_xls = 'install/experiences.xls'
+    certifications_xls = 'install/certifications.xls'

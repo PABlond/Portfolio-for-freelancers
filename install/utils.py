@@ -12,8 +12,11 @@ def handle_url(url, title, img_folder):
             for chunk in r.iter_content(1024):
                 f.write(chunk)
         img = io.imread(img_filepath)
-        height = round(225 * img.shape[1] / img.shape[0])
-        img_resized = transform.resize(img, (225, height))
+        if "certifications" in img_folder:
+            img_resized = transform.resize(img, (470, 800))        
+        else:
+            height = round(225 * img.shape[1] / img.shape[0])
+            img_resized = transform.resize(img, (225, height))
         io.imsave(img_filepath, img_resized)
         return img_filepath
 
@@ -40,4 +43,3 @@ def export_xls_as_list(img_folder: str, filename: str, filename_output: str):
 
     with open(filename_output, "w+", encoding='utf-8') as f:
         json.dump(results, f, indent=4, sort_keys=True)
-    print(results)

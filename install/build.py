@@ -5,7 +5,7 @@ import subprocess
 import install
 
 install.run()
-subprocess.call('npm run build', shell=True)
+# subprocess.call('npm run build', shell=True)
 
 vars = config.Variable()
 my_file = pathlib.Path("{}/install/cv.pdf".format(vars.pwd))
