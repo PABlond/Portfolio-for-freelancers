@@ -24,7 +24,7 @@ yarn-error.log
 
 node_modules/
 env/
-**/__pycache__/
+install/__pycache__/
 .vscode/
 
 # Replaced with install scripts
