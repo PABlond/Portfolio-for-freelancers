@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Img, { FluidObject } from "gatsby-image"
 
 export default () => {
-  const { name, role, description, resume } = headerContent
+  const { name, role, description } = headerContent
   return (
     <section id="header">
       <div id="header-heading" className="animated fadeInDownBig">
@@ -34,7 +34,6 @@ export default () => {
       <div className="row">
         <div id="header-text" className="offset-md-2 col-md-8">
           <p>{description}</p>
-          <a href="/resume_Pierre-Alexis_Blond.pdf" download>{resume}</a>
         </div>
       </div>
     </section>
