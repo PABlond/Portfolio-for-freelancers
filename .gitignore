@@ -33,3 +33,5 @@ src/data/*.json
 gatsby-config.js
 images/certifications/*
 images/open_source/*
+
+git_push.py
